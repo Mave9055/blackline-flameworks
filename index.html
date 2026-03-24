@@ -4,20 +4,22 @@
   <meta charset="UTF-8">
   <title>Blackline Flameworks · Flame‑Finished Hardwood</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Blackline Flameworks – flame‑finished hardwood slabs, boards, and furniture built by hand in Clarksville, Arkansas. One‑off, architectural‑grade pieces.">
+  <meta name="description" content="Blackline Flameworks builds flame‑finished hardwood slabs, boards, and furniture by hand in Clarksville, Arkansas — one‑off, architectural‑grade pieces with real weight, grain, and fire in every surface.">
   <style>
     :root {
-      --bg: #070809;
-      --bg-alt: #101215;
-      --accent: #f5a623;
-      --accent-soft: #f5d19a;
-      --text: #f6f6f6;
-      --muted: #9a9ea5;
-      --border: #2a2d33;
-      --card: #121418;
-      --highlight: #1b1e24;
-      --danger: #f15b2a;
-      --font-body: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      --bg: #050406;
+      --bg-alt: #09060b;
+      --bg-soft: #120910;
+      --accent: #ff3b3b;
+      --accent-soft: #ff8c78;
+      --accent-gold: #f7c86a;
+      --text: #f5f5f7;
+      --muted: #9a9aaa;
+      --border: #2b1924;
+      --card: #0f080f;
+      --highlight: #1a0c14;
+      --danger: #ff3b3b;
+      --font-body: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", sans-serif;
       --font-heading: "Georgia", "Times New Roman", serif;
     }
 
@@ -28,15 +30,31 @@
     }
 
     body {
-      background: radial-gradient(circle at top, #151821 0, #050608 55%);
+      background:
+        radial-gradient(circle at top, rgba(255, 80, 60, 0.22) 0, transparent 45%),
+        radial-gradient(circle at bottom right, rgba(255, 30, 30, 0.16) 0, transparent 55%),
+        linear-gradient(145deg, #020003, #050406 40%, #06010a 100%);
       color: var(--text);
       font-family: var(--font-body);
-      line-height: 1.6;
+      line-height: 1.7;
       -webkit-font-smoothing: antialiased;
     }
 
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background:
+        radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.06) 0, transparent 55%),
+        radial-gradient(circle at 80% 90%, rgba(255, 30, 30, 0.25) 0, transparent 65%);
+      mix-blend-mode: screen;
+      opacity: 0.35;
+      z-index: -1;
+    }
+
     a {
-      color: var(--accent);
+      color: var(--accent-soft);
       text-decoration: none;
     }
 
@@ -45,9 +63,9 @@
     }
 
     .page {
-      max-width: 1080px;
+      max-width: 1120px;
       margin: 0 auto;
-      padding: 32px 20px 64px;
+      padding: 32px 18px 64px;
     }
 
     header {
@@ -55,8 +73,19 @@
       flex-wrap: wrap;
       align-items: center;
       justify-content: space-between;
-      margin-bottom: 32px;
-      gap: 12px;
+      gap: 14px;
+      padding: 8px 10px 20px;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      backdrop-filter: blur(18px);
+      background: linear-gradient(
+        to bottom,
+        rgba(5, 0, 5, 0.92),
+        rgba(5, 0, 5, 0.82),
+        transparent
+      );
+      border-bottom: 1px solid rgba(255, 80, 60, 0.16);
     }
 
     .brand-lockup {
@@ -67,30 +96,38 @@
 
     .brand-name {
       font-family: var(--font-heading);
-      font-size: 1.5rem;
-      letter-spacing: 0.12em;
+      font-size: 1.55rem;
+      letter-spacing: 0.16em;
       text-transform: uppercase;
+      color: #ffffff;
+    }
+
+    .brand-name span {
+      color: var(--accent-soft);
     }
 
     .brand-sub {
-      font-size: 0.9rem;
+      font-size: 0.86rem;
       color: var(--muted);
     }
 
     .pill {
-      padding: 4px 10px;
+      padding: 6px 14px;
       border-radius: 999px;
-      border: 1px solid var(--border);
-      font-size: 0.75rem;
+      border: 1px solid rgba(255, 80, 60, 0.45);
+      font-size: 0.7rem;
       text-transform: uppercase;
-      letter-spacing: 0.18em;
-      color: var(--muted);
-      background: rgba(255, 255, 255, 0.02);
+      letter-spacing: 0.2em;
+      color: var(--accent-soft);
+      background: radial-gradient(circle at top left, rgba(255, 80, 60, 0.32), transparent);
+      box-shadow: 0 0 24px rgba(255, 80, 60, 0.35);
+      white-space: nowrap;
     }
 
     main {
+      margin-top: 22px;
       display: grid;
-      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1.1fr);
+      grid-template-columns: minmax(0, 1.55fr) minmax(0, 1.05fr);
       gap: 40px;
     }
 
@@ -100,42 +137,142 @@
       }
     }
 
+    /* Hero + flame particles */
+    .hero {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .flame-particles {
+      position: absolute;
+      inset: -40px;
+      pointer-events: none;
+      z-index: 0;
+      mix-blend-mode: screen;
+    }
+
+    .flame-particle {
+      position: absolute;
+      width: 8px;
+      height: 28px;
+      border-radius: 999px;
+      background: radial-gradient(circle at 50% 0, #ffecc7 0, #ffb37a 30%, #ff3b3b 65%, rgba(70, 0, 10, 0) 100%);
+      opacity: 0;
+      filter: blur(0.7px);
+      animation: riseFlame 7s linear infinite;
+    }
+
+    .flame-particle:nth-child(1) {
+      left: 10%;
+      bottom: -14%;
+      animation-duration: 8s;
+      animation-delay: 0s;
+    }
+
+    .flame-particle:nth-child(2) {
+      left: 26%;
+      bottom: -18%;
+      animation-duration: 6.2s;
+      animation-delay: 1.1s;
+    }
+
+    .flame-particle:nth-child(3) {
+      left: 42%;
+      bottom: -16%;
+      animation-duration: 5.6s;
+      animation-delay: 0.7s;
+    }
+
+    .flame-particle:nth-child(4) {
+      left: 58%;
+      bottom: -20%;
+      animation-duration: 7.4s;
+      animation-delay: 1.9s;
+    }
+
+    .flame-particle:nth-child(5) {
+      left: 74%;
+      bottom: -18%;
+      animation-duration: 6s;
+      animation-delay: 3.3s;
+    }
+
+    .flame-particle:nth-child(6) {
+      left: 88%;
+      bottom: -22%;
+      animation-duration: 7.1s;
+      animation-delay: 2.2s;
+    }
+
+    @keyframes riseFlame {
+      0% {
+        transform: translate3d(0, 0, 0) scale(0.8);
+        opacity: 0;
+      }
+      10% {
+        opacity: 0.7;
+      }
+      45% {
+        opacity: 1;
+      }
+      80% {
+        opacity: 0.6;
+      }
+      100% {
+        transform: translate3d(-10px, -260px, 0) scale(1.18);
+        opacity: 0;
+      }
+    }
+
     .hero-heading {
+      position: relative;
+      z-index: 1;
       font-family: var(--font-heading);
-      font-size: 2.2rem;
-      line-height: 1.2;
-      margin-bottom: 10px;
+      font-size: clamp(2.3rem, 4.4vw, 3.1rem);
+      line-height: 1.15;
+      margin-bottom: 14px;
+    }
+
+    .hero-heading em {
+      font-style: italic;
+      color: var(--accent-soft);
     }
 
     .hero-subheading {
+      position: relative;
+      z-index: 1;
       color: var(--muted);
-      font-size: 0.95rem;
+      font-size: 0.9rem;
       text-transform: uppercase;
-      letter-spacing: 0.2em;
-      margin-bottom: 20px;
-    }
-
-    .hero-copy {
-      font-size: 0.98rem;
-      color: #d3d5da;
+      letter-spacing: 0.24em;
       margin-bottom: 22px;
     }
 
-    .hero-copy strong {
-      font-weight: 600;
-      color: #ffffff;
+    .hero-copy,
+    .hero-tagline,
+    .hero-meta {
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-copy {
+      font-size: 1rem;
+      color: #e0dee7;
+      margin-bottom: 18px;
+      max-width: 620px;
     }
 
     .hero-tagline {
       font-size: 0.9rem;
       color: var(--muted);
-      margin-bottom: 24px;
+      margin: 8px 0 24px;
+      max-width: 520px;
     }
 
     .hero-meta {
       display: flex;
       flex-wrap: wrap;
-      gap: 14px;
+      gap: 12px;
       font-size: 0.78rem;
       text-transform: uppercase;
       letter-spacing: 0.18em;
@@ -143,36 +280,76 @@
     }
 
     .hero-meta span {
-      padding: 4px 8px;
+      padding: 4px 9px;
       border-radius: 999px;
       background: rgba(255, 255, 255, 0.02);
-      border: 1px solid var(--border);
+      border: 1px solid rgba(120, 70, 90, 0.6);
+      backdrop-filter: blur(10px);
     }
 
-    .panel {
-      background: radial-gradient(circle at top left, #232530 0, #101116 60%);
-      border-radius: 18px;
-      padding: 18px 18px 20px;
-      border: 1px solid var(--border);
-      box-shadow: 0 14px 45px rgba(0, 0, 0, 0.45);
+    .flame-panel {
+      position: relative;
+      border-radius: 22px;
+      padding: 20px 18px 18px;
+      border: 1px solid rgba(255, 80, 60, 0.35);
+      background:
+        radial-gradient(circle at 10% 0, rgba(255, 255, 255, 0.16) 0, transparent 45%),
+        radial-gradient(circle at 100% 0, rgba(255, 60, 60, 0.27) 0, transparent 65%),
+        radial-gradient(circle at 0 100%, rgba(255, 120, 80, 0.18) 0, transparent 65%),
+        #050208;
+      box-shadow:
+        0 26px 60px rgba(0, 0, 0, 0.8),
+        0 0 80px rgba(255, 60, 60, 0.35);
+      overflow: hidden;
     }
 
-    .panel h2 {
+    .flame-panel::before {
+      content: "";
+      position: absolute;
+      inset: -40%;
+      background:
+        conic-gradient(
+          from 210deg,
+          rgba(255, 230, 200, 0.15),
+          rgba(255, 80, 60, 0.35),
+          rgba(255, 30, 30, 0.65),
+          rgba(40, 0, 0, 0.0),
+          rgba(0, 0, 0, 0.0)
+        );
+      mix-blend-mode: screen;
+      opacity: 0.6;
+      pointer-events: none;
+    }
+
+    .flame-panel-inner {
+      position: relative;
+      z-index: 1;
+    }
+
+    .panel-label {
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.22em;
+      color: rgba(255, 220, 210, 0.85);
+      margin-bottom: 6px;
+    }
+
+    .panel-title {
       font-family: var(--font-heading);
-      font-size: 1.1rem;
+      font-size: 1.18rem;
       margin-bottom: 10px;
     }
 
-    .panel p {
+    .panel-sub {
       font-size: 0.9rem;
-      color: #d4d6db;
-      margin-bottom: 8px;
+      color: #f1e3e5;
+      margin-bottom: 14px;
     }
 
     .grid {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 14px;
+      gap: 12px;
       margin-top: 10px;
     }
 
@@ -183,55 +360,78 @@
     }
 
     .card {
-      background: var(--card);
-      border-radius: 14px;
-      padding: 12px 12px 14px;
-      border: 1px solid var(--border);
-    }
-
-    .card h3 {
-      font-size: 0.92rem;
-      margin-bottom: 6px;
-    }
-
-    .card p {
-      font-size: 0.85rem;
-      color: #c4c7ce;
+      background: rgba(5, 0, 5, 0.82);
+      border-radius: 16px;
+      padding: 11px 11px 13px;
+      border: 1px solid rgba(120, 70, 90, 0.7);
+      backdrop-filter: blur(10px);
     }
 
     .tag {
       display: inline-block;
       font-size: 0.7rem;
       text-transform: uppercase;
-      letter-spacing: 0.18em;
-      color: var(--accent-soft);
+      letter-spacing: 0.2em;
+      color: var(--accent-gold);
       margin-bottom: 4px;
+    }
+
+    .card h3 {
+      font-size: 0.92rem;
+      margin-bottom: 5px;
+      color: #ffffff;
+    }
+
+    .card p {
+      font-size: 0.84rem;
+      color: #e3d5da;
     }
 
     .divider {
       height: 1px;
-      background: radial-gradient(circle, var(--border), transparent);
-      margin: 32px 0 24px;
+      background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 80, 60, 0.8),
+        rgba(255, 200, 120, 0.9),
+        rgba(255, 80, 60, 0.8),
+        transparent
+      );
+      margin: 40px 0 26px;
+      opacity: 0.9;
+    }
+
+    .section-kicker {
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.22em;
+      color: var(--muted);
+      margin-bottom: 10px;
     }
 
     .section-title {
       font-family: var(--font-heading);
-      font-size: 1.2rem;
-      margin-bottom: 6px;
+      font-size: 1.5rem;
+      margin-bottom: 10px;
     }
 
-    .section-kicker {
-      font-size: 0.82rem;
-      text-transform: uppercase;
-      letter-spacing: 0.18em;
-      color: var(--muted);
-      margin-bottom: 16px;
+    .section-title em {
+      font-style: italic;
+      color: var(--accent-soft);
+    }
+
+    .section-lead {
+      font-size: 0.96rem;
+      color: #e0dde8;
+      max-width: 650px;
+      margin-bottom: 18px;
     }
 
     .two-col {
       display: grid;
-      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1.1fr);
+      grid-template-columns: minmax(0, 1.45fr) minmax(0, 1.05fr);
       gap: 28px;
+      align-items: flex-start;
     }
 
     @media (max-width: 900px) {
@@ -240,43 +440,49 @@
       }
     }
 
-    ul {
-      list-style: none;
-    }
-
-    li {
-      font-size: 0.9rem;
-      color: #d4d6db;
-      margin-bottom: 10px;
+    .price-card {
+      background: radial-gradient(circle at top, #19040a 0, #09040b 40%, #040006 100%);
+      border-radius: 18px;
+      border: 1px solid rgba(255, 80, 60, 0.38);
+      padding: 14px 14px 16px;
+      box-shadow: 0 22px 60px rgba(0, 0, 0, 0.9);
     }
 
     .price-row {
       display: flex;
       justify-content: space-between;
       align-items: baseline;
-      margin-bottom: 10px;
-      gap: 10px;
+      gap: 12px;
+      margin-bottom: 11px;
       font-size: 0.9rem;
     }
 
     .price-label {
-      color: #e1e3ea;
+      color: #f5f2fb;
     }
 
     .price-range {
-      color: var(--accent-soft);
+      color: var(--accent-gold);
       font-weight: 600;
       white-space: nowrap;
     }
 
     .price-note {
-      font-size: 0.78rem;
+      font-size: 0.8rem;
       color: var(--muted);
       margin-top: 10px;
     }
 
+    .form-card {
+      background: rgba(4, 0, 4, 0.9);
+      border-radius: 18px;
+      border: 1px solid rgba(120, 70, 90, 0.7);
+      padding: 16px 14px 18px;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.85);
+    }
+
     .form {
-      margin-top: 10px;
+      margin-top: 8px;
       display: grid;
       gap: 8px;
       font-size: 0.85rem;
@@ -286,7 +492,7 @@
       display: block;
       margin-top: 6px;
       margin-bottom: 2px;
-      color: #e1e3ea;
+      color: #f3edf7;
     }
 
     .form input,
@@ -294,9 +500,9 @@
     .form select {
       width: 100%;
       padding: 7px 9px;
-      border-radius: 8px;
-      border: 1px solid var(--border);
-      background: var(--highlight);
+      border-radius: 9px;
+      border: 1px solid rgba(120, 70, 90, 0.9);
+      background: rgba(10, 1, 9, 0.9);
       color: var(--text);
       font-family: inherit;
       font-size: 0.84rem;
@@ -309,30 +515,57 @@
 
     .form button {
       margin-top: 10px;
-      padding: 9px 14px;
+      padding: 10px 14px;
       border-radius: 999px;
       border: none;
       cursor: pointer;
-      background: linear-gradient(135deg, var(--danger), var(--accent));
-      color: #050607;
-      font-size: 0.86rem;
+      background: radial-gradient(circle at 20% 0, #ffe5c0 0, #ff9a5e 22%, #ff3b3b 60%, #5a0208 100%);
+      color: #050103;
+      font-size: 0.85rem;
       font-weight: 600;
       text-transform: uppercase;
-      letter-spacing: 0.18em;
+      letter-spacing: 0.22em;
+      box-shadow:
+        0 14px 32px rgba(0, 0, 0, 0.9),
+        0 0 28px rgba(255, 80, 60, 0.7);
     }
 
     .form button:hover {
       filter: brightness(1.05);
     }
 
+    .logistics-card {
+      background: rgba(8, 1, 9, 0.95);
+      border-radius: 18px;
+      border: 1px solid rgba(120, 70, 90, 0.7);
+      padding: 14px 14px 16px;
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    li {
+      font-size: 0.9rem;
+      color: #e1d4e0;
+      margin-bottom: 8px;
+    }
+
+    li strong {
+      color: var(--accent-gold);
+      font-weight: 600;
+    }
+
     footer {
-      margin-top: 36px;
+      margin-top: 40px;
       font-size: 0.78rem;
       color: var(--muted);
       display: flex;
       flex-wrap: wrap;
       justify-content: space-between;
       gap: 10px;
+      padding-top: 18px;
+      border-top: 1px solid rgba(120, 70, 90, 0.8);
     }
 
     footer div {
@@ -346,25 +579,39 @@
   <div class="page">
     <header>
       <div class="brand-lockup">
-        <div class="brand-name">Blackline Flameworks</div>
-        <div class="brand-sub">Flame‑finished hardwood, built one piece at a time in Clarksville, Arkansas.</div>
+        <div class="brand-name"><span>Blackline</span> Flameworks</div>
+        <div class="brand-sub">Flame‑finished hardwood, one‑off pieces built by hand in Clarksville, Arkansas.</div>
       </div>
       <div class="pill">One‑person shop · Limited monthly output</div>
     </header>
 
     <main>
-      <section>
+      <section class="hero">
+        <div class="flame-particles">
+          <div class="flame-particle"></div>
+          <div class="flame-particle"></div>
+          <div class="flame-particle"></div>
+          <div class="flame-particle"></div>
+          <div class="flame-particle"></div>
+          <div class="flame-particle"></div>
+        </div>
+
         <div class="hero-heading">
-          Flame‑Finished Hardwood, Built to Live Hard
+          Flame‑Finished Hardwood,<br>
+          Built to <em>Live Hard</em>.
         </div>
         <div class="hero-subheading">
-          Slabs, boards, and tables — one‑off, architectural‑grade pieces
+          SLABS · BOARDS · TABLES · PANELS
         </div>
         <p class="hero-copy">
-          Every build starts with select hardwood slabs — no veneer, no fillers. The species sets the density, the weight, and how the fire walks the grain. Each surface is charred with an open flame, brushed back, and sealed so the figure reads almost three‑dimensional in the right light. This is a hand‑driven take on shou sugi ban, tuned for furniture‑grade work instead of siding.
+          Every build starts with select hardwood slabs — no veneer, no fillers. The species sets the density, the weight,
+          and how the fire walks the grain. Each surface is charred with an open flame, brushed back, and sealed so the figure
+          reads almost three‑dimensional in the right light.
         </p>
         <p class="hero-copy">
-          I work in small runs out of Clarksville, Arkansas. Once a slab is gone, that exact grain pattern and flame map is gone with it. If you want a matched set, we plan that from the first cut and build everything to the room it’s going to live in.
+          This is a hand‑driven take on shou sugi ban tuned for furniture‑grade work, not siding. Once a slab is gone,
+          that exact grain pattern and flame map is gone with it. Matched sets are planned from the first cut and built
+          to the room they will live in.
         </p>
         <p class="hero-tagline">
           This is for people done with flimsy furniture — the ones who want weight, grain, and fire that still looks like wood up close.
@@ -377,38 +624,46 @@
       </section>
 
       <aside>
-        <div class="panel">
-          <h2>Flagship Lineup</h2>
-          <p>Built from the same stock and finish system, scaled from hand to room.</p>
-
-          <div class="grid">
-            <div class="card">
-              <div class="tag">Wall‑grade boards</div>
-              <h3>Slab Boards &amp; Wall Pieces</h3>
-              <p>
-                Wall‑grade slab boards, flame‑finished and brushed to pull strong vertical grain. Hangs as art or lays flat as a heavy serving / charcuterie board. Hardware pre‑installed on the back for clean, ready‑to‑hang use the day you pick it up.
-              </p>
-            </div>
-            <div class="card">
-              <div class="tag">Tables &amp; consoles</div>
-              <h3>Full‑Scale Furniture</h3>
-              <p>
-                Solid hardwood tops — no joints pretending to be a slab. Torch‑finished surfaces with leveled, sealed sheen: enough protection for daily use, enough texture that it still feels like wood when your hand slides across it. Bases in steel or wood, scaled to your room.
-              </p>
-            </div>
-            <div class="card">
-              <div class="tag">Small‑run accessories</div>
-              <h3>Coasters, Keys, &amp; Candle Blocks</h3>
-              <p>
-                Small‑run accessory pieces built from the same stock as the big slabs — same torch work, same finish system. Entry point into the line, priced for gifting but built like furniture.
-              </p>
-            </div>
-            <div class="card">
-              <div class="tag">Custom work</div>
-              <h3>Panels &amp; Room‑Scale Pieces</h3>
-              <p>
-                Architectural wall panels, benches, and one‑off focal pieces. We start with a photo and rough dimensions of your space, then design around the way you actually live in the room.
-              </p>
+        <div class="flame-panel">
+          <div class="flame-panel-inner">
+            <div class="panel-label">Flagship lineup</div>
+            <div class="panel-title">From Hand to Room‑Scale</div>
+            <p class="panel-sub">
+              Built from the same stock and finish system, scaled from something you can carry to something the room is built around.
+            </p>
+            <div class="grid">
+              <div class="card">
+                <div class="tag">Wall‑grade boards</div>
+                <h3>Slab Boards &amp; Wall Pieces</h3>
+                <p>
+                  Wall‑grade slab boards, flame‑finished and brushed to pull strong vertical grain. Hangs as art or lays flat
+                  as a heavy serving / charcuterie board. Hardware pre‑installed and ready to hang.
+                </p>
+              </div>
+              <div class="card">
+                <div class="tag">Tables &amp; consoles</div>
+                <h3>Full‑Scale Furniture</h3>
+                <p>
+                  Solid hardwood tops — no joints pretending to be a slab. Torch‑finished surfaces with leveled, sealed sheen:
+                  enough protection for daily use, enough texture that it still feels like wood under your hand.
+                </p>
+              </div>
+              <div class="card">
+                <div class="tag">Small‑run accessories</div>
+                <h3>Coasters, Keys, &amp; Candle Blocks</h3>
+                <p>
+                  Small‑run accessory pieces built from the same stock as the big slabs — same torch work, same finish system.
+                  Entry point into the line, priced for gifting but built like furniture.
+                </p>
+              </div>
+              <div class="card">
+                <div class="tag">Custom work</div>
+                <h3>Panels &amp; Room‑Scale Pieces</h3>
+                <p>
+                  Architectural wall panels, benches, and one‑off focal pieces. Start with a photo and rough dimensions
+                  of your space; the rest is designed around how you actually live in the room.
+                </p>
+              </div>
             </div>
           </div>
         </div>
@@ -419,19 +674,22 @@
 
     <section>
       <div class="section-kicker">Investment &amp; pricing</div>
-      <h2 class="section-title">Built for Long Money, Not Fast Furniture</h2>
+      <h2 class="section-title">Built for <em>long money</em>, not fast furniture</h2>
+      <p class="section-lead">
+        Prices follow a simple pattern: we start with the slab and hardware, then add the hours it will take to design, build,
+        and finish the piece the right way. The more complex the layout, joinery, or fire work, the more time it demands.
+        Most clients see a clear, written number up front that reflects both the material on the floor and the hours at the bench.
+      </p>
 
       <div class="two-col">
         <div>
-          <p>
-            Prices follow a simple pattern: we start with the slab and hardware, then add the hours it will take to design, build, and finish the piece the right way. The more complex the layout, joinery, or fire work, the more time it demands. Most clients see a clear, written number up front that reflects both the material on the floor and the hours at the bench, so there are no surprises when it’s time to deliver.
-          </p>
-          <p>
-            The ranges below are a starting point for standard builds. If you’re working with unusual dimensions, specific species, or a space that needs more planning, we’ll talk through that before anything is cut.
+          <p class="section-lead" style="margin-bottom:12px;">
+            The ranges below are a starting point for standard builds at a 60–80/hr shop rate. If you’re working with unusual
+            dimensions, specific species, or a space that needs more planning, we talk through that before anything is cut.
           </p>
 
-          <div class="card" style="margin-top:14px;">
-            <h3>Typical Ranges (USD)</h3>
+          <div class="price-card">
+            <h3 style="font-size:0.96rem; margin-bottom:10px;">Typical ranges (USD)</h3>
 
             <div class="price-row">
               <span class="price-label">Slab boards &amp; wall pieces</span>
@@ -455,19 +713,21 @@
             </div>
 
             <p class="price-note">
-              Final numbers depend on species, thickness, hardware, and how much custom layout and design time the space requires. Most builds land in the middle of these ranges once we match the slab and the space.
+              Final numbers depend on species, thickness, hardware, and how much custom layout and design time the space requires.
+              Most builds land in the middle of these ranges once we match the slab and the room.
             </p>
           </div>
         </div>
 
         <div>
-          <div class="card">
-            <h3>Start a Commission</h3>
-            <p style="margin-bottom:10px;">
-              Use this form as a starting point. Give me basic dimensions, what you’ll use it for, and a quick note about the room it’s going into. I’ll reply with questions and a ballpark number before we lock anything in.
+          <div class="form-card">
+            <h3 style="font-size:0.98rem; margin-bottom:4px;">Start a commission</h3>
+            <p style="font-size:0.86rem; color:#e7dde9; margin-bottom:8px;">
+              Use this form as a starting point. Include dimensions, how you’ll use it, and a quick note about the room it’s going into.
+              You’ll get questions and a ballpark number before anything is locked in.
             </p>
 
-            <!-- Form wired for FormSubmit. Replace YOUR_EMAIL_HERE with your real email. -->
+            <!-- Replace YOUR_EMAIL_HERE with your real email or a FormSubmit endpoint -->
             <form class="form" action="https://formsubmit.co/YOUR_EMAIL_HERE" method="POST">
               <input type="hidden" name="_subject" value="New inquiry from Blackline Flameworks">
               <input type="hidden" name="_template" value="table">
@@ -512,23 +772,26 @@
       <div class="two-col">
         <div>
           <div class="section-kicker">Process &amp; care</div>
-          <h2 class="section-title">Fire, Grain, and Daily Use</h2>
-          <p>
-            Surfaces are burned with an open torch, then brushed back to clean grain and sealed with oil or satin topcoats tuned for daily, real‑world use. It is still wood — it will pick up a story over time — but it won’t flake char every time you touch it.
+          <h2 class="section-title">Fire, grain, and <em>daily use</em></h2>
+          <p class="section-lead" style="margin-bottom:14px;">
+            Surfaces are burned with an open torch, then brushed back to clean grain and sealed with oil or satin topcoats
+            tuned for daily, real‑world use. It is still wood — it will pick up a story over time — but it won’t flake char
+            every time you touch it.
           </p>
-          <p>
-            Coffee rings, plates, keys, kids — these pieces are meant to live through regular life, not sit behind velvet rope. If you want a finish pushed toward more “gallery” or more “workhorse,” we can bias the build either way.
+          <p class="section-lead" style="margin-bottom:0;">
+            Coffee rings, plates, keys, kids — these pieces are meant to live through regular life, not sit behind velvet rope.
+            If you want the finish pushed toward more “gallery” or more “workhorse,” the build can be biased either way.
           </p>
         </div>
 
         <div>
-          <div class="card">
-            <h3>Logistics</h3>
+          <div class="logistics-card">
+            <h3 style="font-size:0.98rem; margin-bottom:8px;">Logistics</h3>
             <ul>
               <li><strong>Pickup</strong> — Clarksville, Arkansas. Local pickup by appointment when your piece is ready.</li>
               <li><strong>Shipping (small)</strong> — Coasters, key racks, and candle blocks ship nationwide in the lower 48.</li>
               <li><strong>Shipping (large)</strong> — Tables and large panels are local pickup or freight‑quoted and crated like custom furniture.</li>
-              <li><strong>Response time</strong> — I answer my own messages. Typical reply within 48 hours; if you don’t see anything, check spam and try again.</li>
+              <li><strong>Response time</strong> — Messages go straight to the shop. Typical reply within 48 hours; if you don’t see anything, check spam and try again.</li>
             </ul>
           </div>
         </div>
