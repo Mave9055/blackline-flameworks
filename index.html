@@ -137,7 +137,7 @@
       }
     }
 
-    /* Hero + flame particles */
+    /* Hero + more flame-like animation */
     .hero {
       position: relative;
       overflow: hidden;
@@ -145,7 +145,7 @@
 
     .flame-particles {
       position: absolute;
-      inset: -40px;
+      inset: -20px 0 -120px 0;
       pointer-events: none;
       z-index: 0;
       mix-blend-mode: screen;
@@ -153,73 +153,90 @@
 
     .flame-particle {
       position: absolute;
-      width: 8px;
-      height: 28px;
-      border-radius: 999px;
-      background: radial-gradient(circle at 50% 0, #ffecc7 0, #ffb37a 30%, #ff3b3b 65%, rgba(70, 0, 10, 0) 100%);
+      width: 26px;
+      height: 90px;
+      border-radius: 50% 50% 40% 40%;
+      background:
+        radial-gradient(circle at 50% 0, #fff6d5 0, #ffe29f 14%, #ffb36a 32%, #ff6b3d 55%, rgba(40, 0, 5, 0) 80%);
       opacity: 0;
-      filter: blur(0.7px);
-      animation: riseFlame 7s linear infinite;
+      filter: blur(0.6px);
+      transform-origin: 50% 100%;
+      animation: flameFlicker 5.5s ease-in-out infinite;
+    }
+
+    .flame-particle::before {
+      content: "";
+      position: absolute;
+      inset: 22% 24% 12% 24%;
+      border-radius: 50% 50% 40% 40%;
+      background:
+        radial-gradient(circle at 50% 0, #fffce3 0, #ffe9b8 18%, #ffb36a 40%, rgba(255, 90, 40, 0.0) 80%);
+      opacity: 0.9;
     }
 
     .flame-particle:nth-child(1) {
-      left: 10%;
-      bottom: -14%;
-      animation-duration: 8s;
+      left: 14%;
+      bottom: -30px;
+      animation-duration: 6.2s;
       animation-delay: 0s;
     }
 
     .flame-particle:nth-child(2) {
-      left: 26%;
-      bottom: -18%;
-      animation-duration: 6.2s;
-      animation-delay: 1.1s;
+      left: 30%;
+      bottom: -40px;
+      animation-duration: 5.4s;
+      animation-delay: 1s;
     }
 
     .flame-particle:nth-child(3) {
-      left: 42%;
-      bottom: -16%;
-      animation-duration: 5.6s;
-      animation-delay: 0.7s;
+      left: 46%;
+      bottom: -34px;
+      animation-duration: 5.8s;
+      animation-delay: 0.5s;
     }
 
     .flame-particle:nth-child(4) {
-      left: 58%;
-      bottom: -20%;
-      animation-duration: 7.4s;
-      animation-delay: 1.9s;
+      left: 62%;
+      bottom: -42px;
+      animation-duration: 6.4s;
+      animation-delay: 1.7s;
     }
 
     .flame-particle:nth-child(5) {
-      left: 74%;
-      bottom: -18%;
-      animation-duration: 6s;
-      animation-delay: 3.3s;
+      left: 78%;
+      bottom: -36px;
+      animation-duration: 5.3s;
+      animation-delay: 2.6s;
     }
 
     .flame-particle:nth-child(6) {
-      left: 88%;
-      bottom: -22%;
-      animation-duration: 7.1s;
-      animation-delay: 2.2s;
+      left: 90%;
+      bottom: -48px;
+      animation-duration: 6.1s;
+      animation-delay: 3.3s;
     }
 
-    @keyframes riseFlame {
+    @keyframes flameFlicker {
       0% {
-        transform: translate3d(0, 0, 0) scale(0.8);
+        transform: translate3d(0, 0, 0) scale(0.7) rotate(0deg);
         opacity: 0;
       }
-      10% {
-        opacity: 0.7;
+      8% {
+        opacity: 0.85;
+      }
+      25% {
+        transform: translate3d(-4px, -40px, 0) scale(0.9) rotate(-3deg);
       }
       45% {
+        transform: translate3d(3px, -90px, 0) scale(1.05) rotate(2deg);
         opacity: 1;
       }
-      80% {
-        opacity: 0.6;
+      70% {
+        transform: translate3d(-2px, -140px, 0) scale(1.1) rotate(-2deg);
+        opacity: 0.75;
       }
       100% {
-        transform: translate3d(-10px, -260px, 0) scale(1.18);
+        transform: translate3d(0, -190px, 0) scale(1.05) rotate(1deg);
         opacity: 0;
       }
     }
