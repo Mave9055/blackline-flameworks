@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Blackline Flameworks · Flame‑Finished Hardwood</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Blackline Flameworks – flame‑finished hardwood slabs, boards, and furniture built by hand in Clarksville, Arkansas. One‑off, architectural‑grade pieces.">
+  <style>
+    :root {
+      --bg: #070809;
+      --bg-alt: #101215;
+      --accent: #f5a623;
+      --accent-soft: #f5d19a;
+      --text: #f6f6f6;
+      --muted: #9a9ea5;
+      --border: #2a2d33;
+      --card: #121418;
+      --highlight: #1b1e24;
+      --danger: #f15b2a;
+      --font-body: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      --font-heading: "Georgia", "Times New Roman", serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background: radial-gradient(circle at top, #151821 0, #050608 55%);
+      color: var(--text);
+      font-family: var(--font-body);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .page {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 32px 20px 64px;
+    }
+
+    header {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 32px;
+      gap: 12px;
+    }
+
+    .brand-lockup {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .brand-name {
+      font-family: var(--font-heading);
+      font-size: 1.5rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .brand-sub {
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    .pill {
+      padding: 4px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--muted);
+      background: rgba(255, 255, 255, 0.02);
+    }
+
+    main {
+      display: grid;
+      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1.1fr);
+      gap: 40px;
+    }
+
+    @media (max-width: 900px) {
+      main {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .hero-heading {
+      font-family: var(--font-heading);
+      font-size: 2.2rem;
+      line-height: 1.2;
+      margin-bottom: 10px;
+    }
+
+    .hero-subheading {
+      color: var(--muted);
+      font-size: 0.95rem;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      margin-bottom: 20px;
+    }
+
+    .hero-copy {
+      font-size: 0.98rem;
+      color: #d3d5da;
+      margin-bottom: 22px;
+    }
+
+    .hero-copy strong {
+      font-weight: 600;
+      color: #ffffff;
+    }
+
+    .hero-tagline {
+      font-size: 0.9rem;
+      color: var(--muted);
+      margin-bottom: 24px;
+    }
+
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--muted);
+    }
+
+    .hero-meta span {
+      padding: 4px 8px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid var(--border);
+    }
+
+    .panel {
+      background: radial-gradient(circle at top left, #232530 0, #101116 60%);
+      border-radius: 18px;
+      padding: 18px 18px 20px;
+      border: 1px solid var(--border);
+      box-shadow: 0 14px 45px rgba(0, 0, 0, 0.45);
+    }
+
+    .panel h2 {
+      font-family: var(--font-heading);
+      font-size: 1.1rem;
+      margin-bottom: 10px;
+    }
+
+    .panel p {
+      font-size: 0.9rem;
+      color: #d4d6db;
+      margin-bottom: 8px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 10px;
+    }
+
+    @media (max-width: 700px) {
+      .grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .card {
+      background: var(--card);
+      border-radius: 14px;
+      padding: 12px 12px 14px;
+      border: 1px solid var(--border);
+    }
+
+    .card h3 {
+      font-size: 0.92rem;
+      margin-bottom: 6px;
+    }
+
+    .card p {
+      font-size: 0.85rem;
+      color: #c4c7ce;
+    }
+
+    .tag {
+      display: inline-block;
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--accent-soft);
+      margin-bottom: 4px;
+    }
+
+    .divider {
+      height: 1px;
+      background: radial-gradient(circle, var(--border), transparent);
+      margin: 32px 0 24px;
+    }
+
+    .section-title {
+      font-family: var(--font-heading);
+      font-size: 1.2rem;
+      margin-bottom: 6px;
+    }
+
+    .section-kicker {
+      font-size: 0.82rem;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--muted);
+      margin-bottom: 16px;
+    }
+
+    .two-col {
+      display: grid;
+      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1.1fr);
+      gap: 28px;
+    }
+
+    @media (max-width: 900px) {
+      .two-col {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    li {
+      font-size: 0.9rem;
+      color: #d4d6db;
+      margin-bottom: 10px;
+    }
+
+    .price-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 10px;
+      gap: 10px;
+      font-size: 0.9rem;
+    }
+
+    .price-label {
+      color: #e1e3ea;
+    }
+
+    .price-range {
+      color: var(--accent-soft);
+      font-weight: 600;
+      white-space: nowrap;
+    }
+
+    .price-note {
+      font-size: 0.78rem;
+      color: var(--muted);
+      margin-top: 10px;
+    }
+
+    .form {
+      margin-top: 10px;
+      display: grid;
+      gap: 8px;
+      font-size: 0.85rem;
+    }
+
+    .form label {
+      display: block;
+      margin-top: 6px;
+      margin-bottom: 2px;
+      color: #e1e3ea;
+    }
+
+    .form input,
+    .form textarea,
+    .form select {
+      width: 100%;
+      padding: 7px 9px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: var(--highlight);
+      color: var(--text);
+      font-family: inherit;
+      font-size: 0.84rem;
+    }
+
+    .form textarea {
+      resize: vertical;
+      min-height: 90px;
+    }
+
+    .form button {
+      margin-top: 10px;
+      padding: 9px 14px;
+      border-radius: 999px;
+      border: none;
+      cursor: pointer;
+      background: linear-gradient(135deg, var(--danger), var(--accent));
+      color: #050607;
+      font-size: 0.86rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+    }
+
+    .form button:hover {
+      filter: brightness(1.05);
+    }
+
+    footer {
+      margin-top: 36px;
+      font-size: 0.78rem;
+      color: var(--muted);
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    footer div {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header>
+      <div class="brand-lockup">
+        <div class="brand-name">Blackline Flameworks</div>
+        <div class="brand-sub">Flame‑finished hardwood, built one piece at a time in Clarksville, Arkansas.</div>
+      </div>
+      <div class="pill">One‑person shop · Limited monthly output</div>
+    </header>
+
+    <main>
+      <section>
+        <div class="hero-heading">
+          Flame‑Finished Hardwood, Built to Live Hard
+        </div>
+        <div class="hero-subheading">
+          Slabs, boards, and tables — one‑off, architectural‑grade pieces
+        </div>
+        <p class="hero-copy">
+          Every build starts with select hardwood slabs — no veneer, no fillers. The species sets the density, the weight, and how the fire walks the grain. Each surface is charred with an open flame, brushed back, and sealed so the figure reads almost three‑dimensional in the right light. This is a hand‑driven take on shou sugi ban, tuned for furniture‑grade work instead of siding.
+        </p>
+        <p class="hero-copy">
+          I work in small runs out of Clarksville, Arkansas. Once a slab is gone, that exact grain pattern and flame map is gone with it. If you want a matched set, we plan that from the first cut and build everything to the room it’s going to live in.
+        </p>
+        <p class="hero-tagline">
+          This is for people done with flimsy furniture — the ones who want weight, grain, and fire that still looks like wood up close.
+        </p>
+        <div class="hero-meta">
+          <span>Clarksville, AR</span>
+          <span>Solid hardwood only</span>
+          <span>Flame‑finished by hand</span>
+        </div>
+      </section>
+
+      <aside>
+        <div class="panel">
+          <h2>Flagship Lineup</h2>
+          <p>Built from the same stock and finish system, scaled from hand to room.</p>
+
+          <div class="grid">
+            <div class="card">
+              <div class="tag">Wall‑grade boards</div>
+              <h3>Slab Boards &amp; Wall Pieces</h3>
+              <p>
+                Wall‑grade slab boards, flame‑finished and brushed to pull strong vertical grain. Hangs as art or lays flat as a heavy serving / charcuterie board. Hardware pre‑installed on the back for clean, ready‑to‑hang use the day you pick it up.
+              </p>
+            </div>
+            <div class="card">
+              <div class="tag">Tables &amp; consoles</div>
+              <h3>Full‑Scale Furniture</h3>
+              <p>
+                Solid hardwood tops — no joints pretending to be a slab. Torch‑finished surfaces with leveled, sealed sheen: enough protection for daily use, enough texture that it still feels like wood when your hand slides across it. Bases in steel or wood, scaled to your room.
+              </p>
+            </div>
+            <div class="card">
+              <div class="tag">Small‑run accessories</div>
+              <h3>Coasters, Keys, &amp; Candle Blocks</h3>
+              <p>
+                Small‑run accessory pieces built from the same stock as the big slabs — same torch work, same finish system. Entry point into the line, priced for gifting but built like furniture.
+              </p>
+            </div>
+            <div class="card">
+              <div class="tag">Custom work</div>
+              <h3>Panels &amp; Room‑Scale Pieces</h3>
+              <p>
+                Architectural wall panels, benches, and one‑off focal pieces. We start with a photo and rough dimensions of your space, then design around the way you actually live in the room.
+              </p>
+            </div>
+          </div>
+        </div>
+      </aside>
+    </main>
+
+    <div class="divider"></div>
+
+    <section>
+      <div class="section-kicker">Investment &amp; pricing</div>
+      <h2 class="section-title">Built for Long Money, Not Fast Furniture</h2>
+
+      <div class="two-col">
+        <div>
+          <p>
+            Prices follow a simple pattern: we start with the slab and hardware, then add the hours it will take to design, build, and finish the piece the right way. The more complex the layout, joinery, or fire work, the more time it demands. Most clients see a clear, written number up front that reflects both the material on the floor and the hours at the bench, so there are no surprises when it’s time to deliver.
+          </p>
+          <p>
+            The ranges below are a starting point for standard builds. If you’re working with unusual dimensions, specific species, or a space that needs more planning, we’ll talk through that before anything is cut.
+          </p>
+
+          <div class="card" style="margin-top:14px;">
+            <h3>Typical Ranges (USD)</h3>
+
+            <div class="price-row">
+              <span class="price-label">Slab boards &amp; wall pieces</span>
+              <span class="price-range">$320–$680+</span>
+            </div>
+            <div class="price-row">
+              <span class="price-label">Coffee &amp; side tables</span>
+              <span class="price-range">$900–$1,950+</span>
+            </div>
+            <div class="price-row">
+              <span class="price-label">Dining / console tables</span>
+              <span class="price-range">$2,400–$4,800+</span>
+            </div>
+            <div class="price-row">
+              <span class="price-label">Panels &amp; large installs</span>
+              <span class="price-range">Quoted per room</span>
+            </div>
+            <div class="price-row">
+              <span class="price-label">Coasters, key racks, candles</span>
+              <span class="price-range">$65–$210+</span>
+            </div>
+
+            <p class="price-note">
+              Final numbers depend on species, thickness, hardware, and how much custom layout and design time the space requires. Most builds land in the middle of these ranges once we match the slab and the space.
+            </p>
+          </div>
+        </div>
+
+        <div>
+          <div class="card">
+            <h3>Start a Commission</h3>
+            <p style="margin-bottom:10px;">
+              Use this form as a starting point. Give me basic dimensions, what you’ll use it for, and a quick note about the room it’s going into. I’ll reply with questions and a ballpark number before we lock anything in.
+            </p>
+
+            <!-- Form wired for FormSubmit. Replace YOUR_EMAIL_HERE with your real email. -->
+            <form class="form" action="https://formsubmit.co/YOUR_EMAIL_HERE" method="POST">
+              <input type="hidden" name="_subject" value="New inquiry from Blackline Flameworks">
+              <input type="hidden" name="_template" value="table">
+              <input type="text" name="_honey" style="display:none">
+
+              <label for="name">Name</label>
+              <input id="name" type="text" name="Name" placeholder="Name" required>
+
+              <label for="email">Email</label>
+              <input id="email" type="email" name="Email" placeholder="you@example.com" required>
+
+              <label for="piece">Piece you’re thinking about</label>
+              <select id="piece" name="Piece">
+                <option value="">Select one</option>
+                <option value="Slab board / wall piece">Slab board / wall piece</option>
+                <option value="Coffee / side table">Coffee / side table</option>
+                <option value="Dining / console table">Dining / console table</option>
+                <option value="Wall panel / installation">Wall panel / installation</option>
+                <option value="Coasters / keys / candles">Coasters / keys / candles</option>
+                <option value="Other">Something else</option>
+              </select>
+
+              <label for="dimensions">Rough dimensions</label>
+              <input id="dimensions" type="text" name="Dimensions" placeholder="Length × width × thickness (inches)">
+
+              <label for="use">How it will be used</label>
+              <textarea id="use" name="Use" placeholder="Everyday family table, entry console, gallery wall, etc."></textarea>
+
+              <label for="location">Location</label>
+              <input id="location" type="text" name="Location" placeholder="City, state">
+
+              <button type="submit">Draft the first quote</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <section>
+      <div class="two-col">
+        <div>
+          <div class="section-kicker">Process &amp; care</div>
+          <h2 class="section-title">Fire, Grain, and Daily Use</h2>
+          <p>
+            Surfaces are burned with an open torch, then brushed back to clean grain and sealed with oil or satin topcoats tuned for daily, real‑world use. It is still wood — it will pick up a story over time — but it won’t flake char every time you touch it.
+          </p>
+          <p>
+            Coffee rings, plates, keys, kids — these pieces are meant to live through regular life, not sit behind velvet rope. If you want a finish pushed toward more “gallery” or more “workhorse,” we can bias the build either way.
+          </p>
+        </div>
+
+        <div>
+          <div class="card">
+            <h3>Logistics</h3>
+            <ul>
+              <li><strong>Pickup</strong> — Clarksville, Arkansas. Local pickup by appointment when your piece is ready.</li>
+              <li><strong>Shipping (small)</strong> — Coasters, key racks, and candle blocks ship nationwide in the lower 48.</li>
+              <li><strong>Shipping (large)</strong> — Tables and large panels are local pickup or freight‑quoted and crated like custom furniture.</li>
+              <li><strong>Response time</strong> — I answer my own messages. Typical reply within 48 hours; if you don’t see anything, check spam and try again.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div>
+        <span>Blackline Flameworks · Clarksville, Arkansas</span>
+      </div>
+      <div>
+        <span>Email: your.email@example.com</span>
+        <span>Instagram: @blacklineflameworks</span>
+      </div>
+    </footer>
+  </div>
+</body>
+</html>
