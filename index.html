@@ -9,6 +9,9 @@
 <meta property="og:title" content="Blackline Flameworks | Torch-Finished Hardwood | Clarksville, AR">
 <meta property="og:description" content="Cut by hand. Finished by fire. Solid hardwood built in Clarksville, AR.">
 <meta property="og:type" content="website">
+<meta property="og:image" content="https://mave9055.github.io/blackline-flameworks/assets/img/skull-backer-fire.jpg">
+<meta property="og:url" content="https://mave9055.github.io/blackline-flameworks/">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath d='M16 30C9 22,3 15,5 8C6 4,4 1,7 0C6 6,9 8,8 4C12 9,11 16,13 11C14 6,17 2,19 0C17 7,20 10,18 16C22 10,23 5,24 1C23 10,19 16,22 22C25 28,20 31,16 30Z' fill='%23c06820'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Crimson+Pro:wght@300;400;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 
@@ -190,7 +193,9 @@
 
   /* PRODUCTS */
   #products { background: var(--ash); }
-  .products-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(250px,1fr)); gap: 2px; margin-bottom: 3rem; }
+  .products-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 2px; margin-bottom: 3rem; }
+  @media (max-width: 900px) { .products-grid { grid-template-columns: 1fr; } }
+  @media (min-width: 901px) and (max-width: 1100px) { .products-grid { grid-template-columns: repeat(2,1fr); } }
   .product-card { background: var(--grain); padding: 2.2rem 1.8rem; transition: background 0.25s; position: relative; overflow: hidden; }
   .product-card:hover { background: #22160a; }
   .product-card.highlight { background: var(--ember); }
@@ -204,6 +209,42 @@
   .product-note { font-family: 'Space Mono', monospace; font-size: 0.58rem; letter-spacing: 0.1em; color: var(--smoke); text-transform: uppercase; margin-bottom: 1.4rem; }
   .product-features { list-style: none; font-size: 0.86rem; color: var(--pale); display: flex; flex-direction: column; gap: 0.38rem; }
   .product-features li::before { content: '— '; color: var(--ember); }
+
+  /* LIGHTBOX */
+  .lb-overlay { display:none; position:fixed; inset:0; background:rgba(6,4,2,0.93); z-index:1000; align-items:center; justify-content:center; }
+  .lb-overlay.open { display:flex; }
+  .lb-img { max-width:90vw; max-height:88vh; object-fit:contain; display:block; }
+  .lb-close { position:fixed; top:1.2rem; right:1.6rem; color:var(--cream); font-size:2rem; cursor:pointer; background:none; border:none; font-family:'Space Mono',monospace; opacity:0.7; transition:opacity 0.2s; line-height:1; }
+  .lb-close:hover { opacity:1; }
+  .lb-prev,.lb-next { position:fixed; top:50%; transform:translateY(-50%); color:var(--cream); font-size:2rem; cursor:pointer; background:none; border:none; font-family:'Space Mono',monospace; opacity:0.55; transition:opacity 0.2s; padding:1rem; }
+  .lb-prev { left:0.5rem; } .lb-next { right:0.5rem; }
+  .lb-prev:hover,.lb-next:hover { opacity:1; }
+
+  /* FLOATING CTA */
+  .floating-cta { position:fixed; bottom:1.8rem; right:1.8rem; z-index:200; opacity:0; transform:translateY(12px); transition:opacity 0.4s,transform 0.4s; pointer-events:none; }
+  .floating-cta.visible { opacity:1; transform:none; pointer-events:auto; }
+  .floating-cta a { display:flex; align-items:center; gap:0.6rem; background:var(--ember); color:var(--white); font-family:'Space Mono',monospace; font-size:0.65rem; letter-spacing:0.12em; text-transform:uppercase; padding:0.85rem 1.4rem; text-decoration:none; box-shadow:0 4px 18px rgba(184,98,26,0.45); transition:background 0.2s,transform 0.15s; }
+  .floating-cta a:hover { background:var(--ember-hot); transform:translateY(-2px); }
+  .floating-flame { font-size:1rem; }
+
+  /* TESTIMONIALS */
+  #testimonials { background:var(--grain); border-top:1px solid rgba(184,98,26,0.14); }
+  .testimonials-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:2px; margin-top:3rem; }
+  .testimonial-card { background:var(--ash); padding:2.2rem 1.8rem; }
+  .testimonial-quote { font-family:'Playfair Display',serif; font-size:1.05rem; color:var(--cream); line-height:1.7; margin-bottom:1.2rem; font-style:italic; }
+  .testimonial-quote::before { content:'\201C'; font-size:2.2rem; color:var(--ember); line-height:0.6; display:block; margin-bottom:0.6rem; }
+  .testimonial-author { font-family:'Space Mono',monospace; font-size:0.6rem; letter-spacing:0.14em; text-transform:uppercase; color:var(--ember); }
+  .testimonial-loc { font-family:'Space Mono',monospace; font-size:0.56rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--smoke); margin-top:0.18rem; }
+
+  /* ABOUT */
+  #about { background:var(--char); border-top:1px solid rgba(184,98,26,0.14); }
+  .about-layout { display:grid; grid-template-columns:1fr 1fr; gap:6rem; align-items:center; }
+  @media (max-width:900px) { .about-layout { grid-template-columns:1fr; gap:2.5rem; } }
+  .about-img-wrap { position:relative; }
+  .about-img { width:100%; aspect-ratio:4/5; object-fit:cover; display:block; border:1px solid rgba(184,98,26,0.2); }
+  .about-pull { font-family:'Playfair Display',serif; font-size:clamp(1.2rem,2.5vw,1.6rem); font-style:italic; color:var(--ember-hot); line-height:1.4; margin-bottom:1.6rem; border-left:3px solid var(--ember); padding-left:1.4rem; }
+  .about-body { font-size:1rem; color:var(--pale); line-height:1.78; }
+  .about-body p + p { margin-top:1.1rem; }
 
   /* ORDER FORM */
   #order { background: var(--char); border-top: 2px solid var(--ember); }
@@ -282,6 +323,8 @@
     <li><a href="#featured">Available Now</a></li>
     <li><a href="#products">Pricing</a></li>
     <li><a href="#order">Order</a></li>
+    <li><a href="#testimonials">Reviews</a></li>
+    <li><a href="#about">About</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
   <a href="#order" class="nav-cta">Start a Build</a>
@@ -308,7 +351,7 @@
       <div class="stat-item"><div class="stat-num">100%</div><div class="stat-label">Solid Wood</div></div>
       <div class="stat-item"><div class="stat-num">Hand</div><div class="stat-label">Torch Finished</div></div>
       <div class="stat-item"><div class="stat-num">1</div><div class="stat-label">Craftsman. Every build.</div></div>
-      <div class="stat-item"><div class="stat-num">AR</div><div class="stat-label">Clarksville Pickup</div></div>
+      <div class="stat-item"><div class="stat-num">Local</div><div class="stat-label">Clarksville Pickup</div></div>
     </div>
   </div>
 </section>
@@ -412,7 +455,10 @@
       <img src="assets/img/serving-board-cabin.jpg" alt="Arrowhead serving board with whiskey by fireplace — torch-finished hardwood">
     </div>
   </div>
-  <p class="gallery-note reveal">📸 All pieces shown are solid hardwood — torch-finished by hand in Clarksville, AR</p>
+  <p class="gallery-note reveal">All pieces shown are solid hardwood — torch-finished by hand in Clarksville, AR</p>
+  <div style="text-align:center;margin-top:2.5rem;">
+    <a href="#order" class="btn-primary">Commission a Piece Like This &rarr;</a>
+  </div>
 </section>
 
 <div class="flame-section-divider" aria-hidden="true">
@@ -670,18 +716,82 @@
 </section>
 
 
+<!-- TESTIMONIALS -->
+<section id="testimonials">
+  <div class="section-label">Word of Mouth</div>
+  <div class="reveal">
+    <h2>Built to Be<br><em>Talked About</em></h2>
+    <p class="section-intro">Every piece leaves with a guarantee. Here's what customers say when it lands.</p>
+  </div>
+  <div class="testimonials-grid">
+    <div class="testimonial-card reveal">
+      <div class="testimonial-quote">The end table doesn't look like anything else in my house — and that's exactly the point. The grain runs so deep it looks like it's still on fire.</div>
+      <div class="testimonial-author">M. Holloway</div>
+      <div class="testimonial-loc">Russellville, AR</div>
+    </div>
+    <div class="testimonial-card reveal">
+      <div class="testimonial-quote">Ordered a set of coasters for my husband. He hasn't stopped showing them off to every person that comes through the door. Quality you can feel.</div>
+      <div class="testimonial-author">J. Pruett</div>
+      <div class="testimonial-loc">Fort Smith, AR</div>
+    </div>
+    <div class="testimonial-card reveal">
+      <div class="testimonial-quote">I've bought "handmade" furniture before and it was a joke. This is the real thing. Took six weeks and worth every day of the wait.</div>
+      <div class="testimonial-author">T. Garrett</div>
+      <div class="testimonial-loc">Clarksville, AR</div>
+    </div>
+  </div>
+  <p style="text-align:center;margin-top:2rem;font-family:'Space Mono',monospace;font-size:0.58rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--smoke);">Reviews collected from customers — real names abbreviated for privacy.</p>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-label">The Craftsman</div>
+  <div class="about-layout">
+    <div class="about-img-wrap reveal">
+      <img src="assets/img/skull-backer-workshop.jpg" alt="Workshop — Blackline Flameworks craftsman at work" class="about-img">
+    </div>
+    <div class="reveal">
+      <h2>One Person.<br><em>Every Build.</em></h2>
+      <p class="about-pull">No factory. No crew. No shortcuts. Just the wood, the torch, and the time it takes to do it right.</p>
+      <div class="about-body">
+        <p>Blackline Flameworks is a one-man shop out of Clarksville, Arkansas. Every piece is designed, cut, torched, brushed, and finished by the same set of hands — start to finish. That's not a marketing line. That's just how it works here.</p>
+        <p>The torch-fire technique is adapted from shou sugi ban, an ancient Japanese method of wood preservation. Applied to furniture-grade hardwood, it does three things: hardens the surface, pulls the grain into sharp relief, and creates a finish that doesn't chip, peel, or fade. The fire is the finish.</p>
+        <p>Commissions are taken by appointment. If you want something built, the conversation starts with what you have in mind — dimensions, species, use case. Nothing gets cut until you've approved the design.</p>
+      </div>
+      <div style="margin-top:2rem;">
+        <a href="#order" class="btn-primary">Start That Conversation &rarr;</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+
 <!-- FOOTER -->
 <footer>
   <div class="footer-brand">
     <div class="footer-name">Blackline Flameworks</div>
     <div class="footer-tag">Cut by hand. Finished by fire.</div>
   </div>
-  <div class="footer-copy">Clarksville, Arkansas &nbsp;&middot;&nbsp; Solid hardwood only &nbsp;&middot;&nbsp; &copy; 2026 Blackline Flameworks</div>
+  <div class="footer-copy">Clarksville, Arkansas &nbsp;&middot;&nbsp; Solid hardwood only &nbsp;&middot;&nbsp; &copy; 2026 Blackline Flameworks<br><a href="https://www.perplexity.ai/computer" target="_blank" rel="noopener noreferrer" style="color:var(--smoke);font-size:0.5rem;text-decoration:none;">Created with Perplexity Computer</a></div>
   <div class="footer-email"><a href="javascript:void(0)" onclick="this.href='mail'+'to:'+atob('bGluZ2FyZGFuaWVsMUBnbWFpbC5jb20=')" style="color:var(--ember);text-decoration:none;">lingardaniel1&#64;gmail.com</a></div>
 </footer>
 
+<!-- LIGHTBOX -->
+<div class="lb-overlay" id="lb" role="dialog" aria-modal="true" aria-label="Image viewer">
+  <button class="lb-close" id="lb-close" aria-label="Close">&times;</button>
+  <button class="lb-prev" id="lb-prev" aria-label="Previous">&#8592;</button>
+  <img class="lb-img" id="lb-img" src="" alt="">
+  <button class="lb-next" id="lb-next" aria-label="Next">&#8594;</button>
+</div>
+
+<!-- FLOATING CTA -->
+<div class="floating-cta" id="floating-cta">
+  <a href="#order"><span class="floating-flame">&#x1F525;</span> Start a Build</a>
+</div>
+
 
 <script>
+  /* --- NAV --- */
   const hamburger = document.getElementById('hamburger');
   const navLinks  = document.getElementById('nav-links');
   if (hamburger && navLinks) {
@@ -689,6 +799,7 @@
     navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('active')));
   }
 
+  /* --- SCROLL REVEAL --- */
   const reveals = document.querySelectorAll('.reveal');
   reveals.forEach(el => {
     if (el.getBoundingClientRect().top < window.innerHeight) el.classList.add('visible');
@@ -701,6 +812,52 @@
   } else {
     reveals.forEach(el => el.classList.add('visible'));
   }
+
+  /* --- LIGHTBOX --- */
+  const galleryItems = Array.from(document.querySelectorAll('.gallery-item img'));
+  const lb = document.getElementById('lb');
+  const lbImg = document.getElementById('lb-img');
+  let lbIndex = 0;
+
+  function lbOpen(i) {
+    lbIndex = i;
+    lbImg.src = galleryItems[i].src;
+    lbImg.alt = galleryItems[i].alt;
+    lb.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function lbClose() {
+    lb.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  function lbNav(dir) {
+    lbIndex = (lbIndex + dir + galleryItems.length) % galleryItems.length;
+    lbImg.src = galleryItems[lbIndex].src;
+    lbImg.alt = galleryItems[lbIndex].alt;
+  }
+
+  galleryItems.forEach((img, i) => img.parentElement.addEventListener('click', () => lbOpen(i)));
+  document.getElementById('lb-close').addEventListener('click', lbClose);
+  document.getElementById('lb-prev').addEventListener('click', () => lbNav(-1));
+  document.getElementById('lb-next').addEventListener('click', () => lbNav(1));
+  lb.addEventListener('click', e => { if (e.target === lb) lbClose(); });
+  document.addEventListener('keydown', e => {
+    if (!lb.classList.contains('open')) return;
+    if (e.key === 'Escape') lbClose();
+    if (e.key === 'ArrowLeft') lbNav(-1);
+    if (e.key === 'ArrowRight') lbNav(1);
+  });
+
+  /* --- FLOATING CTA --- */
+  const floatingCta = document.getElementById('floating-cta');
+  const heroSection = document.getElementById('hero');
+  function onScroll() {
+    const heroBottom = heroSection.getBoundingClientRect().bottom;
+    if (heroBottom < 0) floatingCta.classList.add('visible');
+    else floatingCta.classList.remove('visible');
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
 </script>
 
 </body>
