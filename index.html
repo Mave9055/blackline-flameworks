@@ -1,973 +1,208 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Blackline Flameworks · Flame‑Finished Hardwood</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Blackline Flameworks builds flame‑finished hardwood slabs, boards, and furniture by hand in Clarksville, Arkansas — one‑off, architectural‑grade pieces with real weight, grain, and fire in every surface.">
+    <meta charset="UTF-8">
+    <title>Blackline Flameworks · Flame‑Finished Hardwood · Clarksville, AR</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Custom flame‑finished hardwood slabs and furniture by Blackline Flameworks. Hand-built in Clarksville, Arkansas. One-off architectural pieces, altar tables, and small-run accessories.">
 
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "LocalBusiness",
-    "name": "Blackline Flameworks",
-    "image": "https://mave9055.github.io/blackline-flameworks/assets/img/logo.png",
-    "url": "https://mave9055.github.io/blackline-flameworks/",
-    "telephone": "+1-555-555-5555",
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": "[Your Street Address]",
-      "addressLocality": "Clarksville",
-      "addressRegion": "AR",
-      "postalCode": "[Your Postal Code]",
-      "addressCountry": "US"
-    },
-    "priceRange": "$65 - $4800+",
-    "openingHoursSpecification": [
-      {
-        "@type": "OpeningHoursSpecification",
-        "dayOfWeek": [
-          "Monday",
-          "Tuesday",
-          "Wednesday",
-          "Thursday",
-          "Friday"
-        ],
-        "opens": "09:00",
-        "closes": "17:00"
-      }
-    ]
-  }
-  </script>
-
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Product",
-    "name": "Flame-Finished Hardwood Furniture",
-    "description": "Hand-built, flame-finished hardwood slabs, boards, and furniture, including altar tables, coasters, key racks, and candle blocks.",
-    "brand": {
-      "@type": "Brand",
-      "name": "Blackline Flameworks"
-    },
-    "offers": {
-      "@type": "AggregateOffer",
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "Blackline Flameworks",
+      "image": "https://mave9055.github.io/blackline-flameworks/assets/img/logo.png",
       "url": "https://mave9055.github.io/blackline-flameworks/",
-      "priceCurrency": "USD",
-      "lowPrice": "65",
-      "highPrice": "4800",
-      "offerCount": "5"
-    }
-  }
-  </script>
-  <style>
-    :root {
-      --bg: #050406;
-      --bg-alt: #09060b;
-      --bg-soft: #120910;
-      --accent: #ff3b3b;
-      --accent-soft: #ff8c78;
-      --accent-gold: #f7c86a;
-      --text: #f5f5f7;
-      --muted: #9a9aaa;
-      --border: #2b1924;
-      --card: #0f080f;
-      --highlight: #1a0c14;
-      --danger: #ff3b3b;
-      --font-body: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", sans-serif;
-      --font-heading: "Georgia", "Times New Roman", serif;
-    }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    body {
-      background:
-        radial-gradient(circle at top, rgba(255, 80, 60, 0.22) 0, transparent 45%),
-        radial-gradient(circle at bottom right, rgba(255, 30, 30, 0.16) 0, transparent 55%),
-        linear-gradient(145deg, #020003, #050406 40%, #06010a 100%);
-      color: var(--text);
-      font-family: var(--font-body);
-      line-height: 1.7;
-      -webkit-font-smoothing: antialiased;
-    }
-
-    body::before {
-      content: "";
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      background:
-        radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.06) 0, transparent 55%),
-        radial-gradient(circle at 80% 90%, rgba(255, 30, 30, 0.25) 0, transparent 65%);
-      mix-blend-mode: screen;
-      opacity: 0.35;
-      z-index: -1;
-    }
-
-    a {
-      color: var(--accent-soft);
-      text-decoration: none;
-    }
-
-    a:hover {
-      text-decoration: underline;
-    }
-
-    .page {
-      max-width: 1120px;
-      margin: 0 auto;
-      padding: 32px 18px 64px;
-    }
-
-    header {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      justify-content: space-between;
-      gap: 14px;
-      padding: 8px 10px 20px;
-      position: sticky;
-      top: 0;
-      z-index: 10;
-      backdrop-filter: blur(18px);
-      background: linear-gradient(
-        to bottom,
-        rgba(5, 0, 5, 0.92),
-        rgba(5, 0, 5, 0.82),
-        transparent
-      );
-      border-bottom: 1px solid rgba(255, 80, 60, 0.16);
-    }
-
-    .brand-lockup {
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
-    }
-
-    .brand-name {
-      font-family: var(--font-heading);
-      font-size: 1.55rem;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      color: #ffffff;
-    }
-
-    .brand-name span {
-      color: var(--accent-soft);
-    }
-
-    .brand-sub {
-      font-size: 0.86rem;
-      color: var(--muted);
-    }
-
-    .pill {
-      padding: 6px 14px;
-      border-radius: 999px;
-      border: 1px solid rgba(255, 80, 60, 0.45);
-      font-size: 0.7rem;
-      text-transform: uppercase;
-      letter-spacing: 0.2em;
-      color: var(--accent-soft);
-      background: radial-gradient(circle at top left, rgba(255, 80, 60, 0.32), transparent);
-      box-shadow: 0 0 24px rgba(255, 80, 60, 0.35);
-      white-space: nowrap;
-    }
-
-    main {
-      margin-top: 22px;
-      display: grid;
-      grid-template-columns: minmax(0, 1.55fr) minmax(0, 1.05fr);
-      gap: 40px;
-    }
-
-    @media (max-width: 900px) {
-      main {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    /* Hero + more flame-like animation */
-    .hero {
-      position: relative;
-      overflow: hidden;
-    }
-
-    .flame-particles {
-      position: absolute;
-      inset: -20px 0 -120px 0;
-      pointer-events: none;
-      z-index: 0;
-      mix-blend-mode: screen;
-    }
-
-    .flame-particle {
-      position: absolute;
-      width: 26px;
-      height: 90px;
-      border-radius: 50% 50% 40% 40%;
-      background:
-        radial-gradient(circle at 50% 0, #fff6d5 0, #ffe29f 14%, #ffb36a 32%, #ff6b3d 55%, rgba(40, 0, 5, 0) 80%);
-      opacity: 0;
-      filter: blur(0.6px);
-      transform-origin: 50% 100%;
-      animation: flameFlicker 5.5s ease-in-out infinite;
-    }
-
-    .flame-particle::before {
-      content: "";
-      position: absolute;
-      inset: 22% 24% 12% 24%;
-      border-radius: 50% 50% 40% 40%;
-      background:
-        radial-gradient(circle at 50% 0, #fffce3 0, #ffe9b8 18%, #ffb36a 40%, rgba(255, 90, 40, 0.0) 80%);
-      opacity: 0.9;
-    }
-
-    .flame-particle:nth-child(1) {
-      left: 14%;
-      bottom: -30px;
-      animation-duration: 6.2s;
-      animation-delay: 0s;
-    }
-
-    .flame-particle:nth-child(2) {
-      left: 30%;
-      bottom: -40px;
-      animation-duration: 5.4s;
-      animation-delay: 1s;
-    }
-
-    .flame-particle:nth-child(3) {
-      left: 46%;
-      bottom: -34px;
-      animation-duration: 5.8s;
-      animation-delay: 0.5s;
-    }
-
-    .flame-particle:nth-child(4) {
-      left: 62%;
-      bottom: -42px;
-      animation-duration: 6.4s;
-      animation-delay: 1.7s;
-    }
-
-    .flame-particle:nth-child(5) {
-      left: 78%;
-      bottom: -36px;
-      animation-duration: 5.3s;
-      animation-delay: 2.6s;
-    }
-
-    .flame-particle:nth-child(6) {
-      left: 90%;
-      bottom: -48px;
-      animation-duration: 6.1s;
-      animation-delay: 3.3s;
-    }
-
-    @keyframes flameFlicker {
-      0% {
-        transform: translate3d(0, 0, 0) scale(0.7) rotate(0deg);
-        opacity: 0;
-      }
-      8% {
-        opacity: 0.85;
-      }
-      25% {
-        transform: translate3d(-4px, -40px, 0) scale(0.9) rotate(-3deg);
-      }
-      45% {
-        transform: translate3d(3px, -90px, 0) scale(1.05) rotate(2deg);
-        opacity: 1;
-      }
-      70% {
-        transform: translate3d(-2px, -140px, 0) scale(1.1) rotate(-2deg);
-        opacity: 0.75;
-      }
-      100% {
-        transform: translate3d(0, -190px, 0) scale(1.05) rotate(1deg);
-        opacity: 0;
-      }
-    }
-
-    .hero-heading {
-      position: relative;
-      z-index: 1;
-      font-family: var(--font-heading);
-      font-size: clamp(2.3rem, 4.4vw, 3.1rem);
-      line-height: 1.15;
-      margin-bottom: 14px;
-    }
-
-    .hero-heading em {
-      font-style: italic;
-      color: var(--accent-soft);
-    }
-
-    .hero-subheading {
-      position: relative;
-      z-index: 1;
-      color: var(--muted);
-      font-size: 0.9rem;
-      text-transform: uppercase;
-      letter-spacing: 0.24em;
-      margin-bottom: 22px;
-    }
-
-    .hero-copy,
-    .hero-tagline,
-    .hero-meta {
-      position: relative;
-      z-index: 1;
-    }
-
-    .hero-copy {
-      font-size: 1rem;
-      color: #e0dee7;
-      margin-bottom: 18px;
-      max-width: 620px;
-    }
-
-    .hero-tagline {
-      font-size: 0.9rem;
-      color: var(--muted);
-      margin: 8px 0 24px;
-      max-width: 520px;
-    }
-
-    .hero-meta {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      font-size: 0.78rem;
-      text-transform: uppercase;
-      letter-spacing: 0.18em;
-      color: var(--muted);
-    }
-
-    .hero-meta span {
-      padding: 4px 9px;
-      border-radius: 999px;
-      background: rgba(255, 255, 255, 0.02);
-      border: 1px solid rgba(120, 70, 90, 0.6);
-      backdrop-filter: blur(10px);
-    }
-
-    .flame-panel {
-      position: relative;
-      border-radius: 22px;
-      padding: 20px 18px 18px;
-      border: 1px solid rgba(255, 80, 60, 0.35);
-      background:
-        radial-gradient(circle at 10% 0, rgba(255, 255, 255, 0.16) 0, transparent 45%),
-        radial-gradient(circle at 100% 0, rgba(255, 60, 60, 0.27) 0, transparent 65%),
-        radial-gradient(circle at 0 100%, rgba(255, 120, 80, 0.18) 0, transparent 65%),
-        #050208;
-      box-shadow:
-        0 26px 60px rgba(0, 0, 0, 0.8),
-        0 0 80px rgba(255, 60, 60, 0.35);
-      overflow: hidden;
-    }
+      "email": "lingardaniel1@gmail.com",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Clarksville",
+        "addressRegion": "AR",
+        "addressCountry": "US"
+      },
+      "description": "Custom flame-finished hardwood slabs and one-off furniture pieces.",
+      "priceRange": "$65 - $4800"
+    }
+    </script>
+
+    <style>
+        :root {
+            --bg: #050406;
+            --bg-alt: #09060b;
+            --bg-soft: #120910;
+            --accent: #ff3b3b;
+            --accent-soft: #ff8c78;
+            --accent-gold: #f7c86a;
+            --text: #f5f5f7;
+            --muted: #9a9aaa;
+            --border: #2b1924;
+            --card: #0f080f;
+            --font-body: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif;
+            --font-heading: "Georgia", "Times New Roman", serif;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            background: radial-gradient(circle at top, rgba(255, 80, 60, 0.22) 0, transparent 45%), linear-gradient(145deg, #020003, #050406 40%, #06010a 100%);
+            color: var(--text);
+            font-family: var(--font-body);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .page { max-width: 1120px; margin: 0 auto; padding: 32px 18px 64px; }
+
+        header {
+            display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 14px;
+            padding: 8px 10px 20px; position: sticky; top: 0; z-index: 10;
+            backdrop-filter: blur(18px); border-bottom: 1px solid rgba(255, 80, 60, 0.16);
+            background: rgba(5, 0, 5, 0.85);
+        }
+
+        .brand-name { font-family: var(--font-heading); font-size: 1.55rem; letter-spacing: 0.16em; text-transform: uppercase; color: #fff; }
+        .brand-name span { color: var(--accent-soft); }
+        .brand-sub { font-size: 0.86rem; color: var(--muted); }
+
+        .pill {
+            padding: 6px 14px; border-radius: 999px; border: 1px solid rgba(255, 80, 60, 0.45);
+            font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.2em; color: var(--accent-soft);
+            box-shadow: 0 0 24px rgba(255, 80, 60, 0.2);
+        }
+
+        main { margin-top: 40px; display: grid; grid-template-columns: 1.5fr 1fr; gap: 40px; }
+        @media (max-width: 900px) { main { grid-template-columns: 1fr; } }
+
+        /* Flame Animation */
+        .hero { position: relative; overflow: hidden; padding-bottom: 20px; }
+        .flame-particle {
+            position: absolute; width: 20px; height: 60px; background: orange; filter: blur(10px);
+            opacity: 0; animation: flicker 5s infinite; bottom: 0;
+        }
+        @keyframes flicker {
+            0% { transform: translateY(0) scale(1); opacity: 0; }
+            50% { opacity: 0.4; }
+            100% { transform: translateY(-150px) scale(0.5); opacity: 0; }
+        }
+
+        .hero-heading { font-family: var(--font-heading); font-size: clamp(2rem, 5vw, 3rem); line-height: 1.1; margin-bottom: 1rem; }
+        .hero-heading em { color: var(--accent-soft); font-style: italic; }
+
+        .flame-panel {
+            background: #050208; border: 1px solid rgba(255, 80, 60, 0.3);
+            border-radius: 20px; padding: 25px; box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+        }
+
+        .grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; margin-top: 20px; }
+        @media (max-width: 600px) { .grid { grid-template-columns: 1fr; } }
+
+        .card { background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: 12px; padding: 15px; }
+        .card img { width: 100%; border-radius: 8px; display: block; margin-bottom: 10px; transition: transform 0.3s ease; }
+        .card img:hover { transform: scale(1.02); }
+
+        .divider { height: 1px; background: linear-gradient(90deg, transparent, var(--accent), transparent); margin: 50px 0; opacity: 0.4; }
+
+        .two-col { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 30px; }
+        @media (max-width: 900px) { .two-col { grid-template-columns: 1fr; } }
+
+        .form-card { background: var(--bg-alt); padding: 25px; border-radius: 15px; border: 1px solid var(--border); }
+        .form { display: grid; gap: 12px; }
+        .form input, .form textarea, .form select {
+            background: #000; border: 1px solid var(--border); color: #fff; padding: 10px; border-radius: 6px; width: 100%;
+        }
+        .form button {
+            background: var(--accent); color: #000; border: none; padding: 12px; font-weight: bold;
+            text-transform: uppercase; cursor: pointer; border-radius: 6px; margin-top: 10px;
+        }
 
-    .flame-panel::before {
-      content: "";
-      position: absolute;
-      inset: -40%;
-      background:
-        conic-gradient(
-          from 210deg,
-          rgba(255, 230, 200, 0.15),
-          rgba(255, 80, 60, 0.35),
-          rgba(255, 30, 30, 0.65),
-          rgba(40, 0, 0, 0.0),
-          rgba(0, 0, 0, 0.0)
-        );
-      mix-blend-mode: screen;
-      opacity: 0.6;
-      pointer-events: none;
-    }
-
-    .flame-panel-inner {
-      position: relative;
-      z-index: 1;
-    }
-
-    .panel-label {
-      font-size: 0.72rem;
-      text-transform: uppercase;
-      letter-spacing: 0.22em;
-      color: rgba(255, 220, 210, 0.85);
-      margin-bottom: 6px;
-    }
-
-    .panel-title {
-      font-family: var(--font-heading);
-      font-size: 1.18rem;
-      margin-bottom: 10px;
-    }
-
-    .panel-sub {
-      font-size: 0.9rem;
-      color: #f1e3e5;
-      margin-bottom: 14px;
-    }
-
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 12px;
-      margin-top: 10px;
-    }
-
-    @media (max-width: 700px) {
-      .grid {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    .card {
-      background: rgba(5, 0, 5, 0.82);
-      border-radius: 16px;
-      padding: 11px 11px 13px;
-      border: 1px solid rgba(120, 70, 90, 0.7);
-      backdrop-filter: blur(10px);
-    }
-
-    .tag {
-      display: inline-block;
-      font-size: 0.7rem;
-      text-transform: uppercase;
-      letter-spacing: 0.2em;
-      color: var(--accent-gold);
-      margin-bottom: 4px;
-    }
-
-    .card h3 {
-      font-size: 0.92rem;
-      margin-bottom: 5px;
-      color: #ffffff;
-    }
-
-    .card p {
-      font-size: 0.84rem;
-      color: #e3d5da;
-    }
-
-    .divider {
-      height: 1px;
-      background: linear-gradient(
-        90deg,
-        transparent,
-        rgba(255, 80, 60, 0.8),
-        rgba(255, 200, 120, 0.9),
-        rgba(255, 80, 60, 0.8),
-        transparent
-      );
-      margin: 40px 0 26px;
-      opacity: 0.9;
-    }
-
-    .section-kicker {
-      font-size: 0.78rem;
-      text-transform: uppercase;
-      letter-spacing: 0.22em;
-      color: var(--muted);
-      margin-bottom: 10px;
-    }
-
-    .section-title {
-      font-family: var(--font-heading);
-      font-size: 1.5rem;
-      margin-bottom: 10px;
-    }
-
-    .section-title em {
-      font-style: italic;
-      color: var(--accent-soft);
-    }
-
-    .section-lead {
-      font-size: 0.96rem;
-      color: #e0dde8;
-      max-width: 650px;
-      margin-bottom: 18px;
-    }
-
-    .two-col {
-      display: grid;
-      grid-template-columns: minmax(0, 1.45fr) minmax(0, 1.05fr);
-      gap: 28px;
-      align-items: flex-start;
-    }
-
-    @media (max-width: 900px) {
-      .two-col {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    .price-card {
-      background: radial-gradient(circle at top, #19040a 0, #09040b 40%, #040006 100%);
-      border-radius: 18px;
-      border: 1px solid rgba(255, 80, 60, 0.38);
-      padding: 14px 14px 16px;
-      box-shadow: 0 22px 60px rgba(0, 0, 0, 0.9);
-    }
-
-    .price-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
-      gap: 12px;
-      margin-bottom: 11px;
-      font-size: 0.9rem;
-    }
-
-    .price-label {
-      color: #f5f2fb;
-    }
-
-    .price-range {
-      color: var(--accent-gold);
-      font-weight: 600;
-      white-space: nowrap;
-    }
-
-    .price-note {
-      font-size: 0.8rem;
-      color: var(--muted);
-      margin-top: 10px;
-    }
-
-    .form-card {
-      background: rgba(4, 0, 4, 0.9);
-      border-radius: 18px;
-      border: 1px solid rgba(120, 70, 90, 0.7);
-      padding: 16px 14px 18px;
-      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.85);
-    }
-
-    .form {
-      margin-top: 8px;
-      display: grid;
-      gap: 8px;
-      font-size: 0.85rem;
-    }
-
-    .form label {
-      display: block;
-      margin-top: 6px;
-      margin-bottom: 2px;
-      color: #f3edf7;
-    }
-
-    .form input,
-    .form textarea,
-    .form select {
-      width: 100%;
-      padding: 7px 9px;
-      border-radius: 9px;
-      border: 1px solid rgba(120, 70, 90, 0.9);
-      background: rgba(10, 1, 9, 0.9);
-      color: var(--text);
-      font-family: inherit;
-      font-size: 0.84rem;
-    }
-
-    .form textarea {
-      resize: vertical;
-      min-height: 90px;
-    }
-
-    .form button {
-      margin-top: 10px;
-      padding: 10px 14px;
-      border-radius: 999px;
-      border: none;
-      cursor: pointer;
-      background: radial-gradient(circle at 20% 0, #ffe5c0 0, #ff9a5e 22%, #ff3b3b 60%, #5a0208 100%);
-      color: #050103;
-      font-size: 0.85rem;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.22em;
-      box-shadow:
-        0 14px 32px rgba(0, 0, 0, 0.9),
-        0 0 28px rgba(255, 80, 60, 0.7);
-    }
-
-    .form button:hover {
-      filter: brightness(1.05);
-    }
-
-    .logistics-card {
-      background: rgba(8, 1, 9, 0.95);
-      border-radius: 18px;
-      border: 1px solid rgba(120, 70, 90, 0.7);
-      padding: 14px 14px 16px;
-    }
-
-    ul {
-      list-style: none;
-    }
-
-    li {
-      font-size: 0.9rem;
-      color: #e1d4e0;
-      margin-bottom: 8px;
-    }
-
-    li strong {
-      color: var(--accent-gold);
-      font-weight: 600;
-    }
-
-    footer {
-      margin-top: 40px;
-      font-size: 0.78rem;
-      color: var(--muted);
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      gap: 10px;
-      padding-top: 18px;
-      border-top: 1px solid rgba(120, 70, 90, 0.8);
-    }
-
-    footer div {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-    }
-  </style>
+        footer { border-top: 1px solid var(--border); margin-top: 60px; padding-top: 20px; display: flex; justify-content: space-between; color: var(--muted); font-size: 0.8rem; }
+    </style>
 </head>
 <body>
-  <div class="page">
+
+<div class="page">
     <header>
-      <div class="brand-lockup">
-        <div class="brand-name"><span>Blackline</span> Flameworks</div>
-        <div class="brand-sub">Flame‑finished hardwood, one‑off pieces built by hand in Clarksville, Arkansas.</div>
-      </div>
-      <div class="pill">One‑person shop · Limited monthly output</div>
+        <div class="brand-lockup">
+            <div class="brand-name"><span>Blackline</span> Flameworks</div>
+            <div class="brand-sub">Flame‑finished hardwood pieces built by hand in Clarksville, AR.</div>
+        </div>
+        <div class="pill">One‑Person Shop</div>
     </header>
 
     <main>
-      <section class="hero">
-        <div class="flame-particles">
-          <div class="flame-particle"></div>
-          <div class="flame-particle"></div>
-          <div class="flame-particle"></div>
-          <div class="flame-particle"></div>
-          <div class="flame-particle"></div>
-          <div class="flame-particle"></div>
-        </div>
-
-        <h1 class="hero-heading">
-          Blackline Flameworks: Custom Flame-Finished Hardwood Furniture in Clarksville, AR
-        </h1>
-        <h2 class="hero-subheading">
-          Hand-Built Slabs, Boards, Tables, & Panels
-        </h2>
-        <p class="hero-copy">
-          Every build starts with select hardwood slabs — no veneer, no fillers. The species sets the density, the weight,
-          and how the fire walks the grain. Each surface is charred with an open flame, brushed back, and sealed so the figure
-          reads almost three‑dimensional in the right light.
-        </p>
-        <p class="hero-copy">
-          This is a hand‑driven take on shou sugi ban tuned for furniture‑grade work, not siding. Once a slab is gone,
-          that exact grain pattern and flame map is gone with it. Matched sets are planned from the first cut and built
-          to the room they will live in.
-        </p>
-        <p class="hero-tagline">
-          This is for people done with flimsy furniture — the ones who want weight, grain, and fire that still looks like wood up close.
-        </p>
-        <div class="hero-meta">
-          <span>Clarksville, AR</span>
-          <span>Solid hardwood only</span>
-          <span>Flame‑finished by hand</span>
-        </div>
-      </section>
-
-      <aside>
-        <div class="flame-panel">
-          <div class="flame-panel-inner">
-            <div class="panel-label">Flagship lineup</div>
-            <div class="panel-title">From Hand to Room‑Scale</div>
-            <p class="panel-sub">
-              Built from the same stock and finish system, scaled from something you can carry to something the room is built around.
-            </p>
-            <div class="grid">
-              <div class="card">
-                <div class="tag">Wall‑grade boards</div>
-                <h3>Slab Boards &amp; Wall Pieces</h3>
-                <p>
-                  Wall‑grade slab boards, flame‑finished and brushed to pull strong vertical grain. Hangs as art or lays flat
-                  as a heavy serving / charcuterie board. Hardware pre‑installed and ready to hang.
-                </p>
-              </div>
-              <div class="card">
-                <div class="tag">Tables &amp; consoles</div>
-                <h3>Full‑Scale Furniture</h3>
-                <p>
-                  Solid hardwood tops — no joints pretending to be a slab. Torch‑finished surfaces with leveled, sealed sheen:
-                  enough protection for daily use, enough texture that it still feels like wood under your hand.
-                </p>
-              </div>
-              <div class="card">
-                <div class="tag">Small‑run accessories</div>
-                <h3>Coasters, Keys, &amp; Candle Blocks</h3>
-                <p>
-                  Small‑run accessory pieces built from the same stock as the big slabs — same torch work, same finish system.
-                  Entry point into the line, priced for gifting but built like furniture.
-                </p>
-              </div>
-              <div class="card">
-                <div class="tag">Custom work</div>
-                <h3>Panels &amp; Room‑Scale Pieces</h3>
-                <p>
-                  Architectural wall panels, benches, and one‑off focal pieces. Start with a photo and rough dimensions
-                  of your space; the rest is designed around how you actually live in the room.
-                </p>
-              </div>
+        <section class="hero">
+            <h1 class="hero-heading">One‑off <em>Flame‑Finished</em> Hardwood Furniture</h1>
+            <p style="margin-bottom: 20px; color: #ccc;">No veneers. No fillers. Just solid slabs charred with open flame, brushed back, and sealed to pull the grain into three dimensions.</p>
+            <div class="hero-meta" style="font-size: 0.8rem; color: var(--accent-gold); text-transform: uppercase; letter-spacing: 1px;">
+                Solid Wood · Hand-Torched · Built to Last
             </div>
-          </div>
-        </div>
-      </aside>
+        </section>
+
+        <aside>
+            <div class="flame-panel">
+                <h3>The Build Lineup</h3>
+                <div class="grid">
+                    <div class="card">
+                        <span style="font-size: 0.7rem; color: var(--accent-gold);">CUSTOM</span>
+                        <h4>Tables & Consoles</h4>
+                        <p style="font-size: 0.8rem; color: #999;">Full-scale furniture built to your room's dimensions.</p>
+                    </div>
+                    <div class="card">
+                        <span style="font-size: 0.7rem; color: var(--accent-gold);">ACCESSORIES</span>
+                        <h4>Small Runs</h4>
+                        <p style="font-size: 0.8rem; color: #999;">Coasters, key racks, and candle blocks.</p>
+                    </div>
+                </div>
+            </div>
+        </aside>
     </main>
 
     <div class="divider"></div>
 
-    <!-- NEW ARROWHEAD ALTAR SECTION -->
-    <section id="altar-table" class="two-col">
-      <div>
-        <div class="section-kicker">Flagship build</div>
-        <h2 class="section-title">Arrowhead Rack <em>Altar Table</em>: Custom Flame-Finished Woodwork</h2>
-        <p class="section-lead" style="margin-bottom:12px;">
-          One‑of‑one torch‑finished altar table built around a European whitetail mount. The backer is cut and carved into an
-          oversized arrowhead, burned to pull long vertical grain lines and paired with a matching table that carries card‑suit
-          carvings across the top.
-        </p>
-        <p class="section-lead" style="margin-bottom:0;">
-          Built as a focal point for cabins, trophy rooms, and man‑cave setups where the rack is supposed to own the room. This
-          exact layout is priced at $400; custom altar tables and arrowhead backers start at $250.
-        </p>
-      </div>
-
-      <div>
-        <div class="logistics-card">
-          <h3 style="font-size:0.96rem; margin-bottom:8px;">The altar in detail</h3>
-          <ul>
-            <li><strong>Backer</strong> — Arrowhead‑shaped slab, torch‑finished and brushed, live‑edge profile all the way around.</li>
-            <li><strong>Table</strong> — Solid top with burned grain and hand‑cut card‑suit inlays, legs carved and torched to match.</li>
-            <li><strong>Mount</strong> — European whitetail skull stand‑mounted through the table, removable if you want to swap racks.</li>
-            <li><strong>Use</strong> — Trophy‑room altar, entry statement, or corner piece in a hunting cabin or bar.</li>
-            <li><strong>Commissions</strong> — Bring your own rack, rough height, and wall/room photos; builds are quoted one‑to‑one.</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <!-- SIMPLE IMAGE STRIP UNDER THE TEXT -->
-    <section style="margin-top:18px; margin-bottom:8px;">
-      <div class="grid">
-        <div class="card">
-          <img src="assets/img/altar-table-front.jpg"
-               alt="Arrowhead altar table with European whitetail skull mount"
-               style="width:100%; border-radius:12px; display:block;">
-        </div>
-        <div class="card">
-          <img src="assets/img/altar-table-top.jpg"
-               alt="Torch‑finished tabletop with carved card suits"
-               style="width:100%; border-radius:12px; display:block;">
-        </div>
-        <div class="card">
-          <img src="assets/img/altar-table-backer.jpg"
-               alt="Burned‑grain arrowhead backer slab"
-               style="width:100%; border-radius:12px; display:block;">
-        </div>
-        <div class="card">
-          <p style="font-size:0.82rem; color:#e3d5da;">
-            This altar table is the reference build. If you want something in the same lane — different rack, different
-            proportions, or a cleaner top — start a commission below and ask for the “arrowhead altar” layout by name.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <div class="divider"></div>
-
-    <!-- SMALL WORK SECTION -->
-    <section id="small-work" class="two-col">
-      <div>
-        <div class="section-kicker">Small work, same stock</div>
-        <h2 class="section-title">Small Work, Same Fire: Coasters, Keys &amp; <em>Bar Pieces</em></h2>
-        <p class="section-lead" style="margin-bottom:12px;">
-          The same slabs and torch work that go into the altar table get cut down into smaller runs: coaster sets,
-          key racks, candle blocks, and bar boards. It’s the same grain, the same burn, just scaled to a shelf or counter.
-        </p>
-        <p class="section-lead" style="margin-bottom:0;">
-          These are the easiest way into the line — priced for gifting, built like furniture. Most small pieces land
-          between $65 and $210 depending on layout and hardware.
-        </p>
-      </div>
-
-      <div>
-        <div class="logistics-card">
-          <h3 style="font-size:0.96rem; margin-bottom:8px;">What shows up here</h3>
-          <ul>
-            <li><strong>Coaster sets</strong> — 4–6 piece runs, torch‑finished and sealed, stacked in a simple holder.</li>
-            <li><strong>Key racks</strong> — Narrow wall boards with hooks and a burn pattern tied to your entry or mudroom.</li>
-            <li><strong>Candle blocks</strong> — Heavy blocks drilled for glass votives, meant to live on a table, not a shelf.</li>
-            <li><strong>Bar boards</strong> — Short slabs sized for bottles and a couple of glasses on a counter or back bar.</li>
-            <li><strong>Custom runs</strong> — If you need multiples for a wedding, bar, or club, the grain can be cut from one slab.</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <div class="divider"></div>
-
-    <section>
-      <div class="section-kicker">Investment &amp; pricing</div>
-      <h2 class="section-title">Investment &amp; Pricing: Built for <em>Long-Lasting Flame-Finished Furniture</em></h2>
-      <p class="section-lead">
-        Prices follow a simple pattern: we start with the slab and hardware, then add the hours it will take to design, build,
-        and finish the piece the right way. The more complex the layout, joinery, or fire work, the more time it demands.
-        Most clients see a clear, written number up front that reflects both the material on the floor and the hours at the bench.
-      </p>
-
-      <div class="two-col">
-        <div>
-          <p class="section-lead" style="margin-bottom:12px;">
-            The ranges below are a starting point for standard builds at a 60–80/hr shop rate. If you’re working with unusual
-            dimensions, specific species, or a space that needs more planning, we talk through that before anything is cut.
-          </p>
-
-          <div class="price-card">
-            <h3 style="font-size:0.96rem; margin-bottom:10px;">Typical ranges (USD)</h3>
-
-            <div class="price-row">
-              <span class="price-label">Slab boards &amp; wall pieces</span>
-              <span class="price-range">$320–$680+</span>
+    <section id="altar-table">
+        <div class="two-col">
+            <div>
+                <h2 style="font-family: var(--font-heading); margin-bottom: 15px;">The Arrowhead <em>Altar Table</em></h2>
+                <p style="margin-bottom: 20px;">Built around a European whitetail mount, this flagship build features an oversized arrowhead backer and hand-carved card suit inlays. A focal piece for trophy rooms and cabins.</p>
+                <div class="grid">
+                    <div class="card">
+                        <img src="assets/img/altar-table-front.jpg" alt="Arrowhead Altar Front View">
+                    </div>
+                    <div class="card">
+                        <img src="assets/img/altar-table-top.jpg" alt="Altar Table Top Detail">
+                    </div>
+                    <div class="card">
+                        <img src="assets/img/altar-table-backer.jpg" alt="Arrowhead Backer Detail">
+                    </div>
+                    <div class="card" style="display: flex; align-items: center; justify-content: center; text-align: center; background: transparent;">
+                        <p style="font-size: 0.8rem; color: var(--accent-gold);">Reference build shown.<br>Commissions start at $250.</p>
+                    </div>
+                </div>
             </div>
-            <div class="price-row">
-              <span class="price-label">Coffee &amp; side tables</span>
-              <span class="price-range">$900–$1,950+</span>
+            
+            <div class="form-card">
+                <h3>Start a Commission</h3>
+                <form class="form" action="https://formsubmit.co/lingardaniel1@gmail.com" method="POST">
+                    <input type="text" name="Name" placeholder="Your Name" required>
+                    <input type="email" name="Email" placeholder="Your Email" required>
+                    <select name="Piece">
+                        <option value="Table">Table / Console</option>
+                        <option value="Altar">Arrowhead Altar</option>
+                        <option value="Wall Art">Slab Wall Art</option>
+                        <option value="Other">Small Goods / Other</option>
+                    </select>
+                    <textarea name="Notes" placeholder="Dimensions or specific ideas..."></textarea>
+                    <button type="submit">Send Inquiry</button>
+                </form>
             </div>
-            <div class="price-row">
-              <span class="price-label">Dining / console tables</span>
-              <span class="price-range">$2,400–$4,800+</span>
-            </div>
-            <div class="price-row">
-              <span class="price-label">Panels &amp; large installs</span>
-              <span class="price-range">Quoted per room</span>
-            </div>
-            <div class="price-row">
-              <span class="price-label">Coasters, key racks, candles</span>
-              <span class="price-range">$65–$210+</span>
-            </div>
-
-            <p class="price-note">
-              Final numbers depend on species, thickness, hardware, and how much custom layout and design time the space requires.
-              Most builds land in the middle of these ranges once we match the slab and the room.
-            </p>
-          </div>
         </div>
-
-        <div>
-          <div class="form-card">
-            <h3 style="font-size:0.98rem; margin-bottom:4px;">Start a commission</h3>
-            <p style="font-size:0.86rem; color:#e7dde9; margin-bottom:8px;">
-              Use this form as a starting point. Include dimensions, how you’ll use it, and a quick note about the room it’s going into.
-              You’ll get questions and a ballpark number before anything is locked in.
-            </p>
-
-            <!-- Replace YOUR_EMAIL_HERE with your real email or a FormSubmit endpoint -->
-            <form class="form" action="https://formsubmit.co/lingardaniel1@gmail.com" method="POST">
-              <input type="hidden" name="_subject" value="New inquiry from Blackline Flameworks">
-              <input type="hidden" name="_template" value="table">
-              <input type="text" name="_honey" style="display:none">
-
-              <label for="name">Name</label>
-              <input id="name" type="text" name="Name" placeholder="Name" required>
-
-              <label for="email">Email</label>
-              <input id="email" type="email" name="Email" placeholder="you@example.com" required>
-
-              <label for="piece">Piece you’re thinking about</label>
-              <select id="piece" name="Piece">
-                <option value="">Select one</option>
-                <option value="Slab board / wall piece">Slab board / wall piece</option>
-                <option value="Coffee / side table">Coffee / side table</option>
-                <option value="Dining / console table">Dining / console table</option>
-                <option value="Wall panel / installation">Wall panel / installation</option>
-                <option value="Coasters / keys / candles">Coasters / keys / candles</option>
-                <option value="Other">Something else</option>
-              </select>
-
-              <label for="dimensions">Rough dimensions</label>
-              <input id="dimensions" type="text" name="Dimensions" placeholder="Length × width × thickness (inches)">
-
-              <label for="use">How it will be used</label>
-              <textarea id="use" name="Use" placeholder="Everyday family table, entry console, gallery wall, etc."></textarea>
-
-              <label for="location">Location</label>
-              <input id="location" type="text" name="Location" placeholder="City, state">
-
-              <button type="submit">Draft the first quote</button>
-            </form>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <div class="divider"></div>
-
-    <section>
-      <div class="two-col">
-        <div>
-          <div class="section-kicker">Process &amp; care</div>
-          <h2 class="section-title">Process &amp; Care: Fire, Grain, and <em>Daily Use</em></h2>
-          <p class="section-lead" style="margin-bottom:14px;">
-            Surfaces are burned with an open torch, then brushed back to clean grain and sealed with oil or satin topcoats
-            tuned for daily, real‑world use. It is still wood — it will pick up a story over time — but it won’t flake char
-            every time you touch it.
-          </p>
-          <p class="section-lead" style="margin-bottom:0;">
-            Coffee rings, plates, keys, kids — these pieces are meant to live through regular life, not sit behind velvet rope.
-            If you want the finish pushed toward more “gallery” or more “workhorse,” the build can be biased either way.
-          </p>
-        </div>
-
-        <div>
-          <div class="logistics-card">
-            <h3 style="font-size:0.98rem; margin-bottom:8px;">Logistics</h3>
-            <ul>
-              <li><strong>Pickup</strong> — Clarksville, Arkansas. Local pickup by appointment when your piece is ready.</li>
-              <li><strong>Shipping (small)</strong> — Coasters, key racks, and candle blocks ship nationwide in the lower 48.</li>
-              <li><strong>Shipping (large)</strong> — Tables and large panels are local pickup or freight‑quoted and crated like custom furniture.</li>
-              <li><strong>Response time</strong> — Messages go straight to the shop. Typical reply within 48 hours; if you don’t see anything, check spam and try again.</li>
-            </ul>
-          </div>
-        </div>
-      </div>
     </section>
 
     <footer>
-      <div>
-        <span>Blackline Flameworks · Clarksville, Arkansas</span>
-      </div>
-      <div>
-        <span>Email: lingardaniel1@gmail.com</span>
-        <span>Instagram: @blacklineflameworks</span>
-      </div>
+        <div>© 2026 Blackline Flameworks · Clarksville, AR</div>
+        <div>IG: @blacklineflameworks</div>
     </footer>
-  </div>
+</div>
+
 </body>
 </html>
