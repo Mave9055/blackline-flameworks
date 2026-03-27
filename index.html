@@ -248,6 +248,32 @@
   .about-body { font-size:1rem; color:var(--pale); line-height:1.78; }
   .about-body p + p { margin-top:1.1rem; }
 
+  /* TORCH SECTION */
+  #torch-demo { background: var(--grain); border-top: 2px solid var(--ember); border-bottom: 2px solid var(--ember); }
+  .torch-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
+  @media (max-width: 900px) { .torch-layout { grid-template-columns: 1fr; gap: 2.5rem; } }
+  .torch-canvas-wrap { position: relative; user-select: none; -webkit-user-select: none; }
+  #torchCanvas { display: block; width: 100%; cursor: none; border: 1px solid rgba(184,98,26,0.25); touch-action: none; background: #2a1a08; }
+  .torch-controls { display: flex; gap: 0.8rem; margin-top: 1rem; flex-wrap: wrap; align-items: center; }
+  .torch-btn { font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase; background: var(--ash); color: var(--pale); border: 1px solid rgba(184,98,26,0.2); padding: 0.55rem 1rem; cursor: pointer; transition: background 0.2s, color 0.2s; }
+  .torch-btn:hover, .torch-btn.active { background: var(--ember); color: var(--white); border-color: var(--ember); }
+  .torch-intensity { display: flex; align-items: center; gap: 0.8rem; margin-top: 0.8rem; }
+  .torch-intensity label { font-family: 'Space Mono', monospace; font-size: 0.58rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--smoke); white-space: nowrap; }
+  .torch-intensity input[type=range] { -webkit-appearance: none; appearance: none; width: 110px; height: 3px; background: rgba(184,98,26,0.3); outline: none; }
+  .torch-intensity input[type=range]::-webkit-slider-thumb { -webkit-appearance: none; width: 14px; height: 14px; background: var(--ember); cursor: pointer; border-radius: 50%; }
+  .torch-hint { font-family: 'Space Mono', monospace; font-size: 0.58rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--smoke); margin-top: 0.7rem; line-height: 1.6; }
+
+  /* 3D VIEWER */
+  #viewer-3d { background: var(--char); border-top: 1px solid rgba(184,98,26,0.14); }
+  .viewer-layout { display: grid; grid-template-columns: 1.2fr 1fr; gap: 5rem; align-items: center; }
+  @media (max-width: 900px) { .viewer-layout { grid-template-columns: 1fr; gap: 2.5rem; } }
+  #woodCanvas { display: block; width: 100%; aspect-ratio: 1; cursor: grab; border: 1px solid rgba(184,98,26,0.15); background: #060402; }
+  #woodCanvas:active { cursor: grabbing; }
+  .viewer-controls { display: flex; gap: 0.7rem; margin-top: 1rem; flex-wrap: wrap; }
+  .viewer-btn { font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase; background: var(--ash); color: var(--pale); border: 1px solid rgba(184,98,26,0.2); padding: 0.55rem 1rem; cursor: pointer; transition: background 0.2s, color 0.2s; }
+  .viewer-btn:hover, .viewer-btn.active { background: var(--ember); color: var(--white); border-color: var(--ember); }
+  .viewer-hint { font-family: 'Space Mono', monospace; font-size: 0.58rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--smoke); margin-top: 0.7rem; line-height: 1.6; }
+
   /* CARE GUIDE */
   #care { background:var(--ash); border-top:1px solid rgba(184,98,26,0.14); }
   .care-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:2px; margin-top:3rem; }
@@ -346,6 +372,7 @@
   <ul class="nav-links" id="nav-links">
     <li><a href="#process">Process</a></li>
     <li><a href="#gallery">Gallery</a></li>
+    <li><a href="#torch-demo">Try It</a></li>
     <li><a href="#featured">Available Now</a></li>
     <li><a href="#products">Pricing</a></li>
     <li><a href="#order">Order</a></li>
@@ -499,6 +526,67 @@
   <div class="dflame" style="animation:flicker3 1.9s infinite;animation-delay:-1.0s;"><svg width="34" height="95" viewBox="0 0 34 95" fill="none"><path d="M17 93C8 74,0 53,4 36C6 25,2 14,8 4C7 17,12 21,10 12C16 21,14 34,17 26C18 16,23 5,26 1C23 15,27 22,24 34C29 23,31 12,32 4C30 21,25 34,29 48C33 62,23 78,17 93Z" fill="url(#c8)"/><defs><linearGradient id="c8" x1="17" y1="93" x2="17" y2="1" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#c06820" stop-opacity="0.93"/><stop offset="100%" stop-color="#f5b060" stop-opacity="0.04"/></linearGradient></defs></svg></div>
 </div>
 
+
+<!-- TORCH DEMO -->
+<section id="torch-demo">
+  <div class="section-label">Feel the Fire</div>
+  <div class="torch-layout">
+    <div class="torch-canvas-wrap reveal">
+      <canvas id="torchCanvas" width="600" height="600" aria-label="Interactive torch simulation"></canvas>
+      <div class="torch-controls">
+        <button class="torch-btn active" id="btn-torch">Torch</button>
+        <button class="torch-btn" id="btn-sand">Sand Back</button>
+        <button class="torch-btn" id="btn-reset">Reset</button>
+      </div>
+      <div class="torch-intensity">
+        <label for="heatSlider">Heat</label>
+        <input type="range" id="heatSlider" min="1" max="10" value="6">
+        <label for="sizeSlider">Flame Size</label>
+        <input type="range" id="sizeSlider" min="10" max="80" value="35">
+      </div>
+      <p class="torch-hint">Click &amp; drag to burn &nbsp;&middot;&nbsp; Sand back to reveal grain &nbsp;&middot;&nbsp; Mobile: touch &amp; drag</p>
+    </div>
+    <div class="reveal">
+      <h2>Torch Your<br><em>Own Piece</em></h2>
+      <p class="about-pull">This is exactly what happens to every slab that leaves the shop. The fire doesn't just color the wood — it changes it permanently.</p>
+      <div class="about-body">
+        <p>Drag the torch across the canvas to char the wood. Crank the heat for deep black char, or keep it low for a light bronze burn. Sand back to pull the grain out of the char — that contrast is what makes every piece unique.</p>
+        <p>No two passes of the torch look the same. That's not a bug. It's the whole point.</p>
+      </div>
+      <div style="margin-top:2rem;">
+        <a href="#order" class="btn-primary">Build the Real Thing &rarr;</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 3D VIEWER -->
+<section id="viewer-3d">
+  <div class="section-label">Inspect the Craft</div>
+  <div class="viewer-layout">
+    <div class="reveal">
+      <canvas id="woodCanvas" aria-label="Interactive 3D wood slab viewer"></canvas>
+      <div class="viewer-controls">
+        <button class="viewer-btn active" id="vbtn-fresh">Fresh Wood</button>
+        <button class="viewer-btn" id="vbtn-light">Light Char</button>
+        <button class="viewer-btn" id="vbtn-medium">Medium Burn</button>
+        <button class="viewer-btn" id="vbtn-deep">Deep Char</button>
+      </div>
+      <p class="viewer-hint">Drag to rotate &nbsp;&middot;&nbsp; Scroll to zoom &nbsp;&middot;&nbsp; Switch burn levels above</p>
+    </div>
+    <div class="reveal">
+      <h2>Every Grain<br><em>Tells a Story</em></h2>
+      <p class="about-pull">The deeper the char, the more the grain stands out. What you're seeing is real wood physics — fire contracts the soft grain and leaves the hard grain raised.</p>
+      <div class="about-body">
+        <p>Rotate the slab. Look at the grain from different angles. That three-dimensional depth is permanent — it doesn't wash out, fade, or wear flat. The more it's used, the better it looks.</p>
+        <p>Every piece is inspected and approved by hand before it leaves the shop. If the grain doesn't look right after torching, it goes back under the flame.</p>
+      </div>
+      <div style="margin-top:2rem;">
+        <a href="#order" class="btn-primary">Commission Your Piece &rarr;</a>
+      </div>
+    </div>
+  </div>
+</section>
 
 <!-- FEATURED
      Main image: altar-table-backer.jpg — the ARROWHEAD (what's for sale)
@@ -956,6 +1044,493 @@
     if (e.key === 'ArrowLeft') lbNav(-1);
     if (e.key === 'ArrowRight') lbNav(1);
   });
+
+  /* --- TORCH CANVAS --- */
+  (function() {
+    const canvas = document.getElementById('torchCanvas');
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    const W = 600, H = 600;
+    canvas.width = W; canvas.height = H;
+
+    // Noise helper
+    function noise(x, y, seed) {
+      const n = Math.sin(x * 127.1 + y * 311.7 + seed * 74.3) * 43758.5453;
+      return n - Math.floor(n);
+    }
+    function smoothNoise(x, y, seed) {
+      const ix = Math.floor(x), iy = Math.floor(y);
+      const fx = x - ix, fy = y - iy;
+      const ux = fx*fx*(3-2*fx), uy = fy*fy*(3-2*fy);
+      const a = noise(ix,iy,seed), b = noise(ix+1,iy,seed);
+      const c = noise(ix,iy+1,seed), d = noise(ix+1,iy+1,seed);
+      return a + (b-a)*ux + (c-a)*uy + (d-b-c+a)*ux*uy;
+    }
+    function fbm(x, y, seed, oct) {
+      let v=0, amp=1, freq=1, max=0;
+      for(let i=0;i<oct;i++){v+=smoothNoise(x*freq,y*freq,seed+i)*amp;max+=amp;amp*=0.5;freq*=2;}
+      return v/max;
+    }
+
+    // Build base wood texture on offscreen canvas
+    const woodCanvas = document.createElement('canvas');
+    woodCanvas.width = W; woodCanvas.height = H;
+    const wctx = woodCanvas.getContext('2d');
+    const woodData = wctx.createImageData(W, H);
+    for (let y=0; y<H; y++) {
+      for (let x=0; x<W; x++) {
+        const gx = x/W*4, gy = y/H*4;
+        // Grain lines running vertically
+        const grain = fbm(gx, gy, 1, 4);
+        const ring = Math.sin((x/W*8 + grain*2.5) * Math.PI * 2) * 0.5 + 0.5;
+        const fiber = fbm(gx*0.5, gy*3, 7, 3) * 0.35;
+        const t = ring * 0.6 + grain * 0.25 + fiber;
+        // Warm wood palette: 90-180 range
+        const r = Math.floor(110 + t*90);
+        const g = Math.floor(60 + t*65);
+        const b = Math.floor(20 + t*30);
+        const i = (y*W+x)*4;
+        woodData.data[i]=r; woodData.data[i+1]=g; woodData.data[i+2]=b; woodData.data[i+3]=255;
+      }
+    }
+    wctx.putImageData(woodData, 0, 0);
+
+    // Char layer — tracks burn intensity per pixel (0=unburned, 1=fully charred)
+    const charMap = new Float32Array(W*H);
+    // Grain map for sanding reveal
+    const grainMap = new Float32Array(W*H);
+    for (let y=0; y<H; y++) {
+      for (let x=0; x<W; x++) {
+        grainMap[y*W+x] = fbm(x/W*6, y/H*6, 3, 4);
+      }
+    }
+
+    function render() {
+      // Draw base wood
+      ctx.drawImage(woodCanvas, 0, 0);
+      // Overlay char
+      const imgd = ctx.getImageData(0, 0, W, H);
+      for (let i=0; i<W*H; i++) {
+        const c = charMap[i];
+        if (c <= 0) continue;
+        const p = i*4;
+        // Char color: dark brown → black with grain reveal
+        const grain = grainMap[i];
+        if (c < 0.4) {
+          // Light burn: golden brown
+          const t = c/0.4;
+          imgd.data[p]   = Math.floor(imgd.data[p]   * (1-t*0.5) + 140*t);
+          imgd.data[p+1] = Math.floor(imgd.data[p+1] * (1-t*0.6) + 60*t);
+          imgd.data[p+2] = Math.floor(imgd.data[p+2] * (1-t*0.7) + 8*t);
+        } else {
+          // Deep char: near black with subtle grain variation
+          const t = Math.min(1,(c-0.4)/0.6);
+          const darkBase = 8 + grain*22;
+          imgd.data[p]   = Math.floor(imgd.data[p]   * (1-t) * 0.3 + darkBase*(1+grain*0.4)*t);
+          imgd.data[p+1] = Math.floor(imgd.data[p+1] * (1-t) * 0.2 + (darkBase*0.6)*t);
+          imgd.data[p+2] = Math.floor(imgd.data[p+2] * (1-t) * 0.15 + (darkBase*0.3)*t);
+        }
+      }
+      ctx.putImageData(imgd, 0, 0);
+    }
+    render();
+
+    let mode = 'torch'; // 'torch' or 'sand'
+    let isDrawing = false;
+    let lastX = -1, lastY = -1;
+    let particles = [];
+
+    function getPos(e) {
+      const rect = canvas.getBoundingClientRect();
+      const scaleX = W / rect.width, scaleY = H / rect.height;
+      if (e.touches) {
+        return { x: (e.touches[0].clientX - rect.left)*scaleX, y: (e.touches[0].clientY - rect.top)*scaleY };
+      }
+      return { x: (e.clientX - rect.left)*scaleX, y: (e.clientY - rect.top)*scaleY };
+    }
+
+    function applyTorch(cx, cy) {
+      const heat = parseFloat(document.getElementById('heatSlider').value) / 10;
+      const radius = parseFloat(document.getElementById('sizeSlider').value);
+      const r2 = radius * radius;
+      const x0 = Math.max(0, Math.floor(cx-radius)), x1 = Math.min(W-1, Math.ceil(cx+radius));
+      const y0 = Math.max(0, Math.floor(cy-radius)), y1 = Math.min(H-1, Math.ceil(cy+radius));
+      for (let y=y0; y<=y1; y++) {
+        for (let x=x0; x<=x1; x++) {
+          const dx=x-cx, dy=y-cy, d2=dx*dx+dy*dy;
+          if (d2>r2) continue;
+          const falloff = 1 - d2/r2;
+          const idx = y*W+x;
+          charMap[idx] = Math.min(1, charMap[idx] + falloff * heat * 0.18);
+        }
+      }
+      // Spawn ember particles
+      for (let i=0; i<3; i++) {
+        particles.push({
+          x: cx + (Math.random()-0.5)*radius*0.6,
+          y: cy + (Math.random()-0.5)*radius*0.6,
+          vx: (Math.random()-0.5)*2.5,
+          vy: -Math.random()*3-1,
+          life: 1, size: Math.random()*3+1
+        });
+      }
+    }
+
+    function applySand(cx, cy) {
+      const radius = parseFloat(document.getElementById('sizeSlider').value) * 0.8;
+      const r2 = radius*radius;
+      const x0=Math.max(0,Math.floor(cx-radius)),x1=Math.min(W-1,Math.ceil(cx+radius));
+      const y0=Math.max(0,Math.floor(cy-radius)),y1=Math.min(H-1,Math.ceil(cy+radius));
+      for(let y=y0;y<=y1;y++){
+        for(let x=x0;x<=x1;x++){
+          const dx=x-cx,dy=y-cy,d2=dx*dx+dy*dy;
+          if(d2>r2) continue;
+          const falloff=1-d2/r2;
+          const idx=y*W+x;
+          charMap[idx]=Math.max(0,charMap[idx]-falloff*0.12);
+        }
+      }
+    }
+
+    function drawParticles() {
+      particles = particles.filter(p => p.life > 0);
+      particles.forEach(p => {
+        ctx.save();
+        ctx.globalAlpha = p.life * 0.9;
+        ctx.fillStyle = p.life > 0.5 ? '#f5a020' : '#c06018';
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.size * p.life, 0, Math.PI*2);
+        ctx.fill();
+        ctx.restore();
+        p.x += p.vx + (Math.random()-0.5)*0.5;
+        p.y += p.vy;
+        p.vy += 0.12;
+        p.life -= 0.04;
+      });
+    }
+
+    function drawFlameGlow(x, y) {
+      if (mode !== 'torch' || !isDrawing) return;
+      const radius = parseFloat(document.getElementById('sizeSlider').value);
+      const grd = ctx.createRadialGradient(x,y,0,x,y,radius*1.4);
+      grd.addColorStop(0,'rgba(255,200,60,0.22)');
+      grd.addColorStop(0.4,'rgba(224,100,20,0.12)');
+      grd.addColorStop(1,'rgba(0,0,0,0)');
+      ctx.fillStyle = grd;
+      ctx.beginPath();
+      ctx.arc(x, y, radius*1.4, 0, Math.PI*2);
+      ctx.fill();
+    }
+
+    let animFrame;
+    let mouseX=0, mouseY=0;
+    function loop() {
+      render();
+      if (isDrawing) {
+        if (mode==='torch') applyTorch(mouseX, mouseY);
+        else applySand(mouseX, mouseY);
+      }
+      drawFlameGlow(mouseX, mouseY);
+      drawParticles();
+      animFrame = requestAnimationFrame(loop);
+    }
+    loop();
+
+    function start(e) { e.preventDefault(); isDrawing=true; const p=getPos(e); mouseX=p.x; mouseY=p.y; lastX=p.x; lastY=p.y; }
+    function move(e)  { e.preventDefault(); const p=getPos(e); mouseX=p.x; mouseY=p.y; }
+    function end()    { isDrawing=false; }
+
+    canvas.addEventListener('mousedown', start);
+    canvas.addEventListener('mousemove', move);
+    canvas.addEventListener('mouseup', end);
+    canvas.addEventListener('mouseleave', end);
+    canvas.addEventListener('touchstart', start, {passive:false});
+    canvas.addEventListener('touchmove', move, {passive:false});
+    canvas.addEventListener('touchend', end);
+
+    document.getElementById('btn-torch').addEventListener('click', function() {
+      mode='torch';
+      document.querySelectorAll('.torch-btn').forEach(b=>b.classList.remove('active'));
+      this.classList.add('active');
+    });
+    document.getElementById('btn-sand').addEventListener('click', function() {
+      mode='sand';
+      document.querySelectorAll('.torch-btn').forEach(b=>b.classList.remove('active'));
+      this.classList.add('active');
+    });
+    document.getElementById('btn-reset').addEventListener('click', function() {
+      charMap.fill(0);
+      particles = [];
+    });
+  })();
+
+  /* --- 3D WOOD VIEWER (WebGL) --- */
+  (function() {
+    const canvas = document.getElementById('woodCanvas');
+    if (!canvas) return;
+    const gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
+    if (!gl) { canvas.parentElement.innerHTML='<p style="color:var(--smoke);font-family:monospace;font-size:.7rem;padding:2rem;text-align:center;">WebGL not supported in this browser</p>'; return; }
+
+    // Set canvas size
+    const SIZE = Math.min(canvas.parentElement.clientWidth, 520);
+    canvas.width = SIZE; canvas.height = SIZE;
+
+    const VS = `
+      attribute vec3 aPos;
+      attribute vec2 aUV;
+      attribute vec3 aNormal;
+      uniform mat4 uMVP;
+      uniform mat4 uModel;
+      varying vec2 vUV;
+      varying vec3 vNormal;
+      varying vec3 vPos;
+      void main(){
+        gl_Position = uMVP * vec4(aPos,1.0);
+        vUV = aUV;
+        vNormal = (uModel * vec4(aNormal,0.0)).xyz;
+        vPos = (uModel * vec4(aPos,1.0)).xyz;
+      }`;
+
+    const FS = `
+      precision mediump float;
+      varying vec2 vUV;
+      varying vec3 vNormal;
+      varying vec3 vPos;
+      uniform float uChar;  // 0=fresh, 1=deep char
+      uniform float uTime;
+
+      float hash(vec2 p){ return fract(sin(dot(p,vec2(127.1,311.7)))*43758.5); }
+      float noise(vec2 p){
+        vec2 i=floor(p), f=fract(p);
+        vec2 u=f*f*(3.0-2.0*f);
+        return mix(mix(hash(i),hash(i+vec2(1,0)),u.x),mix(hash(i+vec2(0,1)),hash(i+vec2(1,1)),u.x),u.y);
+      }
+      float fbm(vec2 p){
+        float v=0.0,a=1.0,m=0.0;
+        for(int i=0;i<5;i++){v+=noise(p)*a;m+=a;a*=0.5;p*=2.1;}
+        return v/m;
+      }
+
+      void main(){
+        vec2 uv = vUV;
+        // Wood grain
+        float grain = fbm(vec2(uv.x*3.0, uv.y*18.0));
+        float ring  = sin((uv.x*6.0 + grain*2.5)*3.14159*2.0)*0.5+0.5;
+        float fiber = fbm(uv*vec2(1.5,9.0)) * 0.4;
+        float wood  = ring*0.55 + grain*0.28 + fiber;
+
+        // Wood base color
+        vec3 freshWood = vec3(0.52+wood*0.35, 0.29+wood*0.22, 0.08+wood*0.1);
+
+        // Char effect
+        float charNoise = fbm(uv*5.0+0.3);
+        float charDepth = clamp(uChar + charNoise*0.15 - 0.07, 0.0, 1.0);
+        // Light char: golden brown
+        vec3 lightChar = vec3(0.28+wood*0.18, 0.12+wood*0.08, 0.02);
+        // Deep char: near black with grain
+        vec3 deepChar  = vec3(0.04+grain*0.06, 0.02+grain*0.03, 0.01);
+        vec3 charColor = mix(lightChar, deepChar, smoothstep(0.35, 0.85, charDepth));
+        vec3 woodColor = mix(freshWood, charColor, smoothstep(0.0, 0.45, charDepth));
+
+        // Lighting
+        vec3 lightDir = normalize(vec3(1.2, 2.0, 2.5));
+        vec3 norm = normalize(vNormal);
+        float diff = max(dot(norm, lightDir), 0.0);
+        vec3 viewDir = normalize(vec3(0.0, 0.0, 3.0) - vPos);
+        vec3 halfV   = normalize(lightDir + viewDir);
+        float spec   = pow(max(dot(norm,halfV),0.0), mix(8.0,40.0,uChar)) * mix(0.25,0.06,uChar);
+        // Grain surface bump (fake)
+        float bumpGrain = fbm(uv*vec2(2.0,24.0))*0.04;
+        float ao = 1.0 - fbm(uv*4.0)*0.18;
+
+        vec3 ambient = woodColor * 0.28;
+        vec3 diffuse = woodColor * diff * 0.78;
+        vec3 color   = (ambient + diffuse + spec) * ao;
+        color += bumpGrain * diff * 0.18;
+
+        // Ember glow on fresh burn edges
+        if(uChar > 0.05 && uChar < 0.6){
+          float edge = smoothstep(0.0,0.3,uChar)*smoothstep(0.6,0.3,uChar);
+          color += vec3(0.6,0.18,0.02)*edge*0.3*(0.5+0.5*sin(uTime*2.0));
+        }
+
+        gl_FragColor = vec4(color, 1.0);
+      }`;
+
+    function compileShader(type, src) {
+      const s = gl.createShader(type);
+      gl.shaderSource(s, src);
+      gl.compileShader(s);
+      return s;
+    }
+    const prog = gl.createProgram();
+    gl.attachShader(prog, compileShader(gl.VERTEX_SHADER, VS));
+    gl.attachShader(prog, compileShader(gl.FRAGMENT_SHADER, FS));
+    gl.linkProgram(prog);
+    gl.useProgram(prog);
+
+    // Build slab geometry (box)
+    function buildSlab(w, h, d, segsX, segsY) {
+      const verts=[], uvs=[], norms=[], idx=[];
+      function face(ax,ay,az, bx,by,bz, cx,cy,cz, dx,dy,dz, nx,ny,nz, u0,v0,u1,v1){
+        const base=verts.length/3;
+        verts.push(ax,ay,az, bx,by,bz, cx,cy,cz, dx,dy,dz);
+        uvs.push(u0,v0, u1,v0, u1,v1, u0,v1);
+        norms.push(nx,ny,nz, nx,ny,nz, nx,ny,nz, nx,ny,nz);
+        idx.push(base,base+1,base+2, base,base+2,base+3);
+      }
+      const hw=w/2,hh=h/2,hd=d/2;
+      face(-hw,-hh,hd, hw,-hh,hd, hw,hh,hd, -hw,hh,hd,  0,0,1, 0,0,1,1);
+      face( hw,-hh,-hd,-hw,-hh,-hd,-hw,hh,-hd, hw,hh,-hd, 0,0,-1, 0,0,1,1);
+      face(-hw,-hh,-hd, hw,-hh,-hd, hw,-hh,hd, -hw,-hh,hd, 0,-1,0, 0,0,1,1);
+      face(-hw,hh,hd,  hw,hh,hd,  hw,hh,-hd, -hw,hh,-hd,  0,1,0, 0,0,1,1);
+      face(-hw,-hh,-hd,-hw,-hh,hd, -hw,hh,hd, -hw,hh,-hd,-1,0,0, 0,0,1,1);
+      face( hw,-hh,hd,  hw,-hh,-hd, hw,hh,-hd,  hw,hh,hd,  1,0,0, 0,0,1,1);
+      return {verts:new Float32Array(verts),uvs:new Float32Array(uvs),norms:new Float32Array(norms),idx:new Uint16Array(idx)};
+    }
+    const slab = buildSlab(2.2, 0.18, 1.1, 1, 1);
+
+    function mkBuf(target, data) {
+      const b = gl.createBuffer();
+      gl.bindBuffer(target, b);
+      gl.bindBuffer(target, b);
+      gl.bufferData(target, data, gl.STATIC_DRAW);
+      return b;
+    }
+    const posBuf  = mkBuf(gl.ARRAY_BUFFER, slab.verts);
+    const uvBuf   = mkBuf(gl.ARRAY_BUFFER, slab.uvs);
+    const normBuf = mkBuf(gl.ARRAY_BUFFER, slab.norms);
+    const idxBuf  = mkBuf(gl.ELEMENT_ARRAY_BUFFER, slab.idx);
+
+    const aPos    = gl.getAttribLocation(prog,'aPos');
+    const aUV     = gl.getAttribLocation(prog,'aUV');
+    const aNormal = gl.getAttribLocation(prog,'aNormal');
+    const uMVP    = gl.getUniformLocation(prog,'uMVP');
+    const uModel  = gl.getUniformLocation(prog,'uModel');
+    const uChar   = gl.getUniformLocation(prog,'uChar');
+    const uTime   = gl.getUniformLocation(prog,'uTime');
+
+    // Matrix helpers
+    function mat4() { return new Float32Array(16); }
+    function identity(m) { m.fill(0); m[0]=m[5]=m[10]=m[15]=1; return m; }
+    function multiply(a,b,out) {
+      for(let r=0;r<4;r++) for(let c=0;c<4;c++) {
+        let s=0; for(let k=0;k<4;k++) s+=a[r*4+k]*b[k*4+c]; out[r*4+c]=s;
+      } return out;
+    }
+    function perspective(fov,asp,near,far,m) {
+      const f=1/Math.tan(fov/2);
+      identity(m);
+      m[0]=f/asp; m[5]=f;
+      m[10]=(far+near)/(near-far); m[11]=-1;
+      m[14]=(2*far*near)/(near-far); m[15]=0;
+      return m;
+    }
+    function rotateX(m,a) {
+      const c=Math.cos(a),s=Math.sin(a),out=mat4();
+      identity(out); out[5]=c; out[6]=s; out[9]=-s; out[10]=c;
+      return multiply(m,out,mat4());
+    }
+    function rotateY(m,a) {
+      const c=Math.cos(a),s=Math.sin(a),out=mat4();
+      identity(out); out[0]=c; out[2]=-s; out[8]=s; out[10]=c;
+      return multiply(m,out,mat4());
+    }
+    function translate(m,x,y,z) {
+      const t=mat4(); identity(t); t[12]=x;t[13]=y;t[14]=z;
+      return multiply(t,m,mat4());
+    }
+
+    let rotX=0.28, rotY=0.45, zoom=3.2;
+    let targetChar=0, currentChar=0;
+    let isDrag=false, lastMX=0, lastMY=0;
+
+    canvas.addEventListener('mousedown', e=>{isDrag=true;lastMX=e.clientX;lastMY=e.clientY;});
+    window.addEventListener('mousemove', e=>{
+      if(!isDrag) return;
+      rotY+=(e.clientX-lastMX)*0.012; rotX+=(e.clientY-lastMY)*0.012;
+      rotX=Math.max(-1.1,Math.min(1.1,rotX));
+      lastMX=e.clientX; lastMY=e.clientY;
+    });
+    window.addEventListener('mouseup', ()=>isDrag=false);
+    canvas.addEventListener('wheel', e=>{ e.preventDefault(); zoom=Math.max(1.8,Math.min(6,zoom+e.deltaY*0.005)); },{passive:false});
+
+    // Touch
+    let lastTouchX=0, lastTouchY=0, lastPinchDist=0;
+    canvas.addEventListener('touchstart',e=>{ e.preventDefault();
+      if(e.touches.length===1){lastTouchX=e.touches[0].clientX;lastTouchY=e.touches[0].clientY;}
+      if(e.touches.length===2){lastPinchDist=Math.hypot(e.touches[0].clientX-e.touches[1].clientX,e.touches[0].clientY-e.touches[1].clientY);}
+    },{passive:false});
+    canvas.addEventListener('touchmove',e=>{ e.preventDefault();
+      if(e.touches.length===1){
+        rotY+=(e.touches[0].clientX-lastTouchX)*0.012;
+        rotX+=(e.touches[0].clientY-lastTouchY)*0.012;
+        rotX=Math.max(-1.1,Math.min(1.1,rotX));
+        lastTouchX=e.touches[0].clientX; lastTouchY=e.touches[0].clientY;
+      }
+      if(e.touches.length===2){
+        const d=Math.hypot(e.touches[0].clientX-e.touches[1].clientX,e.touches[0].clientY-e.touches[1].clientY);
+        zoom=Math.max(1.8,Math.min(6,zoom*(lastPinchDist/d)));
+        lastPinchDist=d;
+      }
+    },{passive:false});
+
+    const charLevels = {fresh:0, light:0.28, medium:0.56, deep:0.88};
+    document.getElementById('vbtn-fresh').addEventListener('click', function(){setChar('fresh',this);});
+    document.getElementById('vbtn-light').addEventListener('click', function(){setChar('light',this);});
+    document.getElementById('vbtn-medium').addEventListener('click', function(){setChar('medium',this);});
+    document.getElementById('vbtn-deep').addEventListener('click', function(){setChar('deep',this);});
+    function setChar(level, btn) {
+      targetChar = charLevels[level];
+      document.querySelectorAll('.viewer-btn').forEach(b=>b.classList.remove('active'));
+      btn.classList.add('active');
+    }
+
+    const proj = perspective(0.75, 1, 0.1, 100, mat4());
+    let startT = performance.now();
+
+    function drawFrame(ts) {
+      const t = (ts - startT) / 1000;
+      currentChar += (targetChar - currentChar) * 0.04;
+
+      gl.viewport(0, 0, canvas.width, canvas.height);
+      gl.clearColor(0.024, 0.016, 0.008, 1);
+      gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
+      gl.enable(gl.DEPTH_TEST);
+
+      let model = mat4(); identity(model);
+      model = rotateX(model, rotX);
+      model = rotateY(model, rotY);
+      const view = translate(mat4(), 0, 0, -zoom);
+      identity(view); view[14]=-zoom;
+      const mvp = mat4();
+      multiply(proj, multiply(view, model, mat4()), mvp);
+
+      gl.useProgram(prog);
+
+      gl.bindBuffer(gl.ARRAY_BUFFER, posBuf);
+      gl.enableVertexAttribArray(aPos);
+      gl.vertexAttribPointer(aPos,3,gl.FLOAT,false,0,0);
+
+      gl.bindBuffer(gl.ARRAY_BUFFER, uvBuf);
+      gl.enableVertexAttribArray(aUV);
+      gl.vertexAttribPointer(aUV,2,gl.FLOAT,false,0,0);
+
+      gl.bindBuffer(gl.ARRAY_BUFFER, normBuf);
+      gl.enableVertexAttribArray(aNormal);
+      gl.vertexAttribPointer(aNormal,3,gl.FLOAT,false,0,0);
+
+      gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, idxBuf);
+      gl.uniformMatrix4fv(uMVP, false, mvp);
+      gl.uniformMatrix4fv(uModel, false, model);
+      gl.uniform1f(uChar, currentChar);
+      gl.uniform1f(uTime, t);
+
+      gl.drawElements(gl.TRIANGLES, slab.idx.length, gl.UNSIGNED_SHORT, 0);
+      requestAnimationFrame(drawFrame);
+    }
+    requestAnimationFrame(drawFrame);
+  })();
 
   /* --- FLOATING CTA --- */
   const floatingCta = document.getElementById('floating-cta');
