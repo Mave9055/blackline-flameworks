@@ -29,7 +29,6 @@
         :root {
             --bg: #050406;
             --bg-alt: #09060b;
-            --bg-soft: #120910;
             --accent: #ff3b3b;
             --accent-soft: #ff8c78;
             --accent-gold: #f7c86a;
@@ -44,18 +43,20 @@
         * { box-sizing: border-box; margin: 0; padding: 0; }
 
         body {
-            background: radial-gradient(circle at top, rgba(255, 80, 60, 0.22) 0, transparent 45%), linear-gradient(145deg, #020003, #050406 40%, #06010a 100%);
+            background: radial-gradient(circle at top, rgba(255, 80, 60, 0.22) 0, transparent 45%), 
+                        linear-gradient(145deg, #020003, #050406 40%, #06010a 100%);
             color: var(--text);
             font-family: var(--font-body);
             line-height: 1.7;
             -webkit-font-smoothing: antialiased;
+            min-height: 100vh;
         }
 
         .page { max-width: 1120px; margin: 0 auto; padding: 32px 18px 64px; }
 
         header {
             display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 14px;
-            padding: 8px 10px 20px; position: sticky; top: 0; z-index: 10;
+            padding: 15px 10px 20px; position: sticky; top: 0; z-index: 10;
             backdrop-filter: blur(18px); border-bottom: 1px solid rgba(255, 80, 60, 0.16);
             background: rgba(5, 0, 5, 0.85);
         }
@@ -73,20 +74,10 @@
         main { margin-top: 40px; display: grid; grid-template-columns: 1.5fr 1fr; gap: 40px; }
         @media (max-width: 900px) { main { grid-template-columns: 1fr; } }
 
-        /* Flame Animation */
-        .hero { position: relative; overflow: hidden; padding-bottom: 20px; }
-        .flame-particle {
-            position: absolute; width: 20px; height: 60px; background: orange; filter: blur(10px);
-            opacity: 0; animation: flicker 5s infinite; bottom: 0;
-        }
-        @keyframes flicker {
-            0% { transform: translateY(0) scale(1); opacity: 0; }
-            50% { opacity: 0.4; }
-            100% { transform: translateY(-150px) scale(0.5); opacity: 0; }
-        }
-
-        .hero-heading { font-family: var(--font-heading); font-size: clamp(2rem, 5vw, 3rem); line-height: 1.1; margin-bottom: 1rem; }
+        .hero { position: relative; }
+        .hero-heading { font-family: var(--font-heading); font-size: clamp(2.2rem, 5vw, 3.2rem); line-height: 1.1; margin-bottom: 1.2rem; }
         .hero-heading em { color: var(--accent-soft); font-style: italic; }
+        .hero-copy { font-size: 1.05rem; color: #ccc; margin-bottom: 25px; max-width: 600px; }
 
         .flame-panel {
             background: #050208; border: 1px solid rgba(255, 80, 60, 0.3);
@@ -105,17 +96,23 @@
         .two-col { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 30px; }
         @media (max-width: 900px) { .two-col { grid-template-columns: 1fr; } }
 
+        .section-title { font-family: var(--font-heading); font-size: 1.8rem; margin-bottom: 15px; }
+        .section-title em { color: var(--accent-soft); font-style: italic; }
+
         .form-card { background: var(--bg-alt); padding: 25px; border-radius: 15px; border: 1px solid var(--border); }
         .form { display: grid; gap: 12px; }
+        .form label { font-size: 0.8rem; color: var(--muted); margin-bottom: -8px; }
         .form input, .form textarea, .form select {
-            background: #000; border: 1px solid var(--border); color: #fff; padding: 10px; border-radius: 6px; width: 100%;
+            background: #000; border: 1px solid var(--border); color: #fff; padding: 12px; border-radius: 6px; width: 100%; font-family: inherit;
         }
         .form button {
-            background: var(--accent); color: #000; border: none; padding: 12px; font-weight: bold;
-            text-transform: uppercase; cursor: pointer; border-radius: 6px; margin-top: 10px;
+            background: linear-gradient(to right, var(--accent), #b32424); color: #fff; border: none; padding: 14px; 
+            font-weight: bold; text-transform: uppercase; cursor: pointer; border-radius: 6px; margin-top: 10px;
+            letter-spacing: 1px; box-shadow: 0 4px 15px rgba(255, 59, 59, 0.3);
         }
+        .form button:hover { filter: brightness(1.2); }
 
-        footer { border-top: 1px solid var(--border); margin-top: 60px; padding-top: 20px; display: flex; justify-content: space-between; color: var(--muted); font-size: 0.8rem; }
+        footer { border-top: 1px solid var(--border); margin-top: 60px; padding: 30px 0; display: flex; justify-content: space-between; color: var(--muted); font-size: 0.85rem; }
     </style>
 </head>
 <body>
@@ -124,7 +121,7 @@
     <header>
         <div class="brand-lockup">
             <div class="brand-name"><span>Blackline</span> Flameworks</div>
-            <div class="brand-sub">Flame‑finished hardwood pieces built by hand in Clarksville, AR.</div>
+            <div class="brand-sub">Hand-built flame‑finished hardwood in Clarksville, AR.</div>
         </div>
         <div class="pill">One‑Person Shop</div>
     </header>
@@ -132,25 +129,25 @@
     <main>
         <section class="hero">
             <h1 class="hero-heading">One‑off <em>Flame‑Finished</em> Hardwood Furniture</h1>
-            <p style="margin-bottom: 20px; color: #ccc;">No veneers. No fillers. Just solid slabs charred with open flame, brushed back, and sealed to pull the grain into three dimensions.</p>
-            <div class="hero-meta" style="font-size: 0.8rem; color: var(--accent-gold); text-transform: uppercase; letter-spacing: 1px;">
+            <p class="hero-copy">No veneers. No fillers. Just solid slabs charred with open flame, brushed back, and sealed to pull the grain into three dimensions. Built for those who want weight, grain, and fire in their space.</p>
+            <div style="font-size: 0.8rem; color: var(--accent-gold); text-transform: uppercase; letter-spacing: 2px; font-weight: bold;">
                 Solid Wood · Hand-Torched · Built to Last
             </div>
         </section>
 
         <aside>
             <div class="flame-panel">
-                <h3>The Build Lineup</h3>
+                <h3 style="margin-bottom: 15px; font-family: var(--font-heading);">The Build Lineup</h3>
                 <div class="grid">
                     <div class="card">
-                        <span style="font-size: 0.7rem; color: var(--accent-gold);">CUSTOM</span>
-                        <h4>Tables & Consoles</h4>
-                        <p style="font-size: 0.8rem; color: #999;">Full-scale furniture built to your room's dimensions.</p>
+                        <span style="font-size: 0.7rem; color: var(--accent-gold); font-weight: bold;">CUSTOM</span>
+                        <h4 style="margin: 5px 0;">Tables & Consoles</h4>
+                        <p style="font-size: 0.8rem; color: #999;">Full-scale furniture built to your room's specific dimensions.</p>
                     </div>
                     <div class="card">
-                        <span style="font-size: 0.7rem; color: var(--accent-gold);">ACCESSORIES</span>
-                        <h4>Small Runs</h4>
-                        <p style="font-size: 0.8rem; color: #999;">Coasters, key racks, and candle blocks.</p>
+                        <span style="font-size: 0.7rem; color: var(--accent-gold); font-weight: bold;">ACCESSORIES</span>
+                        <h4 style="margin: 5px 0;">Small Runs</h4>
+                        <p style="font-size: 0.8rem; color: #999;">Coasters, key racks, and candle blocks from the same stock.</p>
                     </div>
                 </div>
             </div>
@@ -162,36 +159,51 @@
     <section id="altar-table">
         <div class="two-col">
             <div>
-                <h2 style="font-family: var(--font-heading); margin-bottom: 15px;">The Arrowhead <em>Altar Table</em></h2>
-                <p style="margin-bottom: 20px;">Built around a European whitetail mount, this flagship build features an oversized arrowhead backer and hand-carved card suit inlays. A focal piece for trophy rooms and cabins.</p>
+                <h2 class="section-title">The Arrowhead <em>Altar Table</em></h2>
+                <p style="margin-bottom: 20px; color: #ccc;">Built around a European whitetail mount, this flagship build features an oversized arrowhead backer and hand-carved card suit inlays. This is a focal point build for trophy rooms, cabins, and bars.</p>
+                
                 <div class="grid">
                     <div class="card">
                         <img src="assets/img/altar-table-front.jpg" alt="Arrowhead Altar Front View">
+                        <p style="font-size: 0.75rem; color: var(--muted); text-align: center;">Front Profile</p>
                     </div>
                     <div class="card">
                         <img src="assets/img/altar-table-top.jpg" alt="Altar Table Top Detail">
+                        <p style="font-size: 0.75rem; color: var(--muted); text-align: center;">Inlay Detail</p>
                     </div>
                     <div class="card">
                         <img src="assets/img/altar-table-backer.jpg" alt="Arrowhead Backer Detail">
+                        <p style="font-size: 0.75rem; color: var(--muted); text-align: center;">Arrowhead Backer</p>
                     </div>
-                    <div class="card" style="display: flex; align-items: center; justify-content: center; text-align: center; background: transparent;">
-                        <p style="font-size: 0.8rem; color: var(--accent-gold);">Reference build shown.<br>Commissions start at $250.</p>
+                    <div class="card" style="display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; background: rgba(255, 59, 59, 0.05); border-color: rgba(255, 59, 59, 0.2);">
+                        <p style="font-size: 0.9rem; color: var(--accent-gold); font-weight: bold;">Reference Build</p>
+                        <p style="font-size: 0.8rem; color: #fff; margin-top: 5px;">Commissions start at $250.</p>
                     </div>
                 </div>
             </div>
             
             <div class="form-card">
-                <h3>Start a Commission</h3>
+                <h3 style="margin-bottom: 10px; font-family: var(--font-heading);">Start a Commission</h3>
+                <p style="font-size: 0.85rem; color: var(--muted); margin-bottom: 20px;">Every piece starts with a conversation. Tell me what you're looking for, and I'll get back to you with a ballpark number.</p>
+                
                 <form class="form" action="https://formsubmit.co/lingardaniel1@gmail.com" method="POST">
-                    <input type="text" name="Name" placeholder="Your Name" required>
-                    <input type="email" name="Email" placeholder="Your Email" required>
+                    <label>Your Name</label>
+                    <input type="text" name="Name" placeholder="Name" required>
+                    
+                    <label>Email Address</label>
+                    <input type="email" name="Email" placeholder="you@example.com" required>
+                    
+                    <label>What are we building?</label>
                     <select name="Piece">
                         <option value="Table">Table / Console</option>
                         <option value="Altar">Arrowhead Altar</option>
-                        <option value="Wall Art">Slab Wall Art</option>
-                        <option value="Other">Small Goods / Other</option>
+                        <option value="Wall Art">Slab Wall Art / Art Piece</option>
+                        <option value="Other">Small Goods / Accessory</option>
                     </select>
-                    <textarea name="Notes" placeholder="Dimensions or specific ideas..."></textarea>
+                    
+                    <label>Project Details</label>
+                    <textarea name="Notes" placeholder="Rough dimensions, wood preference, or the room it's going in..."></textarea>
+                    
                     <button type="submit">Send Inquiry</button>
                 </form>
             </div>
@@ -199,8 +211,11 @@
     </section>
 
     <footer>
-        <div>© 2026 Blackline Flameworks · Clarksville, AR</div>
-        <div>IG: @blacklineflameworks</div>
+        <div>© 2026 Blackline Flameworks · Clarksville, Arkansas</div>
+        <div>
+            <span style="margin-right: 15px;">Email: lingardaniel1@gmail.com</span>
+            <span>IG: @blacklineflameworks</span>
+        </div>
     </footer>
 </div>
 
