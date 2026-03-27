@@ -1544,7 +1544,7 @@
   (function() {
     if (typeof L === 'undefined') return;
     const map = L.map('shop-map', { zoomControl: true, scrollWheelZoom: false })
-      .setView([35.4714, -93.4660], 10);
+      .setView([35.4714, -93.4660], 9);
 
     L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
       attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/">CARTO</a>',
@@ -1562,7 +1562,7 @@
 
     L.marker([35.4714, -93.4660], { icon: flameIcon })
       .addTo(map)
-      .bindPopup('<strong style="font-family:monospace;font-size:0.75rem;letter-spacing:0.1em;">BLACKLINE FLAMEWORKS</strong><br><span style="font-size:0.78rem;color:#888;">Clarksville, AR &mdash; Johnson County<br>Local pickup by appointment</span>')
+      .bindPopup('<strong style="font-family:monospace;font-size:0.75rem;letter-spacing:0.1em;">BLACKLINE FLAMEWORKS</strong><br><span style="font-size:0.78rem;color:#888;">Clarksville, AR &mdash; Johnson County<br>Exact address given at pickup</span>')
       .openPopup();
   })();
 
