@@ -156,8 +156,8 @@
   .gallery-item:nth-child(3) { grid-column: span 3; }
   .gallery-item:nth-child(4) { grid-column: span 3; }
   .gallery-item:nth-child(5) { grid-column: span 4; }
-  .gallery-item img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.45s ease; }
-  .gallery-item:hover img { transform: scale(1.05); }
+  .gallery-item img { width: 100%; height: 100%; object-fit: contain; display: block; transition: transform 0.45s ease; background: #0a0806; }
+  .gallery-item:hover img { transform: scale(1.03); }
   .gallery-placeholder { width: 100%; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.8rem; background: linear-gradient(135deg,#180e05 0%,#261608 50%,#180e05 100%); }
   .gallery-icon { width: 38px; height: 38px; opacity: 0.28; }
   .gallery-caption { font-family: 'Space Mono', monospace; font-size: 0.56rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--smoke); text-align: center; }
@@ -167,13 +167,13 @@
   #featured { background: var(--grain); border-top: 2px solid var(--ember); border-bottom: 2px solid var(--ember); }
   .featured-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
   .featured-img-wrap { position: relative; }
-  .featured-main-img { width: 100%; aspect-ratio: 3/4; object-fit: cover; display: block; border: 1px solid rgba(184,98,26,0.2); }
+  .featured-main-img { width: 100%; aspect-ratio: 3/4; object-fit: contain; display: block; border: 1px solid rgba(184,98,26,0.2); background: #0a0806; }
   .featured-badge { position: absolute; top: 1.2rem; right: 1.2rem; background: var(--ember); color: var(--white); font-family: 'Space Mono', monospace; font-size: 0.58rem; letter-spacing: 0.12em; text-transform: uppercase; padding: 0.35rem 0.75rem; z-index: 2; animation: pulseBadge 2.5s ease-in-out infinite; }
   @keyframes pulseBadge { 0%,100%{opacity:1} 50%{opacity:0.65} }
   .featured-thumbs { display: grid; grid-template-columns: repeat(3,1fr); gap: 3px; margin-top: 3px; }
   .featured-thumb { aspect-ratio: 1; overflow: hidden; cursor: pointer; border: 1px solid rgba(184,98,26,0.1); transition: border-color 0.2s; }
   .featured-thumb:hover { border-color: var(--ember); }
-  .featured-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .featured-thumb img { width: 100%; height: 100%; object-fit: contain; display: block; background: #0a0806; }
   .featured-title { font-family: 'Playfair Display', serif; font-size: clamp(1.8rem,3.5vw,2.8rem); font-weight: 900; color: var(--white); line-height: 1.08; margin-bottom: 0.7rem; }
   .featured-title em { font-style: italic; color: var(--ember-hot); }
   .featured-dims { font-family: 'Space Mono', monospace; font-size: 0.65rem; letter-spacing: 0.12em; color: var(--ember); margin-bottom: 1.4rem; text-transform: uppercase; }
@@ -460,7 +460,7 @@
         <div class="featured-price-note">Ready to ship or pick up.<br>Clarksville, AR.</div>
       </div>
       <div class="featured-actions">
-        <a href="mailto:lingardaniel1@gmail.com?subject=Interested%20in%20the%20Arrowhead%20Key%20Rack&body=Hi%2C%20I%27m%20interested%20in%20the%2027x15%20arrowhead%20key%20rack%20%2F%20wall%20art.%20Is%20it%20still%20available%3F" class="btn-primary">Claim This Piece &rarr;</a>
+        <a href="/cdn-cgi/l/email-protection#4f232621282e3d2b2e21262a237e0f28222e2623612c2022703c3a2d252a2c3b7206213b2a3d2a3c3b2a2b6a7d7f26216a7d7f3b272a6a7d7f0e3d3d2038272a2e2b6a7d7f042a366a7d7f1d2e2c24692d202b367207266a7d0c6a7d7f066a7d78226a7d7f26213b2a3d2a3c3b2a2b6a7d7f26216a7d7f3b272a6a7d7f7d78377e7a6a7d7f2e3d3d2038272a2e2b6a7d7f242a366a7d7f3d2e2c246a7d7f6a7d096a7d7f382e23236a7d7f2e3d3b616a7d7f063c6a7d7f263b6a7d7f3c3b2623236a7d7f2e392e26232e2d232a6a7c09" class="btn-primary">Claim This Piece &rarr;</a>
         <a href="#order" class="btn-ghost">Order a Custom Size</a>
       </div>
       <p class="featured-pickup">📍 Pickup in Clarksville, AR &nbsp;&middot;&nbsp; Ships flat &nbsp;&middot;&nbsp; Responds within 48hrs</p>
@@ -627,7 +627,7 @@
         <button type="submit" class="form-submit">Send Request &rarr;</button>
         <p class="form-note">
           Submissions go straight to my inbox. I'll reply within 48 hours.<br>
-          Or email directly: <a href="mailto:lingardaniel1@gmail.com">lingardaniel1@gmail.com</a>
+          Or email directly: <a href="/cdn-cgi/l/email-protection#c1ada8afa6a0b3a5a0afa8a4adf081a6aca0a8adefa2aeac"><span class="__cf_email__" data-cfemail="5a3633343d3b283e3b34333f366b1a3d373b333674393537">[email&#160;protected]</span></a>
         </p>
       </form>
     </div>
@@ -648,7 +648,7 @@
     </div>
     <div class="contact-block reveal">
       <div class="contact-block-label">Email</div>
-      <div class="contact-block-value"><a href="mailto:lingardaniel1@gmail.com" style="color:var(--ember-hot);text-decoration:none;">lingardaniel1@gmail.com</a></div>
+      <div class="contact-block-value"><a href="/cdn-cgi/l/email-protection#bcd0d5d2dbddced8ddd2d5d9d08dfcdbd1ddd5d092dfd3d1" style="color:var(--ember-hot);text-decoration:none;"><span class="__cf_email__" data-cfemail="64080d0a03051600050a0d010855240309050d084a070b09">[email&#160;protected]</span></a></div>
       <p class="contact-block-note">Best way to reach me. Checked daily.</p>
     </div>
     <div class="contact-block reveal">
@@ -672,32 +672,12 @@
     <div class="footer-tag">Cut by hand. Finished by fire.</div>
   </div>
   <div class="footer-copy">Clarksville, Arkansas &nbsp;&middot;&nbsp; Solid hardwood only &nbsp;&middot;&nbsp; &copy; 2025 Blackline Flameworks</div>
-  <div class="footer-email"><a href="mailto:lingardaniel1@gmail.com">lingardaniel1@gmail.com</a></div>
+  <div class="footer-email"><a href="/cdn-cgi/l/email-protection#bfd3d6d1d8decddbded1d6dad38effd8d2ded6d391dcd0d2"><span class="__cf_email__" data-cfemail="e4888d8a83859680858a8d8188d5a48389858d88ca878b89">[email&#160;protected]</span></a></div>
 </footer>
 
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
   const hamburger = document.getElementById('hamburger');
   const navLinks  = document.getElementById('nav-links');
   if (hamburger && navLinks) {
-    hamburger.addEventListener('click', () => navLinks.classList.toggle('active'));
-    navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('active')));
-  }
-
-  // Reveal on scroll — show anything already visible immediately
-  const reveals = document.querySelectorAll('.reveal');
-  reveals.forEach(el => {
-    if (el.getBoundingClientRect().top < window.innerHeight) el.classList.add('visible');
-  });
-  if ('IntersectionObserver' in window) {
-    const obs = new IntersectionObserver((entries) => {
-      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
-    }, { threshold: 0.1 });
-    reveals.forEach(el => obs.observe(el));
-  } else {
-    reveals.forEach(el => el.classList.add('visible'));
-  }
-</script>
-
-</body>
-</html>
+    hamburger.addEventListener('click', () => navLinks.classList.toggle('act
