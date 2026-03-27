@@ -242,9 +242,35 @@
   @media (max-width:900px) { .about-layout { grid-template-columns:1fr; gap:2.5rem; } }
   .about-img-wrap { position:relative; }
   .about-img { width:100%; aspect-ratio:4/5; object-fit:cover; display:block; border:1px solid rgba(184,98,26,0.2); }
+  .about-video-placeholder { width:100%; aspect-ratio:4/5; background:var(--ash); border:1px solid rgba(184,98,26,0.2); display:flex; flex-direction:column; align-items:center; justify-content:center; gap:1rem; cursor:pointer; }
+  .about-video-placeholder video { width:100%; height:100%; object-fit:cover; display:block; }
   .about-pull { font-family:'Playfair Display',serif; font-size:clamp(1.2rem,2.5vw,1.6rem); font-style:italic; color:var(--ember-hot); line-height:1.4; margin-bottom:1.6rem; border-left:3px solid var(--ember); padding-left:1.4rem; }
   .about-body { font-size:1rem; color:var(--pale); line-height:1.78; }
   .about-body p + p { margin-top:1.1rem; }
+
+  /* CARE GUIDE */
+  #care { background:var(--ash); border-top:1px solid rgba(184,98,26,0.14); }
+  .care-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:2px; margin-top:3rem; }
+  .care-card { background:var(--grain); padding:2.2rem 1.8rem; }
+  .care-icon { font-size:1.6rem; margin-bottom:0.9rem; }
+  .care-title { font-family:'Playfair Display',serif; font-size:1.1rem; font-weight:700; color:var(--white); margin-bottom:0.6rem; }
+  .care-desc { font-size:0.9rem; color:var(--smoke); line-height:1.65; }
+  .care-guarantee { margin-top:3rem; background:var(--grain); border-left:3px solid var(--ember); padding:1.8rem 2rem; display:flex; gap:1.5rem; align-items:flex-start; }
+  .care-guarantee-icon { font-size:1.4rem; flex-shrink:0; margin-top:0.1rem; }
+  .care-guarantee-text { font-size:0.95rem; color:var(--pale); line-height:1.7; }
+  .care-guarantee-text strong { display:block; font-family:'Space Mono',monospace; font-size:0.62rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--cream); margin-bottom:0.3rem; font-weight:700; }
+
+  /* SERVICE AREA */
+  #service-area { background:var(--char); border-top:1px solid rgba(184,98,26,0.14); }
+  .service-layout { display:grid; grid-template-columns:1fr 1fr; gap:5rem; align-items:start; }
+  @media (max-width:900px) { .service-layout { grid-template-columns:1fr; gap:2.5rem; } }
+  .city-list { display:flex; flex-wrap:wrap; gap:0.5rem; margin-top:1.4rem; }
+  .city-tag { font-family:'Space Mono',monospace; font-size:0.6rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--pale); background:var(--ash); border:1px solid rgba(184,98,26,0.18); padding:0.38rem 0.8rem; }
+  .service-ship-box { background:var(--ash); border-top:3px solid var(--ember); padding:2.2rem 2rem; }
+  .service-ship-box h3 { font-family:'Playfair Display',serif; font-size:1.35rem; font-weight:700; color:var(--white); margin-bottom:0.8rem; }
+  .service-ship-box p { font-size:0.92rem; color:var(--smoke); line-height:1.65; margin-bottom:1rem; }
+  .ship-items { list-style:none; display:flex; flex-direction:column; gap:0.45rem; font-size:0.88rem; color:var(--pale); }
+  .ship-items li::before { content:'— '; color:var(--ember); }
 
   /* ORDER FORM */
   #order { background: var(--char); border-top: 2px solid var(--ember); }
@@ -325,6 +351,7 @@
     <li><a href="#order">Order</a></li>
     <li><a href="#testimonials">Reviews</a></li>
     <li><a href="#about">About</a></li>
+    <li><a href="#care">Care</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
   <a href="#order" class="nav-cta">Start a Build</a>
@@ -745,21 +772,103 @@
 
 <!-- ABOUT -->
 <section id="about">
-  <div class="section-label">The Craftsman</div>
+  <div class="section-label">Meet the Maker</div>
   <div class="about-layout">
     <div class="about-img-wrap reveal">
-      <img src="assets/img/skull-backer-workshop.jpg" alt="Workshop — Blackline Flameworks craftsman at work" class="about-img">
+      <!-- SWAP THIS: replace with a photo of you holding the torch or standing with a finished piece -->
+      <img src="assets/img/skull-backer-workshop.jpg" alt="Daniel Lingar — Blackline Flameworks, Clarksville AR" class="about-img">
     </div>
     <div class="reveal">
       <h2>One Person.<br><em>Every Build.</em></h2>
-      <p class="about-pull">No factory. No crew. No shortcuts. Just the wood, the torch, and the time it takes to do it right.</p>
+      <p class="about-pull">I don't just build furniture. I've spent years mastering the balance between wood and flame to create pieces that outlast their owners.</p>
       <div class="about-body">
-        <p>Blackline Flameworks is a one-man shop out of Clarksville, Arkansas. Every piece is designed, cut, torched, brushed, and finished by the same set of hands — start to finish. That's not a marketing line. That's just how it works here.</p>
-        <p>The torch-fire technique is adapted from shou sugi ban, an ancient Japanese method of wood preservation. Applied to furniture-grade hardwood, it does three things: hardens the surface, pulls the grain into sharp relief, and creates a finish that doesn't chip, peel, or fade. The fire is the finish.</p>
-        <p>Commissions are taken by appointment. If you want something built, the conversation starts with what you have in mind — dimensions, species, use case. Nothing gets cut until you've approved the design.</p>
+        <p>My name is Daniel. Blackline Flameworks is a one-man shop out of Clarksville, Arkansas — no factory, no crew, no delegation. Every piece is designed, cut, torched, brushed, and finished by the same set of hands, start to finish.</p>
+        <p>I chose fire as my finish because it does something no stain or paint can: it becomes part of the wood. The char hardens the surface, pulls the grain into sharp relief, and creates a depth that gets better with age. The result is permanent — it doesn't chip, peel, or fade. That's not a selling point. It's just physics.</p>
+        <p>If you want something built, the conversation starts with what you have in mind. Nothing gets cut until you've approved it.</p>
       </div>
       <div style="margin-top:2rem;">
         <a href="#order" class="btn-primary">Start That Conversation &rarr;</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CARE GUIDE -->
+<section id="care">
+  <div class="section-label">Built to Last</div>
+  <div class="reveal">
+    <h2>How to Keep It<br><em>Alive</em></h2>
+    <p class="section-intro">Torch-finished hardwood is one of the most durable surfaces you can own. Here's what you need to know to keep it that way for decades.</p>
+  </div>
+  <div class="care-grid">
+    <div class="care-card reveal">
+      <div class="care-icon">🧽</div>
+      <div class="care-title">Daily Cleaning</div>
+      <p class="care-desc">Damp cloth only. Wipe with the grain, not against it. No harsh chemicals, no abrasive scrubbers — they strip the seal and dull the char. For spills, blot immediately.</p>
+    </div>
+    <div class="care-card reveal">
+      <div class="care-icon">🛢️</div>
+      <div class="care-title">Annual Re-oiling</div>
+      <p class="care-desc">Once a year, apply a thin coat of food-safe mineral oil or a hardwax oil (Rubio Monocoat works well). Wipe on, let it soak 20 minutes, buff off the excess. It deepens the grain and refreshes the seal.</p>
+    </div>
+    <div class="care-card reveal">
+      <div class="care-icon">☀️</div>
+      <div class="care-title">Sun & Heat</div>
+      <p class="care-desc">Direct, sustained sunlight will lighten the char over years. A UV-blocking finish coat (applied at build time on request) extends the depth. Keep away from heating vents — dry air causes checking in any solid wood.</p>
+    </div>
+    <div class="care-card reveal">
+      <div class="care-icon">🪵</div>
+      <div class="care-title">How It Ages</div>
+      <p class="care-desc">Unlike painted or veneered furniture, this piece gets better with time. The char softens slightly over years of use, revealing more grain. Scratches are nearly invisible against the texture. This is wood that's meant to be lived with.</p>
+    </div>
+  </div>
+  <div class="care-guarantee reveal">
+    <div class="care-guarantee-icon">🔥</div>
+    <div class="care-guarantee-text">
+      <strong>The Blackline Guarantee</strong>
+      Every piece leaves with a satisfaction guarantee. If the finish fails, checks, or peels within the first year under normal use, I'll make it right — no questions, no invoice. I stand behind the work because I'm the only one who did it.
+    </div>
+  </div>
+</section>
+
+<!-- SERVICE AREA -->
+<section id="service-area">
+  <div class="section-label">Where We Build</div>
+  <div class="reveal">
+    <h2>Hand-Crafted in<br><em>the Ozarks</em></h2>
+  </div>
+  <div class="service-layout">
+    <div class="reveal">
+      <p class="section-intro" style="margin-bottom:1.5rem;">Built in the heart of Johnson County, Arkansas. Large furniture is available for local pickup or freight-quoted delivery. Small goods ship anywhere in the US.</p>
+      <div class="section-label" style="margin-bottom:0.8rem;">Northwest &amp; Central Arkansas</div>
+      <div class="city-list">
+        <span class="city-tag">Clarksville</span>
+        <span class="city-tag">Russellville</span>
+        <span class="city-tag">Fort Smith</span>
+        <span class="city-tag">Fayetteville</span>
+        <span class="city-tag">Bentonville</span>
+        <span class="city-tag">Rogers</span>
+        <span class="city-tag">Springdale</span>
+        <span class="city-tag">Little Rock</span>
+        <span class="city-tag">Conway</span>
+        <span class="city-tag">Ozark</span>
+        <span class="city-tag">Paris</span>
+        <span class="city-tag">Morrilton</span>
+      </div>
+      <p style="margin-top:1.2rem;font-family:'Space Mono',monospace;font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--smoke);">Not on the list? Ask anyway. Freight is always an option.</p>
+    </div>
+    <div class="service-ship-box reveal">
+      <h3>What Ships Nationwide</h3>
+      <p>Smaller pieces are boxed flat and ship via standard carriers to any US address. No freight hassle, no freight quote.</p>
+      <ul class="ship-items">
+        <li>Coasters (set of 4)</li>
+        <li>Candle holders</li>
+        <li>Key racks &amp; arrowhead wall art</li>
+        <li>Serving boards</li>
+        <li>Small custom wall pieces</li>
+      </ul>
+      <div style="margin-top:1.8rem;">
+        <a href="#order" class="btn-primary">Get a Shipping Quote &rarr;</a>
       </div>
     </div>
   </div>
