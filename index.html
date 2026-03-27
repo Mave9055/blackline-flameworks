@@ -1105,11 +1105,25 @@
 
     // Char layer — tracks burn intensity per pixel (0=unburned, 1=fully charred)
     const charMap = new Float32Array(W*H);
-    // Grain map for sanding reveal
-    const grainMap = new Float32Array(W*H);
+
+    // Grain susceptibility map:
+    // Soft earlywood (wide, light bands) = high susceptibility = chars fast
+    // Hard latewood (narrow, dark bands) = low susceptibility = resists flame
+    const grainMap    = new Float32Array(W*H); // general fbm noise for rendering
+    const softGrain   = new Float32Array(W*H); // 0=hard latewood, 1=soft earlywood
     for (let y=0; y<H; y++) {
       for (let x=0; x<W; x++) {
-        grainMap[y*W+x] = fbm(x/W*6, y/H*6, 3, 4);
+        const gx = x/W*4, gy = y/H*4;
+        const grain = fbm(gx, gy, 1, 4);
+        // Ring pattern: same as the visual wood texture
+        const ring = Math.sin((x/W*8 + grain*2.5) * Math.PI * 2) * 0.5 + 0.5;
+        // Soft earlywood = the lighter, wider bands (high ring value)
+        // Hard latewood = the darker, narrower bands (low ring value)
+        // Add slight noise variation so it's not perfectly uniform
+        const variation = fbm(gx*2, gy*2, 9, 3) * 0.2;
+        const soft = Math.pow(Math.max(0, ring + variation - 0.1), 1.4);
+        grainMap[y*W+x]  = grain;
+        softGrain[y*W+x] = soft;
       }
     }
 
@@ -1169,7 +1183,10 @@
           if (d2>r2) continue;
           const falloff = 1 - d2/r2;
           const idx = y*W+x;
-          charMap[idx] = Math.min(1, charMap[idx] + falloff * heat * 0.18);
+          // Soft earlywood chars fast; hard latewood resists — minimum 0.08 so
+          // even the hard grain darkens slightly with sustained heat
+          const susceptibility = 0.08 + softGrain[idx] * 0.92;
+          charMap[idx] = Math.min(1, charMap[idx] + falloff * heat * 0.22 * susceptibility);
         }
       }
       // Spawn ember particles
