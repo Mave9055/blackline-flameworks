@@ -104,25 +104,20 @@
 
   .section-intro { font-size: 1.1rem; color: var(--pale); max-width: 560px; margin-bottom: 3.5rem; line-height: 1.72; }
 
-  .flame-divider { width: 100%; height: 1px; background: linear-gradient(90deg,transparent,var(--ember),transparent); opacity: 0.35; }
-
   .reveal { opacity: 0; transform: translateY(22px); transition: opacity 0.7s ease, transform 0.7s ease; }
   .reveal.visible { opacity: 1; transform: none; }
-  @media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; } }
+  @media (prefers-reduced-motion: reduce) { .reveal { opacity: 1 !important; transform: none !important; } }
 
   /* HERO */
   #hero { min-height: 100vh; display: grid; place-items: center; position: relative; padding: 9rem 5vw 5rem; overflow: hidden; }
 
   .hero-bg {
     position: absolute; inset: 0;
-    background: 
-      linear-gradient(rgba(10, 8, 6, 0.6), rgba(10, 8, 6, 0.6)),
+    background:
+      linear-gradient(rgba(10,8,6,0.65), rgba(10,8,6,0.65)),
       url('assets/img/altar-table-front.jpg') center/cover no-repeat;
-    filter: brightness(0.4) saturate(0.8);
   }
   .hero-grain { position: absolute; inset: 0; background: repeating-linear-gradient(180deg,transparent 0px,transparent 28px,rgba(184,98,26,0.025) 28px,rgba(184,98,26,0.025) 29px); pointer-events: none; }
-
-  .hero-flame-svg { position: absolute; right: 4vw; bottom: 0; width: min(42vw,480px); opacity: 0.06; pointer-events: none; }
 
   .hero-content { position: relative; max-width: 860px; animation: fadeUp 1s ease both; z-index: 2; }
 
@@ -154,7 +149,6 @@
 
   /* GALLERY */
   #gallery { background: var(--char); }
-
   .gallery-grid { display: grid; grid-template-columns: repeat(12,1fr); grid-template-rows: repeat(2,270px); gap: 3px; }
   .gallery-item { overflow: hidden; cursor: pointer; background: var(--ash); }
   .gallery-item:nth-child(1) { grid-column: span 5; grid-row: span 2; }
@@ -162,13 +156,9 @@
   .gallery-item:nth-child(3) { grid-column: span 3; }
   .gallery-item:nth-child(4) { grid-column: span 3; }
   .gallery-item:nth-child(5) { grid-column: span 4; }
-
   .gallery-item img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.45s ease; }
   .gallery-item:hover img { transform: scale(1.05); }
-
-  /* placeholder for empty slots */
-  .gallery-placeholder { width: 100%; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.8rem; background: linear-gradient(135deg,#180e05 0%,#261608 50%,#180e05 100%); transition: transform 0.4s ease; }
-  .gallery-item:hover .gallery-placeholder { transform: scale(1.04); }
+  .gallery-placeholder { width: 100%; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.8rem; background: linear-gradient(135deg,#180e05 0%,#261608 50%,#180e05 100%); }
   .gallery-icon { width: 38px; height: 38px; opacity: 0.28; }
   .gallery-caption { font-family: 'Space Mono', monospace; font-size: 0.56rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--smoke); text-align: center; }
   .gallery-note { margin-top: 1.4rem; font-family: 'Space Mono', monospace; font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--smoke); text-align: center; }
@@ -176,453 +166,538 @@
   /* FEATURED */
   #featured { background: var(--grain); border-top: 2px solid var(--ember); border-bottom: 2px solid var(--ember); }
   .featured-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
-
   .featured-img-wrap { position: relative; }
   .featured-main-img { width: 100%; aspect-ratio: 3/4; object-fit: cover; display: block; border: 1px solid rgba(184,98,26,0.2); }
   .featured-badge { position: absolute; top: 1.2rem; right: 1.2rem; background: var(--ember); color: var(--white); font-family: 'Space Mono', monospace; font-size: 0.58rem; letter-spacing: 0.12em; text-transform: uppercase; padding: 0.35rem 0.75rem; z-index: 2; animation: pulseBadge 2.5s ease-in-out infinite; }
   @keyframes pulseBadge { 0%,100%{opacity:1} 50%{opacity:0.65} }
-
   .featured-thumbs { display: grid; grid-template-columns: repeat(3,1fr); gap: 3px; margin-top: 3px; }
   .featured-thumb { aspect-ratio: 1; overflow: hidden; cursor: pointer; border: 1px solid rgba(184,98,26,0.1); transition: border-color 0.2s; }
   .featured-thumb:hover { border-color: var(--ember); }
-  .featured-thumb img { width: 100%; height: 100%; object-fit: cover; }
+  .featured-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .featured-title { font-family: 'Playfair Display', serif; font-size: clamp(1.8rem,3.5vw,2.8rem); font-weight: 900; color: var(--white); line-height: 1.08; margin-bottom: 0.7rem; }
+  .featured-title em { font-style: italic; color: var(--ember-hot); }
+  .featured-dims { font-family: 'Space Mono', monospace; font-size: 0.65rem; letter-spacing: 0.12em; color: var(--ember); margin-bottom: 1.4rem; text-transform: uppercase; }
+  .featured-desc { font-size: 1rem; color: var(--pale); line-height: 1.7; margin-bottom: 2rem; }
+  .featured-specs { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; margin-bottom: 2rem; border: 1px solid rgba(184,98,26,0.14); }
+  .spec-item { background: var(--ash); padding: 0.85rem 1rem; }
+  .spec-label { font-family: 'Space Mono', monospace; font-size: 0.56rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--smoke); margin-bottom: 0.2rem; }
+  .spec-value { font-size: 0.93rem; color: var(--cream); }
+  .featured-price-row { display: flex; align-items: baseline; gap: 1.2rem; margin-bottom: 1.8rem; }
+  .featured-price { font-family: 'Playfair Display', serif; font-size: 2.8rem; font-weight: 900; color: var(--ember-hot); line-height: 1; }
+  .featured-price-note { font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--smoke); line-height: 1.5; }
+  .featured-actions { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 1rem; }
+  .featured-pickup { font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.08em; color: var(--smoke); text-transform: uppercase; }
 
-  .featured-title { font-size: clamp(2.2rem,4vw,3.5rem); margin-bottom: 0.5rem; }
-  .featured-dims { font-family: 'Space Mono', monospace; font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ember); margin-bottom: 1.8rem; }
-  .featured-desc { font-size: 1.15rem; color: var(--pale); margin-bottom: 2.5rem; line-height: 1.7; }
-
-  .featured-specs { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 3rem; padding: 2rem; background: rgba(10,8,6,0.4); border: 1px solid rgba(184,98,26,0.12); }
-  .spec-label { font-family: 'Space Mono', monospace; font-size: 0.58rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--smoke); margin-bottom: 0.3rem; }
-  .spec-value { font-family: 'Crimson Pro', serif; font-size: 1.05rem; color: var(--white); font-weight: 400; }
-
-  .featured-price-row { display: flex; align-items: baseline; gap: 1.5rem; margin-bottom: 2.5rem; }
-  .featured-price { font-family: 'Playfair Display', serif; font-size: 2.8rem; font-weight: 700; color: var(--white); }
-  .featured-price-note { font-family: 'Space Mono', monospace; font-size: 0.62rem; color: var(--smoke); line-height: 1.5; letter-spacing: 0.05em; text-transform: uppercase; }
-
-  .featured-actions { display: flex; gap: 1rem; margin-bottom: 1.5rem; }
-  .featured-pickup { font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--smoke); }
+  /* PRODUCTS */
+  #products { background: var(--ash); }
+  .products-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(250px,1fr)); gap: 2px; margin-bottom: 3rem; }
+  .product-card { background: var(--grain); padding: 2.2rem 1.8rem; transition: background 0.25s; position: relative; overflow: hidden; }
+  .product-card:hover { background: #22160a; }
+  .product-card.highlight { background: var(--ember); }
+  .product-card.highlight * { color: var(--white) !important; }
+  .product-card.highlight .product-tag { background: rgba(255,255,255,0.18) !important; color: var(--white) !important; }
+  .product-card.highlight:hover { background: var(--ember-hot); }
+  .product-tag { font-family: 'Space Mono', monospace; font-size: 0.58rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ember); background: rgba(184,98,26,0.1); padding: 0.28rem 0.65rem; display: inline-block; margin-bottom: 1.1rem; }
+  .product-name { font-family: 'Playfair Display', serif; font-size: 1.45rem; font-weight: 700; color: var(--white); margin-bottom: 0.45rem; }
+  .product-desc { font-size: 0.9rem; color: var(--smoke); line-height: 1.6; margin-bottom: 1.4rem; }
+  .product-price { font-family: 'Playfair Display', serif; font-size: 2.1rem; font-weight: 900; color: var(--ember-hot); line-height: 1; margin-bottom: 0.25rem; }
+  .product-note { font-family: 'Space Mono', monospace; font-size: 0.58rem; letter-spacing: 0.1em; color: var(--smoke); text-transform: uppercase; margin-bottom: 1.4rem; }
+  .product-features { list-style: none; font-size: 0.86rem; color: var(--pale); display: flex; flex-direction: column; gap: 0.38rem; }
+  .product-features li::before { content: '— '; color: var(--ember); }
 
   /* ORDER FORM */
-  #order { background: var(--ash); }
-  .order-container { display: grid; grid-template-columns: 1fr 1.4fr; gap: 6vw; }
-
-  .order-form-wrap { background: var(--char); padding: 4rem; border: 1px solid rgba(184,98,26,0.15); box-shadow: 0 30px 60px rgba(0,0,0,0.4); }
-
-  .form-group { margin-bottom: 2rem; }
-  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
-
-  label { display: block; font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--smoke); margin-bottom: 0.8rem; }
-  input, select, textarea { width: 100%; background: #14110d; border: 1px solid rgba(196,180,154,0.15); padding: 1rem 1.2rem; color: var(--white); font-family: 'Crimson Pro', serif; font-size: 1rem; transition: border-color 0.2s, outline 0.2s; }
-  input:focus, select:focus, textarea:focus { outline: none; border-color: var(--ember); }
-  textarea { min-height: 140px; resize: vertical; }
-
-  .form-submit { width: 100%; background: var(--ember); color: var(--white); border: none; padding: 1.2rem; font-family: 'Space Mono', monospace; font-size: 0.75rem; letter-spacing: 0.15em; text-transform: uppercase; cursor: pointer; transition: background 0.2s; margin-top: 1rem; }
+  #order { background: var(--char); border-top: 2px solid var(--ember); }
+  .order-layout { display: grid; grid-template-columns: 1fr 1.4fr; gap: 6rem; align-items: start; }
+  .trust-items { margin-top: 2.5rem; display: flex; flex-direction: column; gap: 1.5rem; }
+  .trust-item { display: flex; gap: 1rem; align-items: flex-start; }
+  .trust-icon { width: 34px; height: 34px; background: rgba(184,98,26,0.12); border: 1px solid rgba(184,98,26,0.28); display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 0.95rem; }
+  .trust-text { font-size: 0.88rem; color: var(--pale); line-height: 1.5; }
+  .trust-text strong { display: block; font-family: 'Space Mono', monospace; font-size: 0.62rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--cream); margin-bottom: 0.2rem; font-weight: 700; }
+  .order-form { background: var(--ash); padding: 2.8rem; border-top: 3px solid var(--ember); }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .form-group { margin-bottom: 1.4rem; }
+  label { display: block; font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--pale); margin-bottom: 0.45rem; }
+  input, select, textarea { width: 100%; background: var(--char); border: 1px solid rgba(196,180,154,0.12); border-bottom: 1px solid rgba(184,98,26,0.38); color: var(--cream); font-family: 'Crimson Pro', serif; font-size: 1rem; padding: 0.85rem 0.95rem; transition: border-color 0.2s; outline: none; -webkit-appearance: none; appearance: none; }
+  select { cursor: pointer; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23b8621a' stroke-width='1.5' fill='none'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 1rem center; padding-right: 2.4rem; }
+  select option { background: var(--ash); }
+  input:focus, select:focus, textarea:focus { border-color: var(--ember); background: #100c06; }
+  input::placeholder, textarea::placeholder { color: var(--smoke); }
+  textarea { resize: vertical; min-height: 115px; }
+  .form-submit { width: 100%; font-family: 'Space Mono', monospace; font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase; background: var(--ember); color: var(--white); border: none; padding: 1.15rem; cursor: pointer; transition: background 0.2s; margin-top: 0.4rem; }
   .form-submit:hover { background: var(--ember-hot); }
-  .form-note { margin-top: 1.5rem; font-family: 'Space Mono', monospace; font-size: 0.58rem; color: var(--smoke); text-align: center; line-height: 1.6; }
+  .form-note { margin-top: 1rem; font-family: 'Space Mono', monospace; font-size: 0.58rem; letter-spacing: 0.08em; color: var(--smoke); text-align: center; line-height: 1.65; }
+  .form-note a { color: var(--ember); text-decoration: none; }
 
   /* CONTACT */
-  #contact { background: var(--char); border-top: 1px solid rgba(184,98,26,0.1); }
-  .contact-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(220px,1fr)); gap: 3rem; margin-top: 4rem; }
-  .contact-block-label { font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--ember); margin-bottom: 1rem; }
-  .contact-block-value { font-family: 'Playfair Display', serif; font-size: 1.6rem; color: var(--white); margin-bottom: 0.8rem; line-height: 1.2; }
-  .contact-block-note { font-size: 0.9rem; color: var(--smoke); line-height: 1.6; }
+  #contact { background: var(--ash); border-top: 1px solid rgba(184,98,26,0.14); }
+  .contact-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(210px,1fr)); gap: 3px; margin-top: 3rem; }
+  .contact-block { background: var(--grain); padding: 2.2rem 1.8rem; }
+  .contact-block-label { font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--ember); margin-bottom: 0.7rem; }
+  .contact-block-value { font-family: 'Playfair Display', serif; font-size: 1.15rem; color: var(--white); line-height: 1.4; }
+  .contact-block-note { font-size: 0.84rem; color: var(--smoke); margin-top: 0.45rem; line-height: 1.5; }
 
   /* FOOTER */
-  footer { padding: 5rem 5vw; background: #050403; border-top: 1px solid rgba(184,98,26,0.08); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 2rem; }
-  .footer-name { font-family: 'Space Mono', monospace; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--white); margin-bottom: 0.4rem; }
-  .footer-tag { font-size: 0.8rem; color: var(--smoke); }
-  .footer-copy { font-family: 'Space Mono', monospace; font-size: 0.58rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--smoke); }
-  .footer-email { font-family: 'Space Mono', monospace; font-size: 0.65rem; color: var(--pale); }
+  footer { background: #060402; padding: 2.5rem 5vw; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; border-top: 1px solid rgba(184,98,26,0.18); }
+  .footer-brand { display: flex; flex-direction: column; gap: 0.2rem; }
+  .footer-name { font-family: 'Space Mono', monospace; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--pale); }
+  .footer-tag { font-family: 'Space Mono', monospace; font-size: 0.52rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--ember); }
+  .footer-copy { font-family: 'Space Mono', monospace; font-size: 0.56rem; letter-spacing: 0.1em; color: var(--smoke); text-align: center; }
+  .footer-email a { font-family: 'Space Mono', monospace; font-size: 0.58rem; letter-spacing: 0.08em; color: var(--ember); text-decoration: none; }
 
-  /* FLAME DIVIDER ANIMATION */
-  .flame-section-divider { display: flex; justify-content: center; align-items: flex-end; gap: 1rem; height: 120px; padding-bottom: 1rem; pointer-events: none; overflow: hidden; margin: -60px 0; position: relative; z-index: 5; }
-  .dflame { filter: blur(1px); transform-origin: center bottom; }
-
-  @keyframes flicker { 0%,100% { transform: scale(1) rotate(-1deg); opacity: 0.8; } 50% { transform: scale(1.08) rotate(1deg); opacity: 1; } }
-  @keyframes flicker2 { 0%,100% { transform: scale(1.05) rotate(1deg); opacity: 0.9; } 50% { transform: scale(0.95) rotate(-1deg); opacity: 0.7; } }
-  @keyframes flicker3 { 0%,100% { transform: scale(0.98) rotate(0deg); opacity: 0.85; } 50% { transform: scale(1.1) rotate(2deg); opacity: 1; } }
+  /* FLAME DIVIDERS */
+  .flame-section-divider { display: flex; justify-content: center; align-items: flex-end; gap: 4px; height: 80px; overflow: hidden; pointer-events: none; }
+  .dflame { transform-origin: center bottom; }
+  @keyframes flicker  { 0%,100%{transform:scaleY(1) rotate(-1deg);opacity:0.82} 50%{transform:scaleY(1.09) rotate(1deg);opacity:1} }
+  @keyframes flicker2 { 0%,100%{transform:scaleY(0.94) rotate(1deg);opacity:0.68} 50%{transform:scaleY(1.11) rotate(-2deg);opacity:0.9} }
+  @keyframes flicker3 { 0%,100%{transform:scaleY(1.05) rotate(-2deg);opacity:0.55} 50%{transform:scaleY(0.89) rotate(1deg);opacity:0.78} }
+  @keyframes pulseBadge { 0%,100%{opacity:1} 50%{opacity:0.65} }
+  @keyframes fadeUp { from{opacity:0;transform:translateY(28px)} to{opacity:1;transform:translateY(0)} }
 
   /* MOBILE */
   @media (max-width: 900px) {
     .hamburger { display: flex; }
-    .nav-links { display: none; position: absolute; top: 100%; left: 0; right: 0; background: var(--char); flex-direction: column; padding: 2rem; border-bottom: 1px solid var(--ash); text-align: center; }
+    .nav-links { display: none; position: fixed; top: 62px; left: 0; right: 0; background: rgba(10,8,6,0.98); flex-direction: column; padding: 2rem 5vw; border-bottom: 1px solid rgba(184,98,26,0.2); gap: 1.5rem; z-index: 99; }
     .nav-links.active { display: flex; }
     .nav-cta { display: none; }
-    .featured-layout, .order-container { grid-template-columns: 1fr; gap: 3.5rem; }
-    .order-form-wrap { padding: 2.5rem 1.8rem; }
-    .gallery-grid { grid-template-rows: repeat(4, 200px); }
-    .gallery-item:nth-child(1) { grid-column: span 12; grid-row: span 2; }
-    .gallery-item:nth-child(2), .gallery-item:nth-child(3), .gallery-item:nth-child(4), .gallery-item:nth-child(5) { grid-column: span 6; }
+    .featured-layout { grid-template-columns: 1fr; gap: 2.5rem; }
+    .order-layout { grid-template-columns: 1fr; gap: 3rem; }
+    .form-row { grid-template-columns: 1fr; }
+    .order-form { padding: 2rem 1.4rem; }
+    .gallery-grid { grid-template-columns: 1fr 1fr; grid-template-rows: auto; }
+    .gallery-item { grid-column: span 1 !important; grid-row: span 1 !important; height: 180px; }
     footer { flex-direction: column; text-align: center; }
   }
-
-  @keyframes fadeUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: none; } }
 </style>
 </head>
-
 <body>
 
-  <nav>
-    <a href="#" class="nav-logo">
-      Blackline Flameworks
-      <span class="nav-logo-sub">Clarksville, Arkansas</span>
-    </a>
-    <ul class="nav-links" id="nav-links">
-      <li><a href="#process">The Fire</a></li>
-      <li><a href="#gallery">Gallery</a></li>
-      <li><a href="#featured">Available</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-    <a href="#order" class="nav-cta">Commission a Piece</a>
-    <button class="hamburger" id="hamburger">
-      <span></span><span></span><span></span>
-    </button>
-  </nav>
+<nav>
+  <a href="#" class="nav-logo">
+    Blackline Flameworks
+    <span class="nav-logo-sub">Cut by hand. Finished by fire.</span>
+  </a>
+  <ul class="nav-links" id="nav-links">
+    <li><a href="#process">Process</a></li>
+    <li><a href="#gallery">Gallery</a></li>
+    <li><a href="#featured">Available Now</a></li>
+    <li><a href="#products">Pricing</a></li>
+    <li><a href="#order">Order</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="#order" class="nav-cta">Start a Build</a>
+  <button class="hamburger" id="hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
 
-  <section id="hero">
-    <div class="hero-bg"></div>
-    <div class="hero-grain"></div>
-    
-    <div class="hero-content">
-      <div class="hero-wordmark">Hand-Built in Arkansas</div>
-      <h1>Finished by <em>Fire.</em></h1>
-      <p class="hero-tagline">Solid Hardwood &middot; Torch-Fired &middot; One-Off Pieces</p>
-      <p class="hero-sub">One-person shop in Clarksville building furniture-grade pieces where the species sets the density, and the flame walks the grain.</p>
-      <div class="hero-actions">
-        <a href="#order" class="btn-primary">Start a Commission &rarr;</a>
-        <a href="#gallery" class="btn-ghost">View the Gallery</a>
-      </div>
 
-      <div class="hero-stats">
-        <div class="stat">
-          <div class="stat-num">01</div>
-          <div class="stat-label">Person Shop</div>
-        </div>
-        <div class="stat">
-          <div class="stat-num">100%</div>
-          <div class="stat-label">Solid Hardwood</div>
-        </div>
-        <div class="stat">
-          <div class="stat-num">1:1</div>
-          <div class="stat-label">Custom Design</div>
-        </div>
-      </div>
+<!-- HERO — background: altar-table-front.jpg (full table, best for wide hero) -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grain"></div>
+  <div class="hero-content">
+    <div class="hero-wordmark">Hand-Built in Clarksville, Arkansas</div>
+    <h1>Finished<br>by <em>Fire.</em></h1>
+    <p class="hero-tagline">Solid Hardwood &middot; Open Flame &middot; One Builder</p>
+    <p class="hero-sub">One-person shop building furniture-grade pieces where the species sets the density and the flame walks the grain. No veneer. No shortcuts.</p>
+    <div class="hero-actions">
+      <a href="#order" class="btn-primary">Start a Build &rarr;</a>
+      <a href="#featured" class="btn-ghost">See What's Available</a>
     </div>
-
-    <div class="hero-flame-svg">
-      <svg viewBox="0 0 200 300" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M100 280C60 220 20 160 30 110C35 80 15 45 40 10C35 55 55 65 50 40C70 65 65 110 75 80C80 50 95 20 110 5C95 70 115 100 100 140C125 100 135 55 145 20C135 90 115 140 130 210C150 250 120 280 100 280Z" fill="url(#hero-grad)" opacity="0.8"/>
-        <defs>
-          <linearGradient id="hero-grad" x1="100" y1="280" x2="100" y2="5" gradientUnits="userSpaceOnUse">
-            <stop offset="0" stop-color="#b8621a"/>
-            <stop offset="1" stop-color="#e07a20" stop-opacity="0"/>
-          </linearGradient>
-        </defs>
-      </svg>
+    <div class="hero-stats">
+      <div class="stat-item"><div class="stat-num">100%</div><div class="stat-label">Solid Wood</div></div>
+      <div class="stat-item"><div class="stat-num">Open</div><div class="stat-label">Flame Finish</div></div>
+      <div class="stat-item"><div class="stat-num">1</div><div class="stat-label">Builder. No shortcuts.</div></div>
+      <div class="stat-item"><div class="stat-num">AR</div><div class="stat-label">Clarksville Pickup</div></div>
     </div>
-  </section>
-
-  <div class="flame-section-divider" aria-hidden="true">
-    <div class="dflame" style="animation-name:flicker3;animation-duration:2.0s;"><svg width="22" height="60" viewBox="0 0 22 60" fill="none"><path d="M11 58C5 46,0 34,3 22C4 16,1 9,5 3C5 12,8 15,7 9C11 15,9 24,11 18C12 12,15 5,17 2C15 11,18 16,16 24C20 17,21 9,22 4C21 17,17 24,20 34C23 44,16 52,11 58Z" fill="url(#dg1)"/><defs><linearGradient id="dg1" x1="11" y1="58" x2="11" y2="2" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#b8621a" stop-opacity="0.9"/><stop offset="100%" stop-color="#e07a20" stop-opacity="0.05"/></linearGradient></defs></svg></div>
-    <div class="dflame" style="animation-name:flicker;animation-duration:1.6s;animation-delay:-0.4s;"><svg width="32" height="90" viewBox="0 0 32 90" fill="none"><path d="M16 88C7 70,0 50,4 34C6 24,2 13,7 4C7 16,11 20,10 11C15 20,13 32,16 24C17 15,21 5,24 1C21 14,25 21,22 32C27 22,29 12,30 4C28 20,23 32,27 46C31 60,22 74,16 88Z" fill="url(#dg2)"/><defs><linearGradient id="dg2" x1="16" y1="88" x2="16" y2="1" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#c06820" stop-opacity="0.95"/><stop offset="100%" stop-color="#f0a040" stop-opacity="0.04"/></linearGradient></defs></svg></div>
-    <div class="dflame" style="animation-name:flicker2;animation-duration:2.3s;animation-delay:-0.9s;"><svg width="26" height="75" viewBox="0 0 26 75" fill="none"><path d="M13 73C6 58,0 42,3 28C5 20,1 11,6 3C5 14,9 17,8 10C12 17,11 28,13 21C14 13,17 5,20 1C17 12,21 18,18 27C23 18,24 9,25 3C24 17,19 27,22 39C26 50,18 62,13 73Z" fill="url(#dg3)"/><defs><linearGradient id="dg3" x1="13" y1="73" x2="13" y2="1" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#b8621a" stop-opacity="0.85"/><stop offset="100%" stop-color="#e07a20" stop-opacity="0.05"/></linearGradient></defs></svg></div>
-    <div class="dflame" style="animation-name:flicker;animation-duration:1.8s;animation-delay:-1.3s;"><svg width="38" height="105" viewBox="0 0 38 105" fill="none"><path d="M19 103C9 82,0 58,5 40C8 28,3 16,10 5C9 20,14 24,12 14C18 24,16 38,19 29C21 18,26 6,30 1C26 18,31 26,27 40C34 27,36 14,38 5C36 24,29 40,34 58C38 74,27 90,19 103Z" fill="url(#dg4)"/><defs><linearGradient id="dg4" x1="19" y1="103" x2="19" y2="1" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#c06820" stop-opacity="1"/><stop offset="100%" stop-color="#f5b060" stop-opacity="0.03"/></linearGradient></defs></svg></div>
-    <div class="dflame" style="animation-name:flicker3;animation-duration:2.1s;animation-delay:-0.6s;"><svg width="24" height="68" viewBox="0 0 24 68" fill="none"><path d="M12 66C5 52,0 37,3 24C5 17,1 9,6 2C5 13,9 16,8 9C12 16,10 27,12 20C13 12,17 4,19 1C16 11,20 17,17 26C22 17,23 9,24 3C22 17,18 26,21 38C25 49,17 58,12 66Z" fill="url(#dg5)"/><defs><linearGradient id="dg5" x1="12" y1="66" x2="12" y2="1" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#b8621a" stop-opacity="0.88"/><stop offset="100%" stop-color="#f0a040" stop-opacity="0.05"/></linearGradient></defs></svg></div>
-    <div class="dflame" style="animation-name:flicker2;animation-duration:1.7s;animation-delay:-1.7s;"><svg width="30" height="85" viewBox="0 0 30 85" fill="none"><path d="M15 83C7 66,0 47,4 32C6 22,2 12,7 3C6 15,10 19,9 11C14 19,12 30,15 23C16 14,20 5,23 1C20 13,24 19,21 30C26 20,28 11,29 4C27 19,22 30,26 43C30 56,20 70,15 83Z" fill="url(#dg6)"/><defs><linearGradient id="dg6" x1="15" y1="83" x2="15" y2="1" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#b8621a" stop-opacity="0.82"/><stop offset="100%" stop-color="#e07a20" stop-opacity="0.05"/></linearGradient></defs></svg></div>
-    <div class="dflame" style="animation-name:flicker;animation-duration:2.2s;animation-delay:-0.2s;"><svg width="20" height="56" viewBox="0 0 20 56" fill="none"><path d="M10 54C4 43,0 30,3 20C4 14,1 8,5 2C4 11,7 13,6 8C10 13,8 22,10 17C11 10,14 4,16 1C14 10,17 14,15 22C19 15,20 8,20 3C19 14,15 22,18 31C21 40,14 48,10 54Z" fill="url(#dg7)"/><defs><linearGradient id="dg7" x1="10" y1="54" x2="10" y2="1" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#b8621a" stop-opacity="0.8"/><stop offset="100%" stop-color="#f0a040" stop-opacity="0.05"/></linearGradient></defs></svg></div>
-    <div class="dflame" style="animation-name:flicker3;animation-duration:1.9s;animation-delay:-1.0s;"><svg width="34" height="95" viewBox="0 0 34 95" fill="none"><path d="M17 93C8 74,0 53,4 36C6 25,2 14,8 4C7 17,12 21,10 12C16 21,14 34,17 26C18 16,23 5,26 1C23 15,27 22,24 34C29 23,31 12,32 4C30 21,25 34,29 48C33 62,23 78,17 93Z" fill="url(#dg8)"/><defs><linearGradient id="dg8" x1="17" y1="93" x2="17" y2="1" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#c06820" stop-opacity="0.93"/><stop offset="100%" stop-color="#f5b060" stop-opacity="0.04"/></linearGradient></defs></svg></div>
-    <div class="dflame" style="animation-name:flicker2;animation-duration:2.0s;animation-delay:-0.7s;"><svg width="28" height="80" viewBox="0 0 28 80" fill="none"><path d="M14 78C6 62,0 44,4 30C6 21,1 12,7 3C6 16,10 19,9 11C14 19,12 30,14 23C15 14,19 5,22 1C19 13,23 19,20 30C25 21,27 11,28 4C26 19,21 30,25 43C28 56,19 68,14 78Z" fill="url(#dg9)"/><defs><linearGradient id="dg9" x1="14" y1="78" x2="14" y2="1" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#b8621a" stop-opacity="0.87"/><stop offset="100%" stop-color="#e07a20" stop-opacity="0.05"/></linearGradient></defs></svg></div>
-    <div class="dflame" style="animation-name:flicker;animation-duration:1.5s;animation-delay:-1.4s;"><svg width="42" height="118" viewBox="0 0 42 118" fill="none"><path d="M21 116C10 92,0 66,6 46C9 32,3 18,11 5C10 23,16 28,14 16C21 28,18 44,21 33C23 20,29 7,33 1C29 21,35 30,31 46C38 32,40 17,42 6C40 28,33 46,38 64C43 82,30 100,21 116Z" fill="url(#dg10)"/><defs><linearGradient id="dg10" x1="21" y1="116" x2="21" y2="1" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#c06820" stop-opacity="0.96"/><stop offset="100%" stop-color="#f8b850" stop-opacity="0.03"/></linearGradient></defs></svg></div>
-    <div class="dflame" style="animation-name:flicker3;animation-duration:2.4s;animation-delay:-0.3s;"><svg width="26" height="74" viewBox="0 0 26 74" fill="none"><path d="M13 72C6 57,0 40,3 27C5 19,1 10,6 2C5 14,9 17,8 10C12 17,11 28,13 21C14 13,17 5,20 1C17 12,21 17,18 27C23 18,24 10,25 3C23 16,19 27,22 38C25 50,18 61,13 72Z" fill="url(#dg11)"/><defs><linearGradient id="dg11" x1="13" y1="72" x2="13" y2="1" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#b8621a" stop-opacity="0.84"/><stop offset="100%" stop-color="#f0a040" stop-opacity="0.05"/></linearGradient></defs></svg></div>
-    <div class="dflame" style="animation-name:flicker2;animation-duration:1.8s;animation-delay:-1.1s;"><svg width="18" height="52" viewBox="0 0 18 52" fill="none"><path d="M9 50C4 40,0 28,2 18C3 13,1 7,5 2C4 10,6 12,6 7C9 12,8 20,9 15C10 9,12 3,14 1C12 9,15 13,13 20C17 13,17 7,18 2C17 13,14 20,16 29C19 37,13 44,9 50Z" fill="url(#dg12)"/><defs><linearGradient id="dg12" x1="9" y1="50" x2="9" y2="1" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#b8621a" stop-opacity="0.78"/><stop offset="100%" stop-color="#e07a20" stop-opacity="0.05"/></linearGradient></defs></svg></div>
   </div>
+</section>
 
-  <section id="process">
-    <div class="section-label">The Method</div>
+<div class="flame-section-divider" aria-hidden="true">
+  <div class="dflame" style="animation:flicker3 2.0s infinite;"><svg width="22" height="60" viewBox="0 0 22 60" fill="none"><path d="M11 58C5 46,0 34,3 22C4 16,1 9,5 3C5 12,8 15,7 9C11 15,9 24,11 18C12 12,15 5,17 2C15 11,18 16,16 24C20 17,21 9,22 4C21 17,17 24,20 34C23 44,16 52,11 58Z" fill="url(#a1)"/><defs><linearGradient id="a1" x1="11" y1="58" x2="11" y2="2" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#b8621a" stop-opacity="0.9"/><stop offset="100%" stop-color="#e07a20" stop-opacity="0.05"/></linearGradient></defs></svg></div>
+  <div class="dflame" style="animation:flicker 1.6s infinite;animation-delay:-0.4s;"><svg width="32" height="90" viewBox="0 0 32 90" fill="none"><path d="M16 88C7 70,0 50,4 34C6 24,2 13,7 4C7 16,11 20,10 11C15 20,13 32,16 24C17 15,21 5,24 1C21 14,25 21,22 32C27 22,29 12,30 4C28 20,23 32,27 46C31 60,22 74,16 88Z" fill="url(#a2)"/><defs><linearGradient id="a2" x1="16" y1="88" x2="16" y2="1" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#c06820" stop-opacity="0.95"/><stop offset="100%" stop-color="#f0a040" stop-opacity="0.04"/></linearGradient></defs></svg></div>
+  <div class="dflame" style="animation:flicker2 2.3s infinite;animation-delay:-0.9s;"><svg width="42" height="118" viewBox="0 0 42 118" fill="none"><path d="M21 116C10 92,0 66,6 46C9 32,3 18,11 5C10 23,16 28,14 16C21 28,18 44,21 33C23 20,29 7,33 1C29 21,35 30,31 46C38 32,40 17,42 6C40 28,33 46,38 64C43 82,30 100,21 116Z" fill="url(#a3)"/><defs><linearGradient id="a3" x1="21" y1="116" x2="21" y2="1" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#c06820" stop-opacity="0.96"/><stop offset="100%" stop-color="#f8b850" stop-opacity="0.03"/></linearGradient></defs></svg></div>
+  <div class="dflame" style="animation:flicker 1.8s infinite;animation-delay:-1.3s;"><svg width="28" height="80" viewBox="0 0 28 80" fill="none"><path d="M14 78C6 62,0 44,4 30C6 21,1 12,7 3C6 16,10 19,9 11C14 19,12 30,14 23C15 14,19 5,22 1C19 13,23 19,20 30C25 21,27 11,28 4C26 19,21 30,25 43C28 56,19 68,14 78Z" fill="url(#a4)"/><defs><linearGradient id="a4" x1="14" y1="78" x2="14" y2="1" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#b8621a" stop-opacity="0.87"/><stop offset="100%" stop-color="#e07a20" stop-opacity="0.05"/></linearGradient></defs></svg></div>
+  <div class="dflame" style="animation:flicker3 2.1s infinite;animation-delay:-0.6s;"><svg width="38" height="105" viewBox="0 0 38 105" fill="none"><path d="M19 103C9 82,0 58,5 40C8 28,3 16,10 5C9 20,14 24,12 14C18 24,16 38,19 29C21 18,26 6,30 1C26 18,31 26,27 40C34 27,36 14,38 5C36 24,29 40,34 58C38 74,27 90,19 103Z" fill="url(#a5)"/><defs><linearGradient id="a5" x1="19" y1="103" x2="19" y2="1" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#c06820" stop-opacity="1"/><stop offset="100%" stop-color="#f5b060" stop-opacity="0.03"/></linearGradient></defs></svg></div>
+  <div class="dflame" style="animation:flicker2 1.7s infinite;animation-delay:-1.7s;"><svg width="24" height="68" viewBox="0 0 24 68" fill="none"><path d="M12 66C5 52,0 37,3 24C5 17,1 9,6 2C5 13,9 16,8 9C12 16,10 27,12 20C13 12,17 4,19 1C16 11,20 17,17 26C22 17,23 9,24 3C22 17,18 26,21 38C25 49,17 58,12 66Z" fill="url(#a6)"/><defs><linearGradient id="a6" x1="12" y1="66" x2="12" y2="1" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#b8621a" stop-opacity="0.88"/><stop offset="100%" stop-color="#f0a040" stop-opacity="0.05"/></linearGradient></defs></svg></div>
+  <div class="dflame" style="animation:flicker 2.2s infinite;animation-delay:-0.2s;"><svg width="34" height="95" viewBox="0 0 34 95" fill="none"><path d="M17 93C8 74,0 53,4 36C6 25,2 14,8 4C7 17,12 21,10 12C16 21,14 34,17 26C18 16,23 5,26 1C23 15,27 22,24 34C29 23,31 12,32 4C30 21,25 34,29 48C33 62,23 78,17 93Z" fill="url(#a7)"/><defs><linearGradient id="a7" x1="17" y1="93" x2="17" y2="1" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#c06820" stop-opacity="0.93"/><stop offset="100%" stop-color="#f5b060" stop-opacity="0.04"/></linearGradient></defs></svg></div>
+  <div class="dflame" style="animation:flicker3 1.9s infinite;animation-delay:-1.0s;"><svg width="20" height="56" viewBox="0 0 20 56" fill="none"><path d="M10 54C4 43,0 30,3 20C4 14,1 8,5 2C4 11,7 13,6 8C10 13,8 22,10 17C11 10,14 4,16 1C14 10,17 14,15 22C19 15,20 8,20 3C19 14,15 22,18 31C21 40,14 48,10 54Z" fill="url(#a8)"/><defs><linearGradient id="a8" x1="10" y1="54" x2="10" y2="1" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#b8621a" stop-opacity="0.8"/><stop offset="100%" stop-color="#f0a040" stop-opacity="0.05"/></linearGradient></defs></svg></div>
+</div>
+
+
+<!-- PROCESS -->
+<section id="process">
+  <div class="section-label">How It's Made</div>
+  <div class="reveal">
+    <h2>The Fire Is<br><em>The Finish</em></h2>
+    <p class="section-intro">Not stain. Not paint pretending to be something else. A torch chars the surface, sealing the grain into something that doesn't chip, fade, or peel.</p>
+  </div>
+  <div class="process-grid">
+    <div class="process-step reveal">
+      <div class="step-num">01</div><div class="ember-line"></div>
+      <div class="step-title">Select the Wood</div>
+      <p class="step-desc">Solid hardwood slabs only — no particle board, no veneer. The species sets the density, the weight, and how fire walks the grain.</p>
+    </div>
+    <div class="process-step reveal">
+      <div class="step-num">02</div><div class="ember-line"></div>
+      <div class="step-title">Cut &amp; Shape</div>
+      <p class="step-desc">Dimensions cut to spec, edges shaped by hand. Raw and square or smooth and rounded — every cut is intentional before the torch comes out.</p>
+    </div>
+    <div class="process-step reveal">
+      <div class="step-num">03</div><div class="ember-line"></div>
+      <div class="step-title">Open Flame Finish</div>
+      <p class="step-desc">A propane torch passes over the surface in controlled passes — charring and hardening. Shou sugi ban adapted by hand. No two pieces look exactly alike.</p>
+    </div>
+    <div class="process-step reveal">
+      <div class="step-num">04</div><div class="ember-line"></div>
+      <div class="step-title">Brush &amp; Seal</div>
+      <p class="step-desc">Char brushed back to reveal grain depth and contrast. A final oil or satin topcoat protects it for daily real-world use — not a display piece.</p>
+    </div>
+  </div>
+</section>
+
+<div class="flame-section-divider" aria-hidden="true">
+  <div class="dflame" style="animation:flicker2 2.0s infinite;"><svg width="22" height="60" viewBox="0 0 22 60" fill="none"><path d="M11 58C5 46,0 34,3 22C4 16,1 9,5 3C5 12,8 15,7 9C11 15,9 24,11 18C12 12,15 5,17 2C15 11,18 16,16 24C20 17,21 9,22 4C21 17,17 24,20 34C23 44,16 52,11 58Z" fill="url(#b1)"/><defs><linearGradient id="b1" x1="11" y1="58" x2="11" y2="2" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#b8621a" stop-opacity="0.9"/><stop offset="100%" stop-color="#e07a20" stop-opacity="0.05"/></linearGradient></defs></svg></div>
+  <div class="dflame" style="animation:flicker 1.6s infinite;animation-delay:-0.5s;"><svg width="42" height="118" viewBox="0 0 42 118" fill="none"><path d="M21 116C10 92,0 66,6 46C9 32,3 18,11 5C10 23,16 28,14 16C21 28,18 44,21 33C23 20,29 7,33 1C29 21,35 30,31 46C38 32,40 17,42 6C40 28,33 46,38 64C43 82,30 100,21 116Z" fill="url(#b2)"/><defs><linearGradient id="b2" x1="21" y1="116" x2="21" y2="1" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#c06820" stop-opacity="0.96"/><stop offset="100%" stop-color="#f8b850" stop-opacity="0.03"/></linearGradient></defs></svg></div>
+  <div class="dflame" style="animation:flicker3 2.3s infinite;animation-delay:-1.0s;"><svg width="32" height="90" viewBox="0 0 32 90" fill="none"><path d="M16 88C7 70,0 50,4 34C6 24,2 13,7 4C7 16,11 20,10 11C15 20,13 32,16 24C17 15,21 5,24 1C21 14,25 21,22 32C27 22,29 12,30 4C28 20,23 32,27 46C31 60,22 74,16 88Z" fill="url(#b3)"/><defs><linearGradient id="b3" x1="16" y1="88" x2="16" y2="1" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#c06820" stop-opacity="0.95"/><stop offset="100%" stop-color="#f0a040" stop-opacity="0.04"/></linearGradient></defs></svg></div>
+  <div class="dflame" style="animation:flicker 1.8s infinite;animation-delay:-1.4s;"><svg width="26" height="74" viewBox="0 0 26 74" fill="none"><path d="M13 72C6 57,0 40,3 27C5 19,1 10,6 2C5 14,9 17,8 10C12 17,11 28,13 21C14 13,17 5,20 1C17 12,21 17,18 27C23 18,24 10,25 3C23 16,19 27,22 38C25 50,18 61,13 72Z" fill="url(#b4)"/><defs><linearGradient id="b4" x1="13" y1="72" x2="13" y2="1" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#b8621a" stop-opacity="0.84"/><stop offset="100%" stop-color="#f0a040" stop-opacity="0.05"/></linearGradient></defs></svg></div>
+  <div class="dflame" style="animation:flicker2 2.1s infinite;animation-delay:-0.7s;"><svg width="38" height="105" viewBox="0 0 38 105" fill="none"><path d="M19 103C9 82,0 58,5 40C8 28,3 16,10 5C9 20,14 24,12 14C18 24,16 38,19 29C21 18,26 6,30 1C26 18,31 26,27 40C34 27,36 14,38 5C36 24,29 40,34 58C38 74,27 90,19 103Z" fill="url(#b5)"/><defs><linearGradient id="b5" x1="19" y1="103" x2="19" y2="1" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#c06820" stop-opacity="1"/><stop offset="100%" stop-color="#f5b060" stop-opacity="0.03"/></linearGradient></defs></svg></div>
+  <div class="dflame" style="animation:flicker3 1.7s infinite;animation-delay:-0.2s;"><svg width="20" height="56" viewBox="0 0 20 56" fill="none"><path d="M10 54C4 43,0 30,3 20C4 14,1 8,5 2C4 11,7 13,6 8C10 13,8 22,10 17C11 10,14 4,16 1C14 10,17 14,15 22C19 15,20 8,20 3C19 14,15 22,18 31C21 40,14 48,10 54Z" fill="url(#b6)"/><defs><linearGradient id="b6" x1="10" y1="54" x2="10" y2="1" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#b8621a" stop-opacity="0.8"/><stop offset="100%" stop-color="#f0a040" stop-opacity="0.05"/></linearGradient></defs></svg></div>
+  <div class="dflame" style="animation:flicker 2.4s infinite;animation-delay:-1.1s;"><svg width="34" height="95" viewBox="0 0 34 95" fill="none"><path d="M17 93C8 74,0 53,4 36C6 25,2 14,8 4C7 17,12 21,10 12C16 21,14 34,17 26C18 16,23 5,26 1C23 15,27 22,24 34C29 23,31 12,32 4C30 21,25 34,29 48C33 62,23 78,17 93Z" fill="url(#b7)"/><defs><linearGradient id="b7" x1="17" y1="93" x2="17" y2="1" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#c06820" stop-opacity="0.93"/><stop offset="100%" stop-color="#f5b060" stop-opacity="0.04"/></linearGradient></defs></svg></div>
+  <div class="dflame" style="animation:flicker2 1.9s infinite;animation-delay:-1.6s;"><svg width="28" height="80" viewBox="0 0 28 80" fill="none"><path d="M14 78C6 62,0 44,4 30C6 21,1 12,7 3C6 16,10 19,9 11C14 19,12 30,14 23C15 14,19 5,22 1C19 13,23 19,20 30C25 21,27 11,28 4C26 19,21 30,25 43C28 56,19 68,14 78Z" fill="url(#b8)"/><defs><linearGradient id="b8" x1="14" y1="78" x2="14" y2="1" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#b8621a" stop-opacity="0.87"/><stop offset="100%" stop-color="#e07a20" stop-opacity="0.05"/></linearGradient></defs></svg></div>
+</div>
+
+
+<!-- GALLERY
+     Slot 1 (large, 2 rows): altar-table-front.jpg — full table, most dramatic
+     Slot 2: altar-table-backer.jpg — arrowhead close
+     Slot 3: altar-table-top.jpg — grain detail
+     Slots 4+5: placeholders for next photos you add
+-->
+<section id="gallery">
+  <div class="section-label">The Work</div>
+  <div class="reveal">
+    <h2>Every Piece Is<br><em>One of a Kind</em></h2>
+    <p class="section-intro">The flame makes sure of it. Once a slab is burned, that exact grain pattern is gone. Add more photos to assets/img/ as you build more pieces.</p>
+  </div>
+  <div class="gallery-grid reveal">
+    <div class="gallery-item">
+      <img src="assets/img/altar-table-front.jpg" alt="Torch-finished altar table — Blackline Flameworks">
+    </div>
+    <div class="gallery-item">
+      <img src="assets/img/altar-table-backer.jpg" alt="Arrowhead wall slab — hand-cut, torch-finished">
+    </div>
+    <div class="gallery-item">
+      <img src="assets/img/altar-table-top.jpg" alt="Burned grain detail — tabletop close-up">
+    </div>
+    <div class="gallery-item">
+      <div class="gallery-placeholder">
+        <svg class="gallery-icon" viewBox="0 0 40 40" fill="none"><rect x="4" y="10" width="32" height="22" rx="1" stroke="#c4b49a" stroke-width="1.5"/><circle cx="14" cy="18" r="3" stroke="#c4b49a" stroke-width="1.5"/><path d="M4 28l8-8 6 6 5-5 9 9" stroke="#c4b49a" stroke-width="1.5"/></svg>
+        <span class="gallery-caption">Add photo 4</span>
+      </div>
+    </div>
+    <div class="gallery-item">
+      <div class="gallery-placeholder">
+        <svg class="gallery-icon" viewBox="0 0 40 40" fill="none"><rect x="4" y="10" width="32" height="22" rx="1" stroke="#c4b49a" stroke-width="1.5"/><circle cx="14" cy="18" r="3" stroke="#c4b49a" stroke-width="1.5"/><path d="M4 28l8-8 6 6 5-5 9 9" stroke="#c4b49a" stroke-width="1.5"/></svg>
+        <span class="gallery-caption">Add photo 5</span>
+      </div>
+    </div>
+  </div>
+  <p class="gallery-note reveal">📸 All pieces shown are solid hardwood — torch-finished by hand in Clarksville, AR</p>
+</section>
+
+<div class="flame-section-divider" aria-hidden="true">
+  <div class="dflame" style="animation:flicker3 2.0s infinite;"><svg width="26" height="74" viewBox="0 0 26 74" fill="none"><path d="M13 72C6 57,0 40,3 27C5 19,1 10,6 2C5 14,9 17,8 10C12 17,11 28,13 21C14 13,17 5,20 1C17 12,21 17,18 27C23 18,24 10,25 3C23 16,19 27,22 38C25 50,18 61,13 72Z" fill="url(#c1)"/><defs><linearGradient id="c1" x1="13" y1="72" x2="13" y2="1" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#b8621a" stop-opacity="0.84"/><stop offset="100%" stop-color="#f0a040" stop-opacity="0.05"/></linearGradient></defs></svg></div>
+  <div class="dflame" style="animation:flicker 1.6s infinite;animation-delay:-0.4s;"><svg width="42" height="118" viewBox="0 0 42 118" fill="none"><path d="M21 116C10 92,0 66,6 46C9 32,3 18,11 5C10 23,16 28,14 16C21 28,18 44,21 33C23 20,29 7,33 1C29 21,35 30,31 46C38 32,40 17,42 6C40 28,33 46,38 64C43 82,30 100,21 116Z" fill="url(#c2)"/><defs><linearGradient id="c2" x1="21" y1="116" x2="21" y2="1" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#c06820" stop-opacity="0.96"/><stop offset="100%" stop-color="#f8b850" stop-opacity="0.03"/></linearGradient></defs></svg></div>
+  <div class="dflame" style="animation:flicker2 2.3s infinite;animation-delay:-0.9s;"><svg width="32" height="90" viewBox="0 0 32 90" fill="none"><path d="M16 88C7 70,0 50,4 34C6 24,2 13,7 4C7 16,11 20,10 11C15 20,13 32,16 24C17 15,21 5,24 1C21 14,25 21,22 32C27 22,29 12,30 4C28 20,23 32,27 46C31 60,22 74,16 88Z" fill="url(#c3)"/><defs><linearGradient id="c3" x1="16" y1="88" x2="16" y2="1" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#c06820" stop-opacity="0.95"/><stop offset="100%" stop-color="#f0a040" stop-opacity="0.04"/></linearGradient></defs></svg></div>
+  <div class="dflame" style="animation:flicker 1.8s infinite;animation-delay:-1.3s;"><svg width="22" height="60" viewBox="0 0 22 60" fill="none"><path d="M11 58C5 46,0 34,3 22C4 16,1 9,5 3C5 12,8 15,7 9C11 15,9 24,11 18C12 12,15 5,17 2C15 11,18 16,16 24C20 17,21 9,22 4C21 17,17 24,20 34C23 44,16 52,11 58Z" fill="url(#c4)"/><defs><linearGradient id="c4" x1="11" y1="58" x2="11" y2="2" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#b8621a" stop-opacity="0.9"/><stop offset="100%" stop-color="#e07a20" stop-opacity="0.05"/></linearGradient></defs></svg></div>
+  <div class="dflame" style="animation:flicker3 2.1s infinite;animation-delay:-0.6s;"><svg width="38" height="105" viewBox="0 0 38 105" fill="none"><path d="M19 103C9 82,0 58,5 40C8 28,3 16,10 5C9 20,14 24,12 14C18 24,16 38,19 29C21 18,26 6,30 1C26 18,31 26,27 40C34 27,36 14,38 5C36 24,29 40,34 58C38 74,27 90,19 103Z" fill="url(#c5)"/><defs><linearGradient id="c5" x1="19" y1="103" x2="19" y2="1" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#c06820" stop-opacity="1"/><stop offset="100%" stop-color="#f5b060" stop-opacity="0.03"/></linearGradient></defs></svg></div>
+  <div class="dflame" style="animation:flicker2 1.7s infinite;animation-delay:-1.7s;"><svg width="28" height="80" viewBox="0 0 28 80" fill="none"><path d="M14 78C6 62,0 44,4 30C6 21,1 12,7 3C6 16,10 19,9 11C14 19,12 30,14 23C15 14,19 5,22 1C19 13,23 19,20 30C25 21,27 11,28 4C26 19,21 30,25 43C28 56,19 68,14 78Z" fill="url(#c6)"/><defs><linearGradient id="c6" x1="14" y1="78" x2="14" y2="1" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#b8621a" stop-opacity="0.87"/><stop offset="100%" stop-color="#e07a20" stop-opacity="0.05"/></linearGradient></defs></svg></div>
+  <div class="dflame" style="animation:flicker 2.2s infinite;animation-delay:-0.2s;"><svg width="20" height="56" viewBox="0 0 20 56" fill="none"><path d="M10 54C4 43,0 30,3 20C4 14,1 8,5 2C4 11,7 13,6 8C10 13,8 22,10 17C11 10,14 4,16 1C14 10,17 14,15 22C19 15,20 8,20 3C19 14,15 22,18 31C21 40,14 48,10 54Z" fill="url(#c7)"/><defs><linearGradient id="c7" x1="10" y1="54" x2="10" y2="1" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#b8621a" stop-opacity="0.8"/><stop offset="100%" stop-color="#f0a040" stop-opacity="0.05"/></linearGradient></defs></svg></div>
+  <div class="dflame" style="animation:flicker3 1.9s infinite;animation-delay:-1.0s;"><svg width="34" height="95" viewBox="0 0 34 95" fill="none"><path d="M17 93C8 74,0 53,4 36C6 25,2 14,8 4C7 17,12 21,10 12C16 21,14 34,17 26C18 16,23 5,26 1C23 15,27 22,24 34C29 23,31 12,32 4C30 21,25 34,29 48C33 62,23 78,17 93Z" fill="url(#c8)"/><defs><linearGradient id="c8" x1="17" y1="93" x2="17" y2="1" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#c06820" stop-opacity="0.93"/><stop offset="100%" stop-color="#f5b060" stop-opacity="0.04"/></linearGradient></defs></svg></div>
+</div>
+
+
+<!-- FEATURED
+     Main image: altar-table-backer.jpg — the ARROWHEAD (what's for sale)
+     Thumb 1: altar-table-front.jpg — full table view
+     Thumb 2: altar-table-top.jpg — grain detail
+-->
+<section id="featured">
+  <div class="section-label">Available Now</div>
+  <div class="featured-layout">
+
     <div class="reveal">
-      <h2>Hand-Built. <em>Flame-Finished.</em></h2>
-      <p class="section-intro">Every build starts with select hardwood slabs — no veneer, no fillers. The process is tuned for furniture-grade work, not siding.</p>
-    </div>
-
-    <div class="process-grid reveal">
-      <div class="process-step">
-        <div class="step-num">01</div>
-        <div class="ember-line"></div>
-        <h3 class="step-title">Select Slabs</h3>
-        <p class="step-desc">Solid hardwood only. The species sets the density, the weight, and how the fire walks the grain.</p>
+      <div class="featured-img-wrap">
+        <div class="featured-badge">In Stock — One Only</div>
+        <img class="featured-main-img" src="assets/img/altar-table-backer.jpg" alt="Arrowhead key rack wall art — Blackline Flameworks">
       </div>
-      <div class="process-step">
-        <div class="step-num">02</div>
-        <div class="ember-line"></div>
-        <h3 class="step-title">Open Flame</h3>
-        <p class="step-desc">Each surface is charred with a torch, pulling the oils to the surface and darkening the winter growth.</p>
-      </div>
-      <div class="process-step">
-        <div class="step-num">03</div>
-        <div class="ember-line"></div>
-        <h3 class="step-title">Wire Brush</h3>
-        <p class="step-desc">The soft char is brushed back by hand to reveal a three-dimensional grain pattern you can feel.</p>
-      </div>
-      <div class="process-step">
-        <div class="step-num">04</div>
-        <div class="ember-line"></div>
-        <h3 class="step-title">Hard Seal</h3>
-        <p class="step-desc">Finished with high-grade oils or satin topcoats. It won't flake, smudge, or leave soot on your hands.</p>
-      </div>
-    </div>
-  </section>
-
-  <section id="gallery">
-    <div class="section-label">The Work</div>
-    <div class="reveal">
-      <h2>From Hand to <em>Room-Scale.</em></h2>
-      <p class="section-intro">Matched sets are planned from the first cut and built to the room they will live in. Once a slab is gone, that exact flame map is gone with it.</p>
-    </div>
-
-    <div class="gallery-grid reveal">
-      <div class="gallery-item">
-        <img src="assets/img/altar-table-front.jpg" alt="Custom torch-finished altar table">
-      </div>
-      <div class="gallery-item">
-        <img src="assets/img/altar-table-top.jpg" alt="Burned grain detail on tabletop">
-      </div>
-      <div class="gallery-item">
-        <img src="assets/img/altar-table-backer.jpg" alt="Arrowhead wall-grade slab board">
-      </div>
-      <div class="gallery-item">
-        <div class="gallery-placeholder">
-          <svg class="gallery-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M12 5v14M5 12h14"/></svg>
-          <span class="gallery-caption">Coffee Tables</span>
-        </div>
-      </div>
-      <div class="gallery-item">
-        <div class="gallery-placeholder">
-          <svg class="gallery-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M12 5v14M5 12h14"/></svg>
-          <span class="gallery-caption">Coaster Sets</span>
-        </div>
-      </div>
-    </div>
-    <p class="gallery-note reveal">All pieces shown are solid hardwood &middot; Torch-finished by hand</p>
-  </section>
-
-  <!-- FEATURED LISTING -->
-  <section id="featured">
-    <div class="section-label">Available Now</div>
-    <div class="featured-layout">
-
-      <div class="reveal">
-        <div class="featured-img-wrap">
-          <div class="featured-badge">In Stock — One Only</div>
-          <img class="featured-main-img" src="assets/img/altar-table-front.jpg" alt="Arrowhead key rack wall art — Blackline Flameworks">
-        </div>
-        <div class="featured-thumbs">
-          <div class="featured-thumb"><img src="assets/img/altar-table-top.jpg" alt="Table top detail"></div>
-          <div class="featured-thumb"><img src="assets/img/altar-table-backer.jpg" alt="Arrowhead backer"></div>
-          <div class="featured-thumb">
-            <div class="gallery-placeholder" style="height:100%;">
-              <span class="gallery-caption" style="font-size:0.48rem;">Add photo</span>
-            </div>
+      <div class="featured-thumbs">
+        <div class="featured-thumb"><img src="assets/img/altar-table-front.jpg" alt="Full table view"></div>
+        <div class="featured-thumb"><img src="assets/img/altar-table-top.jpg" alt="Grain detail close-up"></div>
+        <div class="featured-thumb">
+          <div class="gallery-placeholder" style="height:100%;">
+            <span class="gallery-caption" style="font-size:0.48rem;">Add photo</span>
           </div>
         </div>
       </div>
-
-      <div class="reveal">
-        <h2 class="featured-title">Arrowhead<br><em>Key Rack &amp; Wall Art</em></h2>
-        <div class="featured-dims">27" tall &times; 15" wide &mdash; Solid Wood &mdash; Hand-Cut</div>
-        <p class="featured-desc">Solid wood cut by hand into an arrowhead profile, burned with an open flame to bring out deep vertical grain lines, then brushed and sealed. Mounts on the wall as statement art or works flat as a serving board. Key hooks on the front. D-ring hardware on the back. Ready to hang the day you pick it up.</p>
-        <div class="featured-specs">
-          <div class="spec-item"><div class="spec-label">Size</div><div class="spec-value">27" tall × 15" wide</div></div>
-          <div class="spec-item"><div class="spec-label">Material</div><div class="spec-value">Solid hardwood</div></div>
-          <div class="spec-item"><div class="spec-label">Finish</div><div class="spec-value">Torch-fired, sealed</div></div>
-          <div class="spec-item"><div class="spec-label">Edge</div><div class="spec-value">Hand-cut profile</div></div>
-          <div class="spec-item"><div class="spec-label">Hardware</div><div class="spec-value">Hooks + D-ring hangers</div></div>
-          <div class="spec-item"><div class="spec-label">Custom</div><div class="spec-value">Made to order available</div></div>
-        </div>
-        <div class="featured-price-row">
-          <div class="featured-price">$120</div>
-          <div class="featured-price-note">Ready to ship or pick up.<br>Clarksville, AR.</div>
-        </div>
-        <div class="featured-actions">
-          <a href="mailto:lingardaniel1@gmail.com?subject=Interested%20in%20the%20Arrowhead%20Key%20Rack&body=Hi%2C%20I%27m%20interested%20in%20the%2027x15%20arrowhead%20key%20rack%20%2F%20wall%20art.%20Is%20it%20still%20available%3F" class="btn-primary">Claim This Piece &rarr;</a>
-          <a href="#order" class="btn-ghost">Order a Custom Size</a>
-        </div>
-        <p class="featured-pickup">📍 Pickup in Clarksville, AR &nbsp;&middot;&nbsp; Ships flat &nbsp;&middot;&nbsp; Responds within 48hrs</p>
-      </div>
-
     </div>
-  </section>
 
-  <div class="flame-section-divider" aria-hidden="true">
-    <div class="dflame" style="animation-name:flicker3;animation-duration:2.0s;"><svg width="22" height="60" viewBox="0 0 22 60" fill="none"><path d="M11 58C5 46,0 34,3 22C4 16,1 9,5 3C5 12,8 15,7 9C11 15,9 24,11 18C12 12,15 5,17 2C15 11,18 16,16 24C20 17,21 9,22 4C21 17,17 24,20 34C23 44,16 52,11 58Z" fill="url(#dg1)"/><defs><linearGradient id="dg1" x1="11" y1="58" x2="11" y2="2" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#b8621a" stop-opacity="0.9"/><stop offset="100%" stop-color="#e07a20" stop-opacity="0.05"/></linearGradient></defs></svg></div>
-    <div class="dflame" style="animation-name:flicker;animation-duration:1.6s;animation-delay:-0.4s;"><svg width="32" height="90" viewBox="0 0 32 90" fill="none"><path d="M16 88C7 70,0 50,4 34C6 24,2 13,7 4C7 16,11 20,10 11C15 20,13 32,16 24C17 15,21 5,24 1C21 14,25 21,22 32C27 22,29 12,30 4C28 20,23 32,27 46C31 60,22 74,16 88Z" fill="url(#dg2)"/><defs><linearGradient id="dg2" x1="16" y1="88" x2="16" y2="1" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#c06820" stop-opacity="0.95"/><stop offset="100%" stop-color="#f0a040" stop-opacity="0.04"/></linearGradient></defs></svg></div>
-    <div class="dflame" style="animation-name:flicker2;animation-duration:2.3s;animation-delay:-0.9s;"><svg width="26" height="75" viewBox="0 0 26 75" fill="none"><path d="M13 73C6 58,0 42,3 28C5 20,1 11,6 3C5 14,9 17,8 10C12 17,11 28,13 21C14 13,17 5,20 1C17 12,21 18,18 27C23 18,24 9,25 3C24 17,19 27,22 39C26 50,18 62,13 73Z" fill="url(#dg3)"/><defs><linearGradient id="dg3" x1="13" y1="73" x2="13" y2="1" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#b8621a" stop-opacity="0.85"/><stop offset="100%" stop-color="#e07a20" stop-opacity="0.05"/></linearGradient></defs></svg></div>
-    <div class="dflame" style="animation-name:flicker;animation-duration:1.8s;animation-delay:-1.3s;"><svg width="38" height="105" viewBox="0 0 38 105" fill="none"><path d="M19 103C9 82,0 58,5 40C8 28,3 16,10 5C9 20,14 24,12 14C18 24,16 38,19 29C21 18,26 6,30 1C26 18,31 26,27 40C34 27,36 14,38 5C36 24,29 40,34 58C38 74,27 90,19 103Z" fill="url(#dg4)"/><defs><linearGradient id="dg4" x1="19" y1="103" x2="19" y2="1" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#c06820" stop-opacity="1"/><stop offset="100%" stop-color="#f5b060" stop-opacity="0.03"/></linearGradient></defs></svg></div>
-    <div class="dflame" style="animation-name:flicker3;animation-duration:2.1s;animation-delay:-0.6s;"><svg width="24" height="68" viewBox="0 0 24 68" fill="none"><path d="M12 66C5 52,0 37,3 24C5 17,1 9,6 2C5 13,9 16,8 9C12 16,10 27,12 20C13 12,17 4,19 1C16 11,20 17,17 26C22 17,23 9,24 3C22 17,18 26,21 38C25 49,17 58,12 66Z" fill="url(#dg5)"/><defs><linearGradient id="dg5" x1="12" y1="66" x2="12" y2="1" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#b8621a" stop-opacity="0.88"/><stop offset="100%" stop-color="#f0a040" stop-opacity="0.05"/></linearGradient></defs></svg></div>
-    <div class="dflame" style="animation-name:flicker2;animation-duration:1.7s;animation-delay:-1.7s;"><svg width="30" height="85" viewBox="0 0 30 85" fill="none"><path d="M15 83C7 66,0 47,4 32C6 22,2 12,7 3C6 15,10 19,9 11C14 19,12 30,15 23C16 14,20 5,23 1C20 13,24 19,21 30C26 20,28 11,29 4C27 19,22 30,26 43C30 56,20 70,15 83Z" fill="url(#dg6)"/><defs><linearGradient id="dg6" x1="15" y1="83" x2="15" y2="1" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#b8621a" stop-opacity="0.82"/><stop offset="100%" stop-color="#e07a20" stop-opacity="0.05"/></linearGradient></defs></svg></div>
-    <div class="dflame" style="animation-name:flicker;animation-duration:2.2s;animation-delay:-0.2s;"><svg width="20" height="56" viewBox="0 0 20 56" fill="none"><path d="M10 54C4 43,0 30,3 20C4 14,1 8,5 2C4 11,7 13,6 8C10 13,8 22,10 17C11 10,14 4,16 1C14 10,17 14,15 22C19 15,20 8,20 3C19 14,15 22,18 31C21 40,14 48,10 54Z" fill="url(#dg7)"/><defs><linearGradient id="dg7" x1="10" y1="54" x2="10" y2="1" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#b8621a" stop-opacity="0.8"/><stop offset="100%" stop-color="#f0a040" stop-opacity="0.05"/></linearGradient></defs></svg></div>
-    <div class="dflame" style="animation-name:flicker3;animation-duration:1.9s;animation-delay:-1.0s;"><svg width="34" height="95" viewBox="0 0 34 95" fill="none"><path d="M17 93C8 74,0 53,4 36C6 25,2 14,8 4C7 17,12 21,10 12C16 21,14 34,17 26C18 16,23 5,26 1C23 15,27 22,24 34C29 23,31 12,32 4C30 21,25 34,29 48C33 62,23 78,17 93Z" fill="url(#dg8)"/><defs><linearGradient id="dg8" x1="17" y1="93" x2="17" y2="1" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#c06820" stop-opacity="0.93"/><stop offset="100%" stop-color="#f5b060" stop-opacity="0.04"/></linearGradient></defs></svg></div>
-    <div class="dflame" style="animation-name:flicker2;animation-duration:2.0s;animation-delay:-0.7s;"><svg width="28" height="80" viewBox="0 0 28 80" fill="none"><path d="M14 78C6 62,0 44,4 30C6 21,1 12,7 3C6 16,10 19,9 11C14 19,12 30,14 23C15 14,19 5,22 1C19 13,23 19,20 30C25 21,27 11,28 4C26 19,21 30,25 43C28 56,19 68,14 78Z" fill="url(#dg9)"/><defs><linearGradient id="dg9" x1="14" y1="78" x2="14" y2="1" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#b8621a" stop-opacity="0.87"/><stop offset="100%" stop-color="#e07a20" stop-opacity="0.05"/></linearGradient></defs></svg></div>
-    <div class="dflame" style="animation-name:flicker;animation-duration:1.5s;animation-delay:-1.4s;"><svg width="42" height="118" viewBox="0 0 42 118" fill="none"><path d="M21 116C10 92,0 66,6 46C9 32,3 18,11 5C10 23,16 28,14 16C21 28,18 44,21 33C23 20,29 7,33 1C29 21,35 30,31 46C38 32,40 17,42 6C40 28,33 46,38 64C43 82,30 100,21 116Z" fill="url(#dg10)"/><defs><linearGradient id="dg10" x1="21" y1="116" x2="21" y2="1" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#c06820" stop-opacity="0.96"/><stop offset="100%" stop-color="#f8b850" stop-opacity="0.03"/></linearGradient></defs></svg></div>
-    <div class="dflame" style="animation-name:flicker3;animation-duration:2.4s;animation-delay:-0.3s;"><svg width="26" height="74" viewBox="0 0 26 74" fill="none"><path d="M13 72C6 57,0 40,3 27C5 19,1 10,6 2C5 14,9 17,8 10C12 17,11 28,13 21C14 13,17 5,20 1C17 12,21 17,18 27C23 18,24 10,25 3C23 16,19 27,22 38C25 50,18 61,13 72Z" fill="url(#dg11)"/><defs><linearGradient id="dg11" x1="13" y1="72" x2="13" y2="1" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#b8621a" stop-opacity="0.84"/><stop offset="100%" stop-color="#f0a040" stop-opacity="0.05"/></linearGradient></defs></svg></div>
-    <div class="dflame" style="animation-name:flicker2;animation-duration:1.8s;animation-delay:-1.1s;"><svg width="18" height="52" viewBox="0 0 18 52" fill="none"><path d="M9 50C4 40,0 28,2 18C3 13,1 7,5 2C4 10,6 12,6 7C9 12,8 20,9 15C10 9,12 3,14 1C12 9,15 13,13 20C17 13,17 7,18 2C17 13,14 20,16 29C19 37,13 44,9 50Z" fill="url(#dg12)"/><defs><linearGradient id="dg12" x1="9" y1="50" x2="9" y2="1" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#b8621a" stop-opacity="0.78"/><stop offset="100%" stop-color="#e07a20" stop-opacity="0.05"/></linearGradient></defs></svg></div>
-  </div>
-
-  <section id="order">
-    <div class="section-label">Commissions</div>
-    <div class="order-container">
-      <div class="reveal">
-        <h2>Start a <em>Project.</em></h2>
-        <p class="section-intro">Use this form as a starting point. Include dimensions, how you’ll use it, and a quick note about the room it’s going into. You’ll get questions and a ballpark number before anything is locked in.</p>
-        <div class="contact-block-label">Typical Ranges (USD)</div>
-        <div style="font-family: 'Space Mono', monospace; font-size: 0.75rem; color: var(--pale); line-height: 2.2;">
-          <div style="display:flex; justify-content:space-between; border-bottom:1px solid rgba(184,98,26,0.1); padding-bottom:4px;"><span>Slab Boards & Wall Pieces</span><span>$320–$680+</span></div>
-          <div style="display:flex; justify-content:space-between; border-bottom:1px solid rgba(184,98,26,0.1); padding-bottom:4px;"><span>Coffee & Side Tables</span><span>$900–$1,950+</span></div>
-          <div style="display:flex; justify-content:space-between; border-bottom:1px solid rgba(184,98,26,0.1); padding-bottom:4px;"><span>Dining / Console Tables</span><span>$2,400–$4,800+</span></div>
-          <div style="display:flex; justify-content:space-between; border-bottom:1px solid rgba(184,98,26,0.1); padding-bottom:4px;"><span>Small Goods (Coasters, etc)</span><span>$65–$210+</span></div>
-        </div>
-        <p class="contact-block-note" style="margin-top:1.5rem;">Final numbers depend on species, thickness, hardware, and how much custom layout and design time the space requires.</p>
+    <div class="reveal">
+      <h2 class="featured-title">Arrowhead<br><em>Key Rack &amp; Wall Art</em></h2>
+      <div class="featured-dims">27" tall &times; 15" wide &mdash; Solid Wood &mdash; Hand-Cut</div>
+      <p class="featured-desc">Solid wood cut by hand into an arrowhead profile, burned with an open flame to bring out deep vertical grain lines, then brushed and sealed. Mounts on the wall as statement art or works flat as a serving board. Key hooks on the front. D-ring hardware on the back. Ready to hang the day you pick it up.</p>
+      <div class="featured-specs">
+        <div class="spec-item"><div class="spec-label">Size</div><div class="spec-value">27" tall × 15" wide</div></div>
+        <div class="spec-item"><div class="spec-label">Material</div><div class="spec-value">Solid hardwood</div></div>
+        <div class="spec-item"><div class="spec-label">Finish</div><div class="spec-value">Torch-fired, sealed</div></div>
+        <div class="spec-item"><div class="spec-label">Edge</div><div class="spec-value">Hand-cut profile</div></div>
+        <div class="spec-item"><div class="spec-label">Hardware</div><div class="spec-value">Hooks + D-ring hangers</div></div>
+        <div class="spec-item"><div class="spec-label">Custom</div><div class="spec-value">Made to order available</div></div>
       </div>
+      <div class="featured-price-row">
+        <div class="featured-price">$120</div>
+        <div class="featured-price-note">Ready to ship or pick up.<br>Clarksville, AR.</div>
+      </div>
+      <div class="featured-actions">
+        <a href="mailto:lingardaniel1@gmail.com?subject=Interested%20in%20the%20Arrowhead%20Key%20Rack&body=Hi%2C%20I%27m%20interested%20in%20the%2027x15%20arrowhead%20key%20rack%20%2F%20wall%20art.%20Is%20it%20still%20available%3F" class="btn-primary">Claim This Piece &rarr;</a>
+        <a href="#order" class="btn-ghost">Order a Custom Size</a>
+      </div>
+      <p class="featured-pickup">📍 Pickup in Clarksville, AR &nbsp;&middot;&nbsp; Ships flat &nbsp;&middot;&nbsp; Responds within 48hrs</p>
+    </div>
 
-      <div class="order-form-wrap reveal">
-        <form action="https://formspree.io/f/xvgznooz" method="POST">
-          <div class="form-row">
-            <div class="form-group">
-              <label for="name">Name</label>
-              <input type="text" id="name" name="Name" required placeholder="Your name">
-            </div>
-            <div class="form-group">
-              <label for="email">Email</label>
-              <input type="email" id="email" name="Email" required placeholder="you@example.com">
-            </div>
-          </div>
-          <div class="form-row">
-            <div class="form-group">
-              <label for="phone">Phone (Optional)</label>
-              <input type="tel" id="phone" name="Phone" placeholder="Best number to reach you">
-            </div>
-            <div class="form-group">
-              <label for="project-type">What Are You After?</label>
-              <select id="project-type" name="Project Type" required>
-                <option value="">Select an option</option>
-                <option value="Arrowhead Key Rack / Wall Art">Arrowhead Key Rack / Wall Art</option>
-                <option value="Coffee Table">Coffee Table</option>
-                <option value="End Table">End Table</option>
-                <option value="Console Table">Console Table</option>
-                <option value="Small Goods">Coasters / Key Rack / Candle Holders</option>
-                <option value="Other">Something Else</option>
-              </select>
-            </div>
+  </div>
+</section>
+
+<div class="flame-section-divider" aria-hidden="true">
+  <div class="dflame" style="animation:flicker 2.0s infinite;"><svg width="22" height="60" viewBox="0 0 22 60" fill="none"><path d="M11 58C5 46,0 34,3 22C4 16,1 9,5 3C5 12,8 15,7 9C11 15,9 24,11 18C12 12,15 5,17 2C15 11,18 16,16 24C20 17,21 9,22 4C21 17,17 24,20 34C23 44,16 52,11 58Z" fill="url(#d1)"/><defs><linearGradient id="d1" x1="11" y1="58" x2="11" y2="2" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#b8621a" stop-opacity="0.9"/><stop offset="100%" stop-color="#e07a20" stop-opacity="0.05"/></linearGradient></defs></svg></div>
+  <div class="dflame" style="animation:flicker2 1.6s infinite;animation-delay:-0.4s;"><svg width="38" height="105" viewBox="0 0 38 105" fill="none"><path d="M19 103C9 82,0 58,5 40C8 28,3 16,10 5C9 20,14 24,12 14C18 24,16 38,19 29C21 18,26 6,30 1C26 18,31 26,27 40C34 27,36 14,38 5C36 24,29 40,34 58C38 74,27 90,19 103Z" fill="url(#d2)"/><defs><linearGradient id="d2" x1="19" y1="103" x2="19" y2="1" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#c06820" stop-opacity="1"/><stop offset="100%" stop-color="#f5b060" stop-opacity="0.03"/></linearGradient></defs></svg></div>
+  <div class="dflame" style="animation:flicker3 2.3s infinite;animation-delay:-0.9s;"><svg width="28" height="80" viewBox="0 0 28 80" fill="none"><path d="M14 78C6 62,0 44,4 30C6 21,1 12,7 3C6 16,10 19,9 11C14 19,12 30,14 23C15 14,19 5,22 1C19 13,23 19,20 30C25 21,27 11,28 4C26 19,21 30,25 43C28 56,19 68,14 78Z" fill="url(#d3)"/><defs><linearGradient id="d3" x1="14" y1="78" x2="14" y2="1" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#b8621a" stop-opacity="0.87"/><stop offset="100%" stop-color="#e07a20" stop-opacity="0.05"/></linearGradient></defs></svg></div>
+  <div class="dflame" style="animation:flicker 1.8s infinite;animation-delay:-1.3s;"><svg width="42" height="118" viewBox="0 0 42 118" fill="none"><path d="M21 116C10 92,0 66,6 46C9 32,3 18,11 5C10 23,16 28,14 16C21 28,18 44,21 33C23 20,29 7,33 1C29 21,35 30,31 46C38 32,40 17,42 6C40 28,33 46,38 64C43 82,30 100,21 116Z" fill="url(#d4)"/><defs><linearGradient id="d4" x1="21" y1="116" x2="21" y2="1" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#c06820" stop-opacity="0.96"/><stop offset="100%" stop-color="#f8b850" stop-opacity="0.03"/></linearGradient></defs></svg></div>
+  <div class="dflame" style="animation:flicker2 2.1s infinite;animation-delay:-0.6s;"><svg width="32" height="90" viewBox="0 0 32 90" fill="none"><path d="M16 88C7 70,0 50,4 34C6 24,2 13,7 4C7 16,11 20,10 11C15 20,13 32,16 24C17 15,21 5,24 1C21 14,25 21,22 32C27 22,29 12,30 4C28 20,23 32,27 46C31 60,22 74,16 88Z" fill="url(#d5)"/><defs><linearGradient id="d5" x1="16" y1="88" x2="16" y2="1" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#c06820" stop-opacity="0.95"/><stop offset="100%" stop-color="#f0a040" stop-opacity="0.04"/></linearGradient></defs></svg></div>
+  <div class="dflame" style="animation:flicker3 1.7s infinite;animation-delay:-1.7s;"><svg width="20" height="56" viewBox="0 0 20 56" fill="none"><path d="M10 54C4 43,0 30,3 20C4 14,1 8,5 2C4 11,7 13,6 8C10 13,8 22,10 17C11 10,14 4,16 1C14 10,17 14,15 22C19 15,20 8,20 3C19 14,15 22,18 31C21 40,14 48,10 54Z" fill="url(#d6)"/><defs><linearGradient id="d6" x1="10" y1="54" x2="10" y2="1" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#b8621a" stop-opacity="0.8"/><stop offset="100%" stop-color="#f0a040" stop-opacity="0.05"/></linearGradient></defs></svg></div>
+  <div class="dflame" style="animation:flicker 2.4s infinite;animation-delay:-0.3s;"><svg width="26" height="74" viewBox="0 0 26 74" fill="none"><path d="M13 72C6 57,0 40,3 27C5 19,1 10,6 2C5 14,9 17,8 10C12 17,11 28,13 21C14 13,17 5,20 1C17 12,21 17,18 27C23 18,24 10,25 3C23 16,19 27,22 38C25 50,18 61,13 72Z" fill="url(#d7)"/><defs><linearGradient id="d7" x1="13" y1="72" x2="13" y2="1" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#b8621a" stop-opacity="0.84"/><stop offset="100%" stop-color="#f0a040" stop-opacity="0.05"/></linearGradient></defs></svg></div>
+  <div class="dflame" style="animation:flicker2 1.9s infinite;animation-delay:-1.1s;"><svg width="34" height="95" viewBox="0 0 34 95" fill="none"><path d="M17 93C8 74,0 53,4 36C6 25,2 14,8 4C7 17,12 21,10 12C16 21,14 34,17 26C18 16,23 5,26 1C23 15,27 22,24 34C29 23,31 12,32 4C30 21,25 34,29 48C33 62,23 78,17 93Z" fill="url(#d8)"/><defs><linearGradient id="d8" x1="17" y1="93" x2="17" y2="1" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#c06820" stop-opacity="0.93"/><stop offset="100%" stop-color="#f5b060" stop-opacity="0.04"/></linearGradient></defs></svg></div>
+</div>
+
+
+<!-- PRODUCTS / PRICING — real prices -->
+<section id="products">
+  <div class="section-label">What It Costs</div>
+  <div class="reveal">
+    <h2>No Haggling.<br><em>No Surprises.</em></h2>
+    <p class="section-intro">Prices reflect real materials and real time. Custom sizes are quoted before anything is cut.</p>
+  </div>
+  <div class="products-grid">
+    <div class="product-card reveal">
+      <div class="product-tag">Small Goods</div>
+      <div class="product-name">Coasters</div>
+      <p class="product-desc">Set of 4. Solid wood, torch-finished, cork-backed. Ships flat.</p>
+      <div class="product-price">$20</div>
+      <div class="product-note">Per set of 4</div>
+      <ul class="product-features"><li>Solid hardwood</li><li>Open flame finish</li><li>Cork backing included</li><li>Shippable</li></ul>
+    </div>
+    <div class="product-card reveal">
+      <div class="product-tag">Home Accents</div>
+      <div class="product-name">Candle Holders</div>
+      <p class="product-desc">Single or grouped sets. Torch-finished with a sealed well. Pillar or taper candles.</p>
+      <div class="product-price">$35+</div>
+      <div class="product-note">Starting price, varies by size</div>
+      <ul class="product-features"><li>Solid wood base</li><li>Flame sealed finish</li><li>Custom groupings available</li><li>Shippable</li></ul>
+    </div>
+    <div class="product-card reveal">
+      <div class="product-tag">Wall &amp; Entry</div>
+      <div class="product-name">Key Racks</div>
+      <p class="product-desc">Wall-mounted solid wood key rack with iron hooks. Torch-finished. Hardware included.</p>
+      <div class="product-price">$45+</div>
+      <div class="product-note">Standard size — custom quoted</div>
+      <ul class="product-features"><li>Solid wood plank</li><li>Iron hook hardware</li><li>Ready to mount</li><li>Shippable</li></ul>
+    </div>
+    <div class="product-card reveal">
+      <div class="product-tag">Signature Piece</div>
+      <div class="product-name">Arrowhead Wall Art</div>
+      <p class="product-desc">Hand-cut arrowhead profile, deep vertical torch grain. Wall art that doubles as a key rack or serving board.</p>
+      <div class="product-price">$120</div>
+      <div class="product-note">Standard 27"×15" — custom quoted</div>
+      <ul class="product-features"><li>Solid hardwood slab</li><li>Hand-cut profile</li><li>Hooks + hanging hardware</li><li>Made to order</li></ul>
+    </div>
+    <div class="product-card highlight reveal">
+      <div class="product-tag">Most Requested</div>
+      <div class="product-name">End Table</div>
+      <p class="product-desc">Solid wood top, steel or wood legs. Custom dimensions quoted on request.</p>
+      <div class="product-price">$120+</div>
+      <div class="product-note">Standard 18"×18" — custom quoted</div>
+      <ul class="product-features"><li>Solid slab top</li><li>Steel or wood base options</li><li>Custom dimensions available</li><li>Local pickup or freight</li></ul>
+    </div>
+    <div class="product-card reveal">
+      <div class="product-tag">Statement Piece</div>
+      <div class="product-name">Coffee Table</div>
+      <p class="product-desc">Full slab top, solid construction. Every detail discussed before a single cut is made.</p>
+      <div class="product-price">$180+</div>
+      <div class="product-note">Starting price — quote required</div>
+      <ul class="product-features"><li>Full solid wood slab or panel</li><li>Steel or wood base</li><li>Custom to your space</li><li>Deposit required to begin</li></ul>
+    </div>
+  </div>
+  <div style="text-align:center;">
+    <a href="#order" class="btn-primary">Get a Custom Quote</a>
+  </div>
+</section>
+
+<div class="flame-section-divider" aria-hidden="true">
+  <div class="dflame" style="animation:flicker3 2.0s infinite;"><svg width="34" height="95" viewBox="0 0 34 95" fill="none"><path d="M17 93C8 74,0 53,4 36C6 25,2 14,8 4C7 17,12 21,10 12C16 21,14 34,17 26C18 16,23 5,26 1C23 15,27 22,24 34C29 23,31 12,32 4C30 21,25 34,29 48C33 62,23 78,17 93Z" fill="url(#e1)"/><defs><linearGradient id="e1" x1="17" y1="93" x2="17" y2="1" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#c06820" stop-opacity="0.93"/><stop offset="100%" stop-color="#f5b060" stop-opacity="0.04"/></linearGradient></defs></svg></div>
+  <div class="dflame" style="animation:flicker 1.6s infinite;animation-delay:-0.4s;"><svg width="42" height="118" viewBox="0 0 42 118" fill="none"><path d="M21 116C10 92,0 66,6 46C9 32,3 18,11 5C10 23,16 28,14 16C21 28,18 44,21 33C23 20,29 7,33 1C29 21,35 30,31 46C38 32,40 17,42 6C40 28,33 46,38 64C43 82,30 100,21 116Z" fill="url(#e2)"/><defs><linearGradient id="e2" x1="21" y1="116" x2="21" y2="1" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#c06820" stop-opacity="0.96"/><stop offset="100%" stop-color="#f8b850" stop-opacity="0.03"/></linearGradient></defs></svg></div>
+  <div class="dflame" style="animation:flicker2 2.3s infinite;animation-delay:-0.9s;"><svg width="22" height="60" viewBox="0 0 22 60" fill="none"><path d="M11 58C5 46,0 34,3 22C4 16,1 9,5 3C5 12,8 15,7 9C11 15,9 24,11 18C12 12,15 5,17 2C15 11,18 16,16 24C20 17,21 9,22 4C21 17,17 24,20 34C23 44,16 52,11 58Z" fill="url(#e3)"/><defs><linearGradient id="e3" x1="11" y1="58" x2="11" y2="2" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#b8621a" stop-opacity="0.9"/><stop offset="100%" stop-color="#e07a20" stop-opacity="0.05"/></linearGradient></defs></svg></div>
+  <div class="dflame" style="animation:flicker 1.8s infinite;animation-delay:-1.3s;"><svg width="28" height="80" viewBox="0 0 28 80" fill="none"><path d="M14 78C6 62,0 44,4 30C6 21,1 12,7 3C6 16,10 19,9 11C14 19,12 30,14 23C15 14,19 5,22 1C19 13,23 19,20 30C25 21,27 11,28 4C26 19,21 30,25 43C28 56,19 68,14 78Z" fill="url(#e4)"/><defs><linearGradient id="e4" x1="14" y1="78" x2="14" y2="1" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#b8621a" stop-opacity="0.87"/><stop offset="100%" stop-color="#e07a20" stop-opacity="0.05"/></linearGradient></defs></svg></div>
+  <div class="dflame" style="animation:flicker3 2.1s infinite;animation-delay:-0.6s;"><svg width="32" height="90" viewBox="0 0 32 90" fill="none"><path d="M16 88C7 70,0 50,4 34C6 24,2 13,7 4C7 16,11 20,10 11C15 20,13 32,16 24C17 15,21 5,24 1C21 14,25 21,22 32C27 22,29 12,30 4C28 20,23 32,27 46C31 60,22 74,16 88Z" fill="url(#e5)"/><defs><linearGradient id="e5" x1="16" y1="88" x2="16" y2="1" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#c06820" stop-opacity="0.95"/><stop offset="100%" stop-color="#f0a040" stop-opacity="0.04"/></linearGradient></defs></svg></div>
+  <div class="dflame" style="animation:flicker2 1.7s infinite;animation-delay:-1.7s;"><svg width="38" height="105" viewBox="0 0 38 105" fill="none"><path d="M19 103C9 82,0 58,5 40C8 28,3 16,10 5C9 20,14 24,12 14C18 24,16 38,19 29C21 18,26 6,30 1C26 18,31 26,27 40C34 27,36 14,38 5C36 24,29 40,34 58C38 74,27 90,19 103Z" fill="url(#e6)"/><defs><linearGradient id="e6" x1="19" y1="103" x2="19" y2="1" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#c06820" stop-opacity="1"/><stop offset="100%" stop-color="#f5b060" stop-opacity="0.03"/></linearGradient></defs></svg></div>
+  <div class="dflame" style="animation:flicker 2.2s infinite;animation-delay:-0.2s;"><svg width="20" height="56" viewBox="0 0 20 56" fill="none"><path d="M10 54C4 43,0 30,3 20C4 14,1 8,5 2C4 11,7 13,6 8C10 13,8 22,10 17C11 10,14 4,16 1C14 10,17 14,15 22C19 15,20 8,20 3C19 14,15 22,18 31C21 40,14 48,10 54Z" fill="url(#e7)"/><defs><linearGradient id="e7" x1="10" y1="54" x2="10" y2="1" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#b8621a" stop-opacity="0.8"/><stop offset="100%" stop-color="#f0a040" stop-opacity="0.05"/></linearGradient></defs></svg></div>
+  <div class="dflame" style="animation:flicker3 1.9s infinite;animation-delay:-1.0s;"><svg width="26" height="74" viewBox="0 0 26 74" fill="none"><path d="M13 72C6 57,0 40,3 27C5 19,1 10,6 2C5 14,9 17,8 10C12 17,11 28,13 21C14 13,17 5,20 1C17 12,21 17,18 27C23 18,24 10,25 3C23 16,19 27,22 38C25 50,18 61,13 72Z" fill="url(#e8)"/><defs><linearGradient id="e8" x1="13" y1="72" x2="13" y2="1" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#b8621a" stop-opacity="0.84"/><stop offset="100%" stop-color="#f0a040" stop-opacity="0.05"/></linearGradient></defs></svg></div>
+</div>
+
+
+<!-- ORDER FORM -->
+<section id="order">
+  <div class="order-layout">
+    <div class="order-sidebar reveal">
+      <div class="section-label">Custom Builds</div>
+      <h2>Tell Me What<br><em>You Need</em></h2>
+      <p class="section-intro" style="margin-bottom:0;">Fill out the form. You'll get a real quote within 48 hours — not a form letter.</p>
+      <div class="trust-items">
+        <div class="trust-item">
+          <div class="trust-icon">🔥</div>
+          <div class="trust-text"><strong>Deposit to Start</strong>50% deposit required before I cut anything. Balance due on pickup or before shipping.</div>
+        </div>
+        <div class="trust-item">
+          <div class="trust-icon">📏</div>
+          <div class="trust-text"><strong>Custom Dimensions</strong>Built to your measurements. Send a sketch — rough is fine.</div>
+        </div>
+        <div class="trust-item">
+          <div class="trust-icon">📦</div>
+          <div class="trust-text"><strong>Pickup or Ship</strong>Local pickup in Clarksville, AR. Small items ship. Large pieces freight-quoted.</div>
+        </div>
+        <div class="trust-item">
+          <div class="trust-icon">⏱</div>
+          <div class="trust-text"><strong>Lead Time</strong>Typical turnaround 2–4 weeks. You'll get an honest date before anything starts.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="order-form reveal">
+      <form action="https://formsubmit.co/lingardaniel1@gmail.com" method="POST">
+        <input type="hidden" name="_subject" value="New Build Request — Blackline Flameworks">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_next" value="https://mave9055.github.io/blackline-flameworks/thanks.html">
+        <input type="text" name="_honey" style="display:none">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="name">Your Name</label>
+            <input type="text" id="name" name="Name" placeholder="First &amp; Last" required>
           </div>
           <div class="form-group">
-            <label for="dimensions">Rough Dimensions</label>
-            <input type="text" id="dimensions" name="Dimensions" placeholder='E.g. "About 4ft long, 18–20in wide, coffee table height"'>
+            <label for="email">Email Address</label>
+            <input type="email" id="email" name="Email" placeholder="you@email.com" required>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="phone">Phone (Optional)</label>
+            <input type="tel" id="phone" name="Phone" placeholder="Best number to reach you">
           </div>
           <div class="form-group">
-            <label for="message">Tell Me What You Have in Mind</label>
-            <textarea id="message" name="Project Details" placeholder="How you'll use it, where it's going, any photos or ideas you've got."></textarea>
+            <label for="project-type">What Are You After?</label>
+            <select id="project-type" name="Project Type" required>
+              <option value="">Select an option</option>
+              <option value="Arrowhead Key Rack / Wall Art">Arrowhead Key Rack / Wall Art</option>
+              <option value="Coffee Table">Coffee Table</option>
+              <option value="End Table">End Table</option>
+              <option value="Console Table">Console Table</option>
+              <option value="Small Goods">Coasters / Key Rack / Candle Holders</option>
+              <option value="Other">Something Else</option>
+            </select>
           </div>
-          <button type="submit" class="form-submit">Send Request &rarr;</button>
-          <p class="form-note">
-            Submissions go straight to my inbox. I'll reply within 48 hours.<br>
-            Or email directly: lingardaniel1@gmail.com
-          </p>
-        </form>
-      </div>
+        </div>
+        <div class="form-group">
+          <label for="dimensions">Rough Dimensions</label>
+          <input type="text" id="dimensions" name="Dimensions" placeholder='E.g. "About 4ft long, 18–20in wide, coffee table height"'>
+        </div>
+        <div class="form-group">
+          <label for="message">Tell Me What You Have in Mind</label>
+          <textarea id="message" name="Project Details" placeholder="How you'll use it, where it's going, any photos or ideas you've got."></textarea>
+        </div>
+        <button type="submit" class="form-submit">Send Request &rarr;</button>
+        <p class="form-note">
+          Submissions go straight to my inbox. I'll reply within 48 hours.<br>
+          Or email directly: <a href="mailto:lingardaniel1@gmail.com">lingardaniel1@gmail.com</a>
+        </p>
+      </form>
     </div>
-  </section>
-
-  <div class="flame-section-divider" aria-hidden="true">
-    <div class="dflame" style="animation-name:flicker3;animation-duration:2.0s;"><svg width="22" height="60" viewBox="0 0 22 60" fill="none"><path d="M11 58C5 46,0 34,3 22C4 16,1 9,5 3C5 12,8 15,7 9C11 15,9 24,11 18C12 12,15 5,17 2C15 11,18 16,16 24C20 17,21 9,22 4C21 17,17 24,20 34C23 44,16 52,11 58Z" fill="url(#dg1)"/><defs><linearGradient id="dg1" x1="11" y1="58" x2="11" y2="2" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#b8621a" stop-opacity="0.9"/><stop offset="100%" stop-color="#e07a20" stop-opacity="0.05"/></linearGradient></defs></svg></div>
-    <div class="dflame" style="animation-name:flicker;animation-duration:1.6s;animation-delay:-0.4s;"><svg width="32" height="90" viewBox="0 0 32 90" fill="none"><path d="M16 88C7 70,0 50,4 34C6 24,2 13,7 4C7 16,11 20,10 11C15 20,13 32,16 24C17 15,21 5,24 1C21 14,25 21,22 32C27 22,29 12,30 4C28 20,23 32,27 46C31 60,22 74,16 88Z" fill="url(#dg2)"/><defs><linearGradient id="dg2" x1="16" y1="88" x2="16" y2="1" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#c06820" stop-opacity="0.95"/><stop offset="100%" stop-color="#f0a040" stop-opacity="0.04"/></linearGradient></defs></svg></div>
-    <div class="dflame" style="animation-name:flicker2;animation-duration:2.3s;animation-delay:-0.9s;"><svg width="26" height="75" viewBox="0 0 26 75" fill="none"><path d="M13 73C6 58,0 42,3 28C5 20,1 11,6 3C5 14,9 17,8 10C12 17,11 28,13 21C14 13,17 5,20 1C17 12,21 18,18 27C23 18,24 9,25 3C24 17,19 27,22 39C26 50,18 62,13 73Z" fill="url(#dg3)"/><defs><linearGradient id="dg3" x1="13" y1="73" x2="13" y2="1" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#b8621a" stop-opacity="0.85"/><stop offset="100%" stop-color="#e07a20" stop-opacity="0.05"/></linearGradient></defs></svg></div>
-    <div class="dflame" style="animation-name:flicker;animation-duration:1.8s;animation-delay:-1.3s;"><svg width="38" height="105" viewBox="0 0 38 105" fill="none"><path d="M19 103C9 82,0 58,5 40C8 28,3 16,10 5C9 20,14 24,12 14C18 24,16 38,19 29C21 18,26 6,30 1C26 18,31 26,27 40C34 27,36 14,38 5C36 24,29 40,34 58C38 74,27 90,19 103Z" fill="url(#dg4)"/><defs><linearGradient id="dg4" x1="19" y1="103" x2="19" y2="1" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#c06820" stop-opacity="1"/><stop offset="100%" stop-color="#f5b060" stop-opacity="0.03"/></linearGradient></defs></svg></div>
-    <div class="dflame" style="animation-name:flicker3;animation-duration:2.1s;animation-delay:-0.6s;"><svg width="24" height="68" viewBox="0 0 24 68" fill="none"><path d="M12 66C5 52,0 37,3 24C5 17,1 9,6 2C5 13,9 16,8 9C12 16,10 27,12 20C13 12,17 4,19 1C16 11,20 17,17 26C22 17,23 9,24 3C22 17,18 26,21 38C25 49,17 58,12 66Z" fill="url(#dg5)"/><defs><linearGradient id="dg5" x1="12" y1="66" x2="12" y2="1" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#b8621a" stop-opacity="0.88"/><stop offset="100%" stop-color="#f0a040" stop-opacity="0.05"/></linearGradient></defs></svg></div>
-    <div class="dflame" style="animation-name:flicker2;animation-duration:1.7s;animation-delay:-1.7s;"><svg width="30" height="85" viewBox="0 0 30 85" fill="none"><path d="M15 83C7 66,0 47,4 32C6 22,2 12,7 3C6 15,10 19,9 11C14 19,12 30,15 23C16 14,20 5,23 1C20 13,24 19,21 30C26 20,28 11,29 4C27 19,22 30,26 43C30 56,20 70,15 83Z" fill="url(#dg6)"/><defs><linearGradient id="dg6" x1="15" y1="83" x2="15" y2="1" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#b8621a" stop-opacity="0.82"/><stop offset="100%" stop-color="#e07a20" stop-opacity="0.05"/></linearGradient></defs></svg></div>
-    <div class="dflame" style="animation-name:flicker;animation-duration:2.2s;animation-delay:-0.2s;"><svg width="20" height="56" viewBox="0 0 20 56" fill="none"><path d="M10 54C4 43,0 30,3 20C4 14,1 8,5 2C4 11,7 13,6 8C10 13,8 22,10 17C11 10,14 4,16 1C14 10,17 14,15 22C19 15,20 8,20 3C19 14,15 22,18 31C21 40,14 48,10 54Z" fill="url(#dg7)"/><defs><linearGradient id="dg7" x1="10" y1="54" x2="10" y2="1" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#b8621a" stop-opacity="0.8"/><stop offset="100%" stop-color="#f0a040" stop-opacity="0.05"/></linearGradient></defs></svg></div>
-    <div class="dflame" style="animation-name:flicker3;animation-duration:1.9s;animation-delay:-1.0s;"><svg width="34" height="95" viewBox="0 0 34 95" fill="none"><path d="M17 93C8 74,0 53,4 36C6 25,2 14,8 4C7 17,12 21,10 12C16 21,14 34,17 26C18 16,23 5,26 1C23 15,27 22,24 34C29 23,31 12,32 4C30 21,25 34,29 48C33 62,23 78,17 93Z" fill="url(#dg8)"/><defs><linearGradient id="dg8" x1="17" y1="93" x2="17" y2="1" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#c06820" stop-opacity="0.93"/><stop offset="100%" stop-color="#f5b060" stop-opacity="0.04"/></linearGradient></defs></svg></div>
-    <div class="dflame" style="animation-name:flicker2;animation-duration:2.0s;animation-delay:-0.7s;"><svg width="28" height="80" viewBox="0 0 28 80" fill="none"><path d="M14 78C6 62,0 44,4 30C6 21,1 12,7 3C6 16,10 19,9 11C14 19,12 30,14 23C15 14,19 5,22 1C19 13,23 19,20 30C25 21,27 11,28 4C26 19,21 30,25 43C28 56,19 68,14 78Z" fill="url(#dg9)"/><defs><linearGradient id="dg9" x1="14" y1="78" x2="14" y2="1" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#b8621a" stop-opacity="0.87"/><stop offset="100%" stop-color="#e07a20" stop-opacity="0.05"/></linearGradient></defs></svg></div>
-    <div class="dflame" style="animation-name:flicker;animation-duration:1.5s;animation-delay:-1.4s;"><svg width="42" height="118" viewBox="0 0 42 118" fill="none"><path d="M21 116C10 92,0 66,6 46C9 32,3 18,11 5C10 23,16 28,14 16C21 28,18 44,21 33C23 20,29 7,33 1C29 21,35 30,31 46C38 32,40 17,42 6C40 28,33 46,38 64C43 82,30 100,21 116Z" fill="url(#dg10)"/><defs><linearGradient id="dg10" x1="21" y1="116" x2="21" y2="1" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#c06820" stop-opacity="0.96"/><stop offset="100%" stop-color="#f8b850" stop-opacity="0.03"/></linearGradient></defs></svg></div>
-    <div class="dflame" style="animation-name:flicker3;animation-duration:2.4s;animation-delay:-0.3s;"><svg width="26" height="74" viewBox="0 0 26 74" fill="none"><path d="M13 72C6 57,0 40,3 27C5 19,1 10,6 2C5 14,9 17,8 10C12 17,11 28,13 21C14 13,17 5,20 1C17 12,21 17,18 27C23 18,24 10,25 3C23 16,19 27,22 38C25 50,18 61,13 72Z" fill="url(#dg11)"/><defs><linearGradient id="dg11" x1="13" y1="72" x2="13" y2="1" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#b8621a" stop-opacity="0.84"/><stop offset="100%" stop-color="#f0a040" stop-opacity="0.05"/></linearGradient></defs></svg></div>
-    <div class="dflame" style="animation-name:flicker2;animation-duration:1.8s;animation-delay:-1.1s;"><svg width="18" height="52" viewBox="0 0 18 52" fill="none"><path d="M9 50C4 40,0 28,2 18C3 13,1 7,5 2C4 10,6 12,6 7C9 12,8 20,9 15C10 9,12 3,14 1C12 9,15 13,13 20C17 13,17 7,18 2C17 13,14 20,16 29C19 37,13 44,9 50Z" fill="url(#dg12)"/><defs><linearGradient id="dg12" x1="9" y1="50" x2="9" y2="1" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#b8621a" stop-opacity="0.78"/><stop offset="100%" stop-color="#e07a20" stop-opacity="0.05"/></linearGradient></defs></svg></div>
   </div>
+</section>
 
-  <!-- CONTACT -->
-  <section id="contact">
-    <div class="section-label">Find Us</div>
-    <h2>Based in<br><em>Clarksville, AR</em></h2>
-    <p class="section-intro">One-person shop. I answer my own messages.</p>
-    <div class="contact-grid">
-      <div class="contact-block reveal">
-        <div class="contact-block-label">Location</div>
-        <div class="contact-block-value">Clarksville, Arkansas<br>Johnson County</div>
-        <p class="contact-block-note">Local pickup by appointment. I'll give you the address when your piece is ready.</p>
-      </div>
-      <div class="contact-block reveal">
-        <div class="contact-block-label">Email</div>
-        <div class="contact-block-value"><a href="mailto:lingardaniel1@gmail.com" style="color:var(--ember-hot);text-decoration:none;">lingardaniel1@gmail.com</a></div>
-        <p class="contact-block-note">Best way to reach me. Checked daily.</p>
-      </div>
-      <div class="contact-block reveal">
-        <div class="contact-block-label">Response Time</div>
-        <div class="contact-block-value">Within 48 Hours</div>
-        <p class="contact-block-note">Usually faster. Nothing after 48hrs? Check spam and try again.</p>
-      </div>
-      <div class="contact-block reveal">
-        <div class="contact-block-label">Shipping</div>
-        <div class="contact-block-value">Small Items Ship</div>
-        <p class="contact-block-note">Coasters, key racks, arrowheads, candle holders ship nationwide. Tables are local or freight-quoted.</p>
-      </div>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-label">Find Us</div>
+  <h2>Based in<br><em>Clarksville, AR</em></h2>
+  <p class="section-intro">One-person shop. I answer my own messages.</p>
+  <div class="contact-grid">
+    <div class="contact-block reveal">
+      <div class="contact-block-label">Location</div>
+      <div class="contact-block-value">Clarksville, Arkansas<br>Johnson County</div>
+      <p class="contact-block-note">Local pickup by appointment. I'll give you the address when your piece is ready.</p>
     </div>
-  </section>
-
-
-  <!-- FOOTER -->
-  <footer>
-    <div class="footer-brand">
-      <div class="footer-name">Blackline Flameworks</div>
-      <div class="footer-tag">Cut by hand. Finished by fire.</div>
+    <div class="contact-block reveal">
+      <div class="contact-block-label">Email</div>
+      <div class="contact-block-value"><a href="mailto:lingardaniel1@gmail.com" style="color:var(--ember-hot);text-decoration:none;">lingardaniel1@gmail.com</a></div>
+      <p class="contact-block-note">Best way to reach me. Checked daily.</p>
     </div>
-    <div class="footer-copy">
-      Clarksville, Arkansas &nbsp;&middot;&nbsp; Solid hardwood only &nbsp;&middot;&nbsp; &copy; 2025 Blackline Flameworks
+    <div class="contact-block reveal">
+      <div class="contact-block-label">Response Time</div>
+      <div class="contact-block-value">Within 48 Hours</div>
+      <p class="contact-block-note">Usually faster. Nothing after 48hrs? Check spam and try again.</p>
     </div>
-    <div class="footer-email">
-      lingardaniel1@gmail.com
+    <div class="contact-block reveal">
+      <div class="contact-block-label">Shipping</div>
+      <div class="contact-block-value">Small Items Ship</div>
+      <p class="contact-block-note">Coasters, key racks, arrowheads, candle holders ship nationwide. Tables are local or freight-quoted.</p>
     </div>
-  </footer>
+  </div>
+</section>
 
 
-  <script>
-    const hamburger = document.getElementById('hamburger');
-    const navLinks = document.getElementById('nav-links');
+<!-- FOOTER -->
+<footer>
+  <div class="footer-brand">
+    <div class="footer-name">Blackline Flameworks</div>
+    <div class="footer-tag">Cut by hand. Finished by fire.</div>
+  </div>
+  <div class="footer-copy">Clarksville, Arkansas &nbsp;&middot;&nbsp; Solid hardwood only &nbsp;&middot;&nbsp; &copy; 2025 Blackline Flameworks</div>
+  <div class="footer-email"><a href="mailto:lingardaniel1@gmail.com">lingardaniel1@gmail.com</a></div>
+</footer>
 
-    hamburger.addEventListener('click', () => {
-      navLinks.classList.toggle('active');
-    });
 
-    // Close menu when clicking a link
-    document.querySelectorAll('.nav-links a').forEach(link => {
-      link.addEventListener('click', () => {
-        navLinks.classList.remove('active');
-      });
-    });
+<script>
+  const hamburger = document.getElementById('hamburger');
+  const navLinks  = document.getElementById('nav-links');
+  if (hamburger && navLinks) {
+    hamburger.addEventListener('click', () => navLinks.classList.toggle('active'));
+    navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('active')));
+  }
 
-    // Reveal on scroll
-    const observerOptions = {
-      threshold: 0.12
-    };
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-        }
-      });
-    }, observerOptions);
-
-    document.querySelectorAll('.reveal').forEach(el => {
-      observer.observe(el);
-    });
-  </script>
+  // Reveal on scroll — show anything already visible immediately
+  const reveals = document.querySelectorAll('.reveal');
+  reveals.forEach(el => {
+    if (el.getBoundingClientRect().top < window.innerHeight) el.classList.add('visible');
+  });
+  if ('IntersectionObserver' in window) {
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
+    }, { threshold: 0.1 });
+    reveals.forEach(el => obs.observe(el));
+  } else {
+    reveals.forEach(el => el.classList.add('visible'));
+  }
+</script>
 
 </body>
 </html>
