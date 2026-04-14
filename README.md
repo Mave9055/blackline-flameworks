@@ -1,4 +1,9 @@
 # Blackline Flameworks
+
+<p align="center">
+  <img src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663251514784/peyAAcfVglzoCzKU.png" alt="Capitol Contracts LLC Logo" width="300">
+</p>
+
 Flame‑finished hardwood, one‑off pieces built by hand in Clarksville, Arkansas.
 
 **One‑person shop · Limited monthly output**
