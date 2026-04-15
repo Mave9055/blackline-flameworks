@@ -211,6 +211,24 @@
   .product-features { list-style: none; font-size: 0.86rem; color: var(--pale); display: flex; flex-direction: column; gap: 0.38rem; }
   .product-features li::before { content: '— '; color: var(--ember); }
 
+  /* CAN RACK */
+  #can-rack { background: var(--char); border-top: 1px solid rgba(184,98,26,0.14); }
+  .can-rack-gallery { display: grid; grid-template-columns: repeat(3,1fr); gap: 2px; margin: 3rem 0; }
+  @media (max-width: 900px) { .can-rack-gallery { grid-template-columns: 1fr; } }
+  .can-rack-item { overflow: hidden; cursor: pointer; background: var(--ash); aspect-ratio: 3/4; }
+  .can-rack-item img { width: 100%; height: 100%; object-fit: contain; display: block; transition: transform 0.45s ease; background: #0a0806; }
+  .can-rack-item:hover img { transform: scale(1.03); }
+  .can-rack-card { background: var(--grain); padding: 2.8rem 2.2rem; border-top: 3px solid var(--ember); margin-top: 2rem; }
+  .can-rack-tag { font-family: 'Space Mono', monospace; font-size: 0.58rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ember); background: rgba(184,98,26,0.1); padding: 0.28rem 0.65rem; display: inline-block; margin-bottom: 1.1rem; }
+  .can-rack-name { font-family: 'Playfair Display', serif; font-size: 1.8rem; font-weight: 700; color: var(--white); margin-bottom: 0.6rem; }
+  .can-rack-desc { font-size: 1rem; color: var(--pale); line-height: 1.7; margin-bottom: 2rem; }
+  .can-rack-features { display: grid; grid-template-columns: repeat(2,1fr); gap: 1px; margin-bottom: 2rem; border: 1px solid rgba(184,98,26,0.14); }
+  .can-rack-feature { background: var(--ash); padding: 1.2rem; }
+  .can-rack-feature-label { font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ember); margin-bottom: 0.4rem; }
+  .can-rack-feature-value { font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 700; color: var(--white); }
+  .can-rack-price { font-family: 'Playfair Display', serif; font-size: 2.4rem; font-weight: 900; color: var(--ember-hot); line-height: 1; margin-bottom: 0.3rem; }
+  .can-rack-note { font-family: 'Space Mono', monospace; font-size: 0.58rem; letter-spacing: 0.1em; color: var(--smoke); text-transform: uppercase; margin-bottom: 1.8rem; }
+
   /* LIGHTBOX */
   .lb-overlay { display:none; position:fixed; inset:0; background:rgba(6,4,2,0.93); z-index:1000; align-items:center; justify-content:center; }
   .lb-overlay.open { display:flex; }
@@ -380,6 +398,7 @@
     <li><a href="#torch-demo">Try It</a></li>
     <li><a href="#featured">Available Now</a></li>
     <li><a href="#products">Pricing</a></li>
+    <li><a href="#can-rack">Can Rack</a></li>
     <li><a href="#order">Order</a></li>
     <li><a href="#testimonials">Reviews</a></li>
     <li><a href="#about">About</a></li>
@@ -513,15 +532,7 @@
     <div class="gallery-item">
       <img src="assets/img/serving-board-cabin.jpg" alt="Arrowhead serving board with whiskey by fireplace — torch-finished hardwood">
     </div>
-    <div class="gallery-item">
-      <img src="assets/img/canrack/canrack-1.png" alt="Custom FIFO Can Rack — solid wood pantry organizer">
-    </div>
-    <div class="gallery-item">
-      <img src="assets/img/canrack/canrack-2.png" alt="Custom FIFO Can Rack — gravity-fed design detail">
-    </div>
-    <div class="gallery-item">
-      <img src="assets/img/canrack/canrack-3.png" alt="Custom FIFO Can Rack — maximized pantry storage">
-    </div>
+
   </div>
   <p class="gallery-note reveal">All pieces shown are solid hardwood — torch-finished by hand in Clarksville, AR</p>
   <div style="text-align:center;margin-top:2.5rem;">
@@ -717,17 +728,58 @@
       <div class="product-note">Starting price — quote required</div>
       <ul class="product-features"><li>Full solid wood slab or panel</li><li>Steel or wood base</li><li>Custom to your space</li><li>Deposit required to begin</li></ul>
     </div>
-    <div class="product-card reveal">
-      <div class="product-tag">Pantry &amp; Storage</div>
-      <div class="product-name">FIFO Can Rack</div>
-      <p class="product-desc">Custom-built gravity-fed can organizer. First-in, first-out design ensures perfect stock rotation. Built to fit your specific pantry dimensions.</p>
-      <div class="product-price">$250+</div>
-      <div class="product-note">Custom quoted — varies by size</div>
-      <ul class="product-features"><li>Solid wood construction</li><li>Gravity-fed FIFO design</li><li>Custom built to fit your space</li><li>Maximizes storage efficiency</li></ul>
-    </div>
+
   </div>
   <div style="text-align:center;">
     <a href="#order" class="btn-primary">Get a Custom Quote</a>
+  </div>
+</section>
+
+<!-- CAN RACK SECTION -->
+<section id="can-rack">
+  <div class="section-label">Pantry &amp; Storage</div>
+  <div class="reveal">
+    <h2>FIFO Can<br><em>Rack</em></h2>
+    <p class="section-intro">Custom-built gravity-fed can organizer. First-in, first-out design ensures perfect stock rotation. Built to fit your specific pantry dimensions. Can be finished with optional torch treatment for a unique look.</p>
+  </div>
+  <div class="can-rack-gallery reveal">
+    <div class="can-rack-item">
+      <img src="assets/img/canrack/canrack-1.png" alt="Custom FIFO Can Rack — solid wood pantry organizer">
+    </div>
+    <div class="can-rack-item">
+      <img src="assets/img/canrack/canrack-2.png" alt="Custom FIFO Can Rack — gravity-fed design detail">
+    </div>
+    <div class="can-rack-item">
+      <img src="assets/img/canrack/canrack-3.png" alt="Custom FIFO Can Rack — maximized pantry storage">
+    </div>
+  </div>
+  <div class="can-rack-card reveal">
+    <div class="can-rack-tag">Custom Built</div>
+    <div class="can-rack-name">FIFO Can Rack</div>
+    <p class="can-rack-desc">Maximize your pantry storage with a custom-built gravity-fed can organizer. The first-in, first-out design ensures perfect stock rotation so older cans are used first. Built to fit your exact pantry dimensions.</p>
+    <div class="can-rack-features">
+      <div class="can-rack-feature">
+        <div class="can-rack-feature-label">Construction</div>
+        <div class="can-rack-feature-value">Solid wood</div>
+      </div>
+      <div class="can-rack-feature">
+        <div class="can-rack-feature-label">Design</div>
+        <div class="can-rack-feature-value">Gravity-fed FIFO</div>
+      </div>
+      <div class="can-rack-feature">
+        <div class="can-rack-feature-label">Finish</div>
+        <div class="can-rack-feature-value">Natural or torch-optional</div>
+      </div>
+      <div class="can-rack-feature">
+        <div class="can-rack-feature-label">Customization</div>
+        <div class="can-rack-feature-value">Built to your space</div>
+      </div>
+    </div>
+    <div class="can-rack-price">$250+</div>
+    <div class="can-rack-note">Custom quoted — varies by size and finish</div>
+    <div style="margin-top:2rem;">
+      <a href="#order" class="btn-primary">Get a Custom Quote &rarr;</a>
+    </div>
   </div>
 </section>
 
@@ -800,6 +852,7 @@
               <option value="End Table">End Table</option>
               <option value="Console Table">Console Table</option>
               <option value="Small Goods">Coasters / Key Rack / Candle Holders</option>
+              <option value="FIFO Can Rack">FIFO Can Rack</option>
               <option value="Other">Something Else</option>
             </select>
           </div>
