@@ -1528,7 +1528,7 @@
       btn.classList.add('active');
     }
 
-    const proj = perspective(0.75, 1, 0.1, 100, mat4());
+    const proj = perspective(0.75, canvas.width/canvas.height, 0.1, 100, mat4());
     let startT = performance.now();
 
     function drawFrame(ts) {
